@@ -1,0 +1,940 @@
+### YamlMime:ManagedReference
+items:
+- uid: MyNamespace.MyClass
+  commentId: T:MyNamespace.MyClass
+  id: MyClass
+  parent: MyNamespace
+  children:
+  - MyNamespace.MyClass.#ctor
+  - MyNamespace.MyClass.#ctor(System.Int32)
+  - MyNamespace.MyClass.AnotherMethod(System.Int16[],System.Int32[0:,0:])
+  - MyNamespace.MyClass.Func
+  - MyNamespace.MyClass.Item(System.String)
+  - MyNamespace.MyClass.Main(System.String[])
+  - MyNamespace.MyClass.Message
+  - MyNamespace.MyClass.OnHappened
+  - MyNamespace.MyClass.PI
+  - MyNamespace.MyClass.Prop
+  - MyNamespace.MyClass.SomeMethod(System.String,System.Int32@,System.Int32)
+  - MyNamespace.MyClass.op_Addition(MyNamespace.MyClass,MyNamespace.MyClass)
+  - MyNamespace.MyClass.op_Explicit(MyNamespace.MyClass)~System.Int32
+  langs:
+  - csharp
+  - vb
+  name: MyClass
+  nameWithType: MyClass
+  fullName: MyNamespace.MyClass
+  type: Class
+  source:
+    id: MyClass
+    path: /home/jame/Desktop/temp/mkdocs-test/docs/homework/c#/triangle/Program.cs
+    startLine: 6
+  assemblies:
+  - triangle
+  namespace: MyNamespace
+  summary: >-
+    Enter description here for class X.
+
+    ID string generated is "T:MyNamespace.MyClass".
+  example: []
+  syntax:
+    content: public class MyClass
+    content.vb: Public Class [MyClass]
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: MyNamespace.MyClass.#ctor
+  commentId: M:MyNamespace.MyClass.#ctor
+  id: '#ctor'
+  parent: MyNamespace.MyClass
+  langs:
+  - csharp
+  - vb
+  name: MyClass()
+  nameWithType: MyClass.MyClass()
+  fullName: MyNamespace.MyClass.MyClass()
+  type: Constructor
+  source:
+    id: .ctor
+    path: /home/jame/Desktop/temp/mkdocs-test/docs/homework/c#/triangle/Program.cs
+    startLine: 12
+  assemblies:
+  - triangle
+  namespace: MyNamespace
+  summary: >-
+    Enter description here for the first constructor.
+
+    ID string generated is "M:MyNamespace.MyClass.#ctor".
+  example: []
+  syntax:
+    content: public MyClass()
+    content.vb: Public Sub New()
+  overload: MyNamespace.MyClass.#ctor*
+  nameWithType.vb: MyClass.New()
+  fullName.vb: MyNamespace.MyClass.New()
+  name.vb: New()
+- uid: MyNamespace.MyClass.#ctor(System.Int32)
+  commentId: M:MyNamespace.MyClass.#ctor(System.Int32)
+  id: '#ctor(System.Int32)'
+  parent: MyNamespace.MyClass
+  langs:
+  - csharp
+  - vb
+  name: MyClass(int)
+  nameWithType: MyClass.MyClass(int)
+  fullName: MyNamespace.MyClass.MyClass(int)
+  type: Constructor
+  source:
+    id: .ctor
+    path: /home/jame/Desktop/temp/mkdocs-test/docs/homework/c#/triangle/Program.cs
+    startLine: 19
+  assemblies:
+  - triangle
+  namespace: MyNamespace
+  summary: >-
+    Enter description here for the second constructor.
+
+    ID string generated is "M:MyNamespace.MyClass.#ctor(System.Int32)".
+  example: []
+  syntax:
+    content: public MyClass(int i)
+    parameters:
+    - id: i
+      type: System.Int32
+      description: Describe parameter.
+    content.vb: Public Sub New(i As Integer)
+  overload: MyNamespace.MyClass.#ctor*
+  nameWithType.vb: MyClass.New(Integer)
+  fullName.vb: MyNamespace.MyClass.New(Integer)
+  name.vb: New(Integer)
+- uid: MyNamespace.MyClass.Message
+  commentId: F:MyNamespace.MyClass.Message
+  id: Message
+  parent: MyNamespace.MyClass
+  langs:
+  - csharp
+  - vb
+  name: Message
+  nameWithType: MyClass.Message
+  fullName: MyNamespace.MyClass.Message
+  type: Field
+  source:
+    id: Message
+    path: /home/jame/Desktop/temp/mkdocs-test/docs/homework/c#/triangle/Program.cs
+    startLine: 25
+  assemblies:
+  - triangle
+  namespace: MyNamespace
+  summary: >-
+    Enter description here for field Message.
+
+    ID string generated is "F:MyNamespace.MyClass.Message".
+  example: []
+  syntax:
+    content: public string? Message
+    return:
+      type: System.String
+    content.vb: Public Message As String
+- uid: MyNamespace.MyClass.PI
+  commentId: F:MyNamespace.MyClass.PI
+  id: PI
+  parent: MyNamespace.MyClass
+  langs:
+  - csharp
+  - vb
+  name: PI
+  nameWithType: MyClass.PI
+  fullName: MyNamespace.MyClass.PI
+  type: Field
+  source:
+    id: PI
+    path: /home/jame/Desktop/temp/mkdocs-test/docs/homework/c#/triangle/Program.cs
+    startLine: 31
+  assemblies:
+  - triangle
+  namespace: MyNamespace
+  summary: >-
+    Enter description for constant PI.
+
+    ID string generated is "F:MyNamespace.MyClass.PI".
+  example: []
+  syntax:
+    content: public const double PI = 3.14
+    return:
+      type: System.Double
+    content.vb: Public Const PI As Double = 3.14
+- uid: MyNamespace.MyClass.Func
+  commentId: M:MyNamespace.MyClass.Func
+  id: Func
+  parent: MyNamespace.MyClass
+  langs:
+  - csharp
+  - vb
+  name: Func()
+  nameWithType: MyClass.Func()
+  fullName: MyNamespace.MyClass.Func()
+  type: Method
+  source:
+    id: Func
+    path: /home/jame/Desktop/temp/mkdocs-test/docs/homework/c#/triangle/Program.cs
+    startLine: 38
+  assemblies:
+  - triangle
+  namespace: MyNamespace
+  summary: >-
+    Enter description for method Func.
+
+    ID string generated is "M:MyNamespace.MyClass.Func".
+  example: []
+  syntax:
+    content: public int Func()
+    return:
+      type: System.Int32
+      description: Describe return value.
+    content.vb: Public Function Func() As Integer
+  overload: MyNamespace.MyClass.Func*
+- uid: MyNamespace.MyClass.SomeMethod(System.String,System.Int32@,System.Int32)
+  commentId: M:MyNamespace.MyClass.SomeMethod(System.String,System.Int32@,System.Int32)
+  id: SomeMethod(System.String,System.Int32@,System.Int32)
+  parent: MyNamespace.MyClass
+  langs:
+  - csharp
+  - vb
+  name: SomeMethod(string, ref int, int)
+  nameWithType: MyClass.SomeMethod(string, ref int, int)
+  fullName: MyNamespace.MyClass.SomeMethod(string, ref int, int)
+  type: Method
+  source:
+    id: SomeMethod
+    path: /home/jame/Desktop/temp/mkdocs-test/docs/homework/c#/triangle/Program.cs
+    startLine: 48
+  assemblies:
+  - triangle
+  namespace: MyNamespace
+  summary: >-
+    Enter description for method SomeMethod.
+
+    ID string generated is "M:MyNamespace.MyClass.SomeMethod(System.String,System.Int32@,System.Void*)".
+  example: []
+  syntax:
+    content: public int SomeMethod(string str, ref int num, int ptr)
+    parameters:
+    - id: str
+      type: System.String
+      description: Describe parameter.
+    - id: num
+      type: System.Int32
+      description: Describe parameter.
+    - id: ptr
+      type: System.Int32
+      description: Describe parameter.
+    return:
+      type: System.Int32
+      description: Describe return value.
+    content.vb: Public Function SomeMethod(str As String, num As Integer, ptr As Integer) As Integer
+  overload: MyNamespace.MyClass.SomeMethod*
+  nameWithType.vb: MyClass.SomeMethod(String, Integer, Integer)
+  fullName.vb: MyNamespace.MyClass.SomeMethod(String, Integer, Integer)
+  name.vb: SomeMethod(String, Integer, Integer)
+- uid: MyNamespace.MyClass.AnotherMethod(System.Int16[],System.Int32[0:,0:])
+  commentId: M:MyNamespace.MyClass.AnotherMethod(System.Int16[],System.Int32[0:,0:])
+  id: AnotherMethod(System.Int16[],System.Int32[0:,0:])
+  parent: MyNamespace.MyClass
+  langs:
+  - csharp
+  - vb
+  name: AnotherMethod(short[], int[,])
+  nameWithType: MyClass.AnotherMethod(short[], int[,])
+  fullName: MyNamespace.MyClass.AnotherMethod(short[], int[,])
+  type: Method
+  source:
+    id: AnotherMethod
+    path: /home/jame/Desktop/temp/mkdocs-test/docs/homework/c#/triangle/Program.cs
+    startLine: 57
+  assemblies:
+  - triangle
+  namespace: MyNamespace
+  summary: >-
+    Enter description for method AnotherMethod.
+
+    ID string generated is "M:MyNamespace.MyClass.AnotherMethod(System.Int16[],System.Int32[0:,0:])".
+  example: []
+  syntax:
+    content: public int AnotherMethod(short[] array1, int[,] array)
+    parameters:
+    - id: array1
+      type: System.Int16[]
+      description: Describe parameter.
+    - id: array
+      type: System.Int32[,]
+      description: Describe parameter.
+    return:
+      type: System.Int32
+      description: Describe return value.
+    content.vb: Public Function AnotherMethod(array1 As Short(), array As Integer(,)) As Integer
+  overload: MyNamespace.MyClass.AnotherMethod*
+  nameWithType.vb: MyClass.AnotherMethod(Short(), Integer(,))
+  fullName.vb: MyNamespace.MyClass.AnotherMethod(Short(), Integer(,))
+  name.vb: AnotherMethod(Short(), Integer(,))
+- uid: MyNamespace.MyClass.op_Addition(MyNamespace.MyClass,MyNamespace.MyClass)
+  commentId: M:MyNamespace.MyClass.op_Addition(MyNamespace.MyClass,MyNamespace.MyClass)
+  id: op_Addition(MyNamespace.MyClass,MyNamespace.MyClass)
+  parent: MyNamespace.MyClass
+  langs:
+  - csharp
+  - vb
+  name: operator +(MyClass, MyClass)
+  nameWithType: MyClass.operator +(MyClass, MyClass)
+  fullName: MyNamespace.MyClass.operator +(MyNamespace.MyClass, MyNamespace.MyClass)
+  type: Operator
+  source:
+    id: op_Addition
+    path: /home/jame/Desktop/temp/mkdocs-test/docs/homework/c#/triangle/Program.cs
+    startLine: 66
+  assemblies:
+  - triangle
+  namespace: MyNamespace
+  summary: >-
+    Enter description for operator.
+
+    ID string generated is "M:MyNamespace.MyClass.op_Addition(MyNamespace.MyClass,MyNamespace.MyClass)".
+  example: []
+  syntax:
+    content: public static MyClass operator +(MyClass first, MyClass second)
+    parameters:
+    - id: first
+      type: MyNamespace.MyClass
+      description: Describe parameter.
+    - id: second
+      type: MyNamespace.MyClass
+      description: Describe parameter.
+    return:
+      type: MyNamespace.MyClass
+      description: Describe return value.
+    content.vb: Public Shared Operator +(first As [MyClass], second As [MyClass]) As [MyClass]
+  overload: MyNamespace.MyClass.op_Addition*
+  nameWithType.vb: MyClass.+(MyClass, MyClass)
+  fullName.vb: MyNamespace.MyClass.+(MyNamespace.MyClass, MyNamespace.MyClass)
+  name.vb: +(MyClass, MyClass)
+- uid: MyNamespace.MyClass.Prop
+  commentId: P:MyNamespace.MyClass.Prop
+  id: Prop
+  parent: MyNamespace.MyClass
+  langs:
+  - csharp
+  - vb
+  name: Prop
+  nameWithType: MyClass.Prop
+  fullName: MyNamespace.MyClass.Prop
+  type: Property
+  source:
+    id: Prop
+    path: /home/jame/Desktop/temp/mkdocs-test/docs/homework/c#/triangle/Program.cs
+    startLine: 72
+  assemblies:
+  - triangle
+  namespace: MyNamespace
+  summary: >-
+    Enter description for property.
+
+    ID string generated is "P:MyNamespace.MyClass.Prop".
+  example: []
+  syntax:
+    content: public int Prop { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property Prop As Integer
+  overload: MyNamespace.MyClass.Prop*
+- uid: MyNamespace.MyClass.OnHappened
+  commentId: E:MyNamespace.MyClass.OnHappened
+  id: OnHappened
+  parent: MyNamespace.MyClass
+  langs:
+  - csharp
+  - vb
+  name: OnHappened
+  nameWithType: MyClass.OnHappened
+  fullName: MyNamespace.MyClass.OnHappened
+  type: Event
+  source:
+    id: OnHappened
+    path: /home/jame/Desktop/temp/mkdocs-test/docs/homework/c#/triangle/Program.cs
+    startLine: 78
+  assemblies:
+  - triangle
+  namespace: MyNamespace
+  summary: >-
+    Enter description for event.
+
+    ID string generated is "E:MyNamespace.MyClass.OnHappened".
+  example: []
+  syntax:
+    content: public event MyClass.Del? OnHappened
+    return:
+      type: MyNamespace.MyClass.Del
+    content.vb: Public Event OnHappened As [MyClass].Del
+- uid: MyNamespace.MyClass.Item(System.String)
+  commentId: P:MyNamespace.MyClass.Item(System.String)
+  id: Item(System.String)
+  parent: MyNamespace.MyClass
+  langs:
+  - csharp
+  - vb
+  name: this[string]
+  nameWithType: MyClass.this[string]
+  fullName: MyNamespace.MyClass.this[string]
+  type: Property
+  source:
+    id: this[]
+    path: /home/jame/Desktop/temp/mkdocs-test/docs/homework/c#/triangle/Program.cs
+    startLine: 86
+  assemblies:
+  - triangle
+  namespace: MyNamespace
+  summary: >-
+    Enter description for index.
+
+    ID string generated is "P:MyNamespace.MyClass.Item(System.String)".
+  example: []
+  syntax:
+    content: public int this[string s] { get; }
+    parameters:
+    - id: s
+      type: System.String
+    return:
+      type: System.Int32
+      description: ''
+    content.vb: Public ReadOnly Default Property this[](s As String) As Integer
+  overload: MyNamespace.MyClass.Item*
+  nameWithType.vb: MyClass.this[](String)
+  fullName.vb: MyNamespace.MyClass.this[](String)
+  name.vb: this[](String)
+- uid: MyNamespace.MyClass.op_Explicit(MyNamespace.MyClass)~System.Int32
+  commentId: M:MyNamespace.MyClass.op_Explicit(MyNamespace.MyClass)~System.Int32
+  id: op_Explicit(MyNamespace.MyClass)~System.Int32
+  parent: MyNamespace.MyClass
+  langs:
+  - csharp
+  - vb
+  name: explicit operator int(MyClass)
+  nameWithType: MyClass.explicit operator int(MyClass)
+  fullName: MyNamespace.MyClass.explicit operator int(MyNamespace.MyClass)
+  type: Operator
+  source:
+    id: op_Explicit
+    path: /home/jame/Desktop/temp/mkdocs-test/docs/homework/c#/triangle/Program.cs
+    startLine: 107
+  assemblies:
+  - triangle
+  namespace: MyNamespace
+  summary: >-
+    Enter description for operator.
+
+    ID string generated is "M:MyNamespace.MyClass.op_Explicit(MyNamespace.MyClass)~System.Int32".
+  example: []
+  syntax:
+    content: public static explicit operator int(MyClass myParameter)
+    parameters:
+    - id: myParameter
+      type: MyNamespace.MyClass
+      description: Describe parameter.
+    return:
+      type: System.Int32
+      description: Describe return value.
+    content.vb: Public Shared Narrowing Operator CType(myParameter As [MyClass]) As Integer
+  overload: MyNamespace.MyClass.op_Explicit*
+  nameWithType.vb: MyClass.CType(MyClass)
+  fullName.vb: MyNamespace.MyClass.CType(MyNamespace.MyClass)
+  name.vb: CType(MyClass)
+- uid: MyNamespace.MyClass.Main(System.String[])
+  commentId: M:MyNamespace.MyClass.Main(System.String[])
+  id: Main(System.String[])
+  parent: MyNamespace.MyClass
+  langs:
+  - csharp
+  - vb
+  name: Main(string[])
+  nameWithType: MyClass.Main(string[])
+  fullName: MyNamespace.MyClass.Main(string[])
+  type: Method
+  source:
+    id: Main
+    path: /home/jame/Desktop/temp/mkdocs-test/docs/homework/c#/triangle/Program.cs
+    startLine: 112
+  assemblies:
+  - triangle
+  namespace: MyNamespace
+  summary: This is Main method for entry point
+  example: []
+  syntax:
+    content: public static void Main(string[] args)
+    parameters:
+    - id: args
+      type: System.String[]
+      description: input args
+    content.vb: Public Shared Sub Main(args As String())
+  overload: MyNamespace.MyClass.Main*
+  nameWithType.vb: MyClass.Main(String())
+  fullName.vb: MyNamespace.MyClass.Main(String())
+  name.vb: Main(String())
+references:
+- uid: MyNamespace
+  commentId: N:MyNamespace
+  href: MyNamespace.html
+  name: MyNamespace
+  nameWithType: MyNamespace
+  fullName: MyNamespace
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: MyNamespace.MyClass.#ctor*
+  commentId: Overload:MyNamespace.MyClass.#ctor
+  href: MyNamespace.MyClass.html#MyNamespace_MyClass__ctor
+  name: MyClass
+  nameWithType: MyClass.MyClass
+  fullName: MyNamespace.MyClass.MyClass
+  nameWithType.vb: MyClass.New
+  fullName.vb: MyNamespace.MyClass.New
+  name.vb: New
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Double
+  commentId: T:System.Double
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.double
+  name: double
+  nameWithType: double
+  fullName: double
+  nameWithType.vb: Double
+  fullName.vb: Double
+  name.vb: Double
+- uid: MyNamespace.MyClass.Func*
+  commentId: Overload:MyNamespace.MyClass.Func
+  href: MyNamespace.MyClass.html#MyNamespace_MyClass_Func
+  name: Func
+  nameWithType: MyClass.Func
+  fullName: MyNamespace.MyClass.Func
+- uid: MyNamespace.MyClass.SomeMethod*
+  commentId: Overload:MyNamespace.MyClass.SomeMethod
+  href: MyNamespace.MyClass.html#MyNamespace_MyClass_SomeMethod_System_String_System_Int32__System_Int32_
+  name: SomeMethod
+  nameWithType: MyClass.SomeMethod
+  fullName: MyNamespace.MyClass.SomeMethod
+- uid: MyNamespace.MyClass.AnotherMethod*
+  commentId: Overload:MyNamespace.MyClass.AnotherMethod
+  href: MyNamespace.MyClass.html#MyNamespace_MyClass_AnotherMethod_System_Int16___System_Int32_0
+  name: AnotherMethod
+  nameWithType: MyClass.AnotherMethod
+  fullName: MyNamespace.MyClass.AnotherMethod
+- uid: System.Int16[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int16
+  name: short[]
+  nameWithType: short[]
+  fullName: short[]
+  nameWithType.vb: Short()
+  fullName.vb: Short()
+  name.vb: Short()
+  spec.csharp:
+  - uid: System.Int16
+    name: short
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int16
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Int16
+    name: Short
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int16
+  - name: (
+  - name: )
+- uid: System.Int32[,]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int[,]
+  nameWithType: int[,]
+  fullName: int[,]
+  nameWithType.vb: Integer(,)
+  fullName.vb: Integer(,)
+  name.vb: Integer(,)
+  spec.csharp:
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '['
+  - name: ','
+  - name: ']'
+  spec.vb:
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: (
+  - name: ','
+  - name: )
+- uid: MyNamespace.MyClass.op_Addition*
+  commentId: Overload:MyNamespace.MyClass.op_Addition
+  href: MyNamespace.MyClass.html#MyNamespace_MyClass_op_Addition_MyNamespace_MyClass_MyNamespace_MyClass_
+  name: operator +
+  nameWithType: MyClass.operator +
+  fullName: MyNamespace.MyClass.operator +
+  nameWithType.vb: MyClass.+
+  fullName.vb: MyNamespace.MyClass.+
+  name.vb: +
+  spec.csharp:
+  - name: operator
+  - name: " "
+  - uid: MyNamespace.MyClass.op_Addition*
+    name: +
+    href: MyNamespace.MyClass.html#MyNamespace_MyClass_op_Addition_MyNamespace_MyClass_MyNamespace_MyClass_
+- uid: MyNamespace.MyClass
+  commentId: T:MyNamespace.MyClass
+  parent: MyNamespace
+  href: MyNamespace.MyClass.html
+  name: MyClass
+  nameWithType: MyClass
+  fullName: MyNamespace.MyClass
+- uid: MyNamespace.MyClass.Prop*
+  commentId: Overload:MyNamespace.MyClass.Prop
+  href: MyNamespace.MyClass.html#MyNamespace_MyClass_Prop
+  name: Prop
+  nameWithType: MyClass.Prop
+  fullName: MyNamespace.MyClass.Prop
+- uid: MyNamespace.MyClass.Del
+  commentId: T:MyNamespace.MyClass.Del
+  parent: MyNamespace
+  href: MyNamespace.MyClass.html
+  name: MyClass.Del
+  nameWithType: MyClass.Del
+  fullName: MyNamespace.MyClass.Del
+  spec.csharp:
+  - uid: MyNamespace.MyClass
+    name: MyClass
+    href: MyNamespace.MyClass.html
+  - name: .
+  - uid: MyNamespace.MyClass.Del
+    name: Del
+    href: MyNamespace.MyClass.Del.html
+  spec.vb:
+  - uid: MyNamespace.MyClass
+    name: MyClass
+    href: MyNamespace.MyClass.html
+  - name: .
+  - uid: MyNamespace.MyClass.Del
+    name: Del
+    href: MyNamespace.MyClass.Del.html
+- uid: MyNamespace.MyClass.Item*
+  commentId: Overload:MyNamespace.MyClass.Item
+  href: MyNamespace.MyClass.html#MyNamespace_MyClass_Item_System_String_
+  name: this
+  nameWithType: MyClass.this
+  fullName: MyNamespace.MyClass.this
+  nameWithType.vb: MyClass.this[]
+  fullName.vb: MyNamespace.MyClass.this[]
+  name.vb: this[]
+- uid: MyNamespace.MyClass.op_Explicit*
+  commentId: Overload:MyNamespace.MyClass.op_Explicit
+  name: explicit operator
+  nameWithType: MyClass.explicit operator
+  fullName: MyNamespace.MyClass.explicit operator
+  nameWithType.vb: MyClass.CType
+  fullName.vb: MyNamespace.MyClass.CType
+  name.vb: CType
+  spec.csharp:
+  - name: explicit
+  - name: " "
+  - name: operator
+- uid: MyNamespace.MyClass.Main*
+  commentId: Overload:MyNamespace.MyClass.Main
+  href: MyNamespace.MyClass.html#MyNamespace_MyClass_Main_System_String___
+  name: Main
+  nameWithType: MyClass.Main
+  fullName: MyNamespace.MyClass.Main
+- uid: System.String[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string[]
+  nameWithType: string[]
+  fullName: string[]
+  nameWithType.vb: String()
+  fullName.vb: String()
+  name.vb: String()
+  spec.csharp:
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: (
+  - name: )

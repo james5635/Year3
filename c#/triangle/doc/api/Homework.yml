@@ -1,0 +1,23 @@
+### YamlMime:ManagedReference
+items:
+- uid: Homework
+  commentId: N:Homework
+  id: Homework
+  children:
+  - Homework.Triangle
+  langs:
+  - csharp
+  - vb
+  name: Homework
+  nameWithType: Homework
+  fullName: Homework
+  type: Namespace
+  assemblies:
+  - triangle
+references:
+- uid: Homework.Triangle
+  commentId: T:Homework.Triangle
+  href: Homework.Triangle.html
+  name: Triangle
+  nameWithType: Triangle
+  fullName: Homework.Triangle

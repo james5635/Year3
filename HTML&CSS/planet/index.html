@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Planet Form</title>
+    <link href="./styles.css" rel="stylesheet" />
+    <style></style>
+    <script defer src="./script.js"></script>
+  </head>
+  <body>
+    <h2>Planet Information Form</h2>
+    <form id="planet-form">
+      <label for="planet-name">Planet Name:</label>
+      <input
+        type="text"
+        id="planet-name"
+        name="planet-name"
+        placeholder="Enter planet name"
+        required
+      />
+
+      <label for="diameter">Diameter (km):</label>
+      <input
+        type="number"
+        id="diameter"
+        name="diameter"
+        placeholder="Enter diameter in kilometers"
+        required
+      />
+
+      <label for="mass">Mass (kg):</label>
+      <input
+        type="text"
+        id="mass"
+        name="mass"
+        placeholder="Enter mass in kilograms"
+        required
+      />
+
+      <label for="orbit-period">Orbit Period (days):</label>
+      <input
+        type="number"
+        id="orbit-period"
+        name="orbit-period"
+        placeholder="Enter orbit period in days"
+        required
+      />
+
+      <label for="moons">Number of Moons:</label>
+      <input
+        type="number"
+        id="moons"
+        name="moons"
+        placeholder="Enter number of moons"
+      />
+
+      <label for="discovery-year">Year of Discovery:</label>
+      <input
+        type="number"
+        id="discovery-year"
+        name="discovery-year"
+        placeholder="Enter year of discovery"
+      />
+
+      <button type="submit">Submit</button>
+    </form>
+
+    <h2>Stored Planet Information</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Planet Name</th>
+          <th>Diameter (km)</th>
+          <th>Mass (kg)</th>
+          <th>Orbit Period (days)</th>
+          <th>Number of Moons</th>
+          <th>Year of Discovery</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Earth</td>
+          <td>12742</td>
+          <td>5.972 x 10^24</td>
+          <td>365</td>
+          <td>1</td>
+          <td>-</td>
+          <td>
+            <button class="edit">Edit</button>
+            <button class="delete">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

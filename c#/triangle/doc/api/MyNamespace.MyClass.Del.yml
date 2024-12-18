@@ -1,0 +1,58 @@
+### YamlMime:ManagedReference
+items:
+- uid: MyNamespace.MyClass.Del
+  commentId: T:MyNamespace.MyClass.Del
+  id: MyClass.Del
+  parent: MyNamespace
+  children: []
+  langs:
+  - csharp
+  - vb
+  name: MyClass.Del
+  nameWithType: MyClass.Del
+  fullName: MyNamespace.MyClass.Del
+  type: Delegate
+  source:
+    id: Del
+    path: /home/jame/Desktop/temp/mkdocs-test/docs/homework/c#/triangle/Program.cs
+    startLine: 99
+  assemblies:
+  - triangle
+  namespace: MyNamespace
+  summary: >-
+    Enter description for delegate.
+
+    ID string generated is "T:MyNamespace.MyClass.Del".
+  example: []
+  syntax:
+    content: public delegate void MyClass.Del(int i)
+    parameters:
+    - id: i
+      type: System.Int32
+      description: Describe parameter.
+    content.vb: Public Delegate Sub [MyClass].Del(i As Integer)
+references:
+- uid: MyNamespace
+  commentId: N:MyNamespace
+  href: MyNamespace.html
+  name: MyNamespace
+  nameWithType: MyNamespace
+  fullName: MyNamespace
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System

@@ -1,0 +1,47 @@
+{
+  "api/Homework.Triangle.html": {
+    "href": "api/Homework.Triangle.html",
+    "title": "Class Triangle",
+    "keywords": "Class Triangle Namespace Homework Assembly triangle.dll Class representing triangle having 3 side a, b, and c public class Triangle Inheritance object Triangle Inherited Members object.Equals(object) object.Equals(object, object) object.GetHashCode() object.GetType() object.MemberwiseClone() object.ReferenceEquals(object, object) object.ToString() Constructors Triangle(double, double, double) Triangle constructor public Triangle(double a, double b, double c) Parameters a double side a of triangle b double side b of triangle c double side c of triangle Fields a variables for side a public double a Field Value double b variables for side b public double b Field Value double c variables for side c public double c Field Value double Methods area() Get area of triangle public double area() Returns double area of triangle Remarks Heron's formula, named after Heron of Alexandria, is a formula for finding the area of a triangle from the lengths of its sides a,b,c letting s = (a+b+c)/2 be the semiperimeter, then area T = sqrt(s(s-a)(s-b)(s-c)) check() Check if given value is valid triangle or not public bool check() Returns bool true if valid triangle else false Remarks In mathematics, the triangle inequality states that for any triangle, the sum of the lengths of any two sides must be greater than or equal to the length of the remaining side. This statement permits the inclusion of degenerate triangles, but some authors, especially those writing about elementary geometry, will exclude this possibility, thus leaving out the possibility of equality If a, b, and c are the lengths of the sides of a triangle then the triangle inequality states that c <= a+b perimeter() Get perimeter of triangle public double perimeter() Returns double perimeter of triangle semiperimeter() Get semiperimeter of triangle public double semiperimeter() Returns double semiperimeter of triangle"
+  },
+  "api/Homework.html": {
+    "href": "api/Homework.html",
+    "title": "Namespace Homework",
+    "keywords": "Namespace Homework Classes Triangle Class representing triangle having 3 side a, b, and c"
+  },
+  "api/MyNamespace.MyClass.Del.html": {
+    "href": "api/MyNamespace.MyClass.Del.html",
+    "title": "Delegate MyClass.Del",
+    "keywords": "Delegate MyClass.Del Namespace MyNamespace Assembly triangle.dll Enter description for delegate. ID string generated is \"T:MyNamespace.MyClass.Del\". public delegate void MyClass.Del(int i) Parameters i int Describe parameter."
+  },
+  "api/MyNamespace.MyClass.Nested.html": {
+    "href": "api/MyNamespace.MyClass.Nested.html",
+    "title": "Class MyClass.Nested",
+    "keywords": "Class MyClass.Nested Namespace MyNamespace Assembly triangle.dll Enter description for class Nested. ID string generated is \"T:MyNamespace.MyClass.Nested\". public class MyClass.Nested Inheritance object MyClass.Nested Inherited Members object.Equals(object) object.Equals(object, object) object.GetHashCode() object.GetType() object.MemberwiseClone() object.ReferenceEquals(object, object) object.ToString()"
+  },
+  "api/MyNamespace.MyClass.html": {
+    "href": "api/MyNamespace.MyClass.html",
+    "title": "Class MyClass",
+    "keywords": "Class MyClass Namespace MyNamespace Assembly triangle.dll Enter description here for class X. ID string generated is \"T:MyNamespace.MyClass\". public class MyClass Inheritance object MyClass Inherited Members object.Equals(object) object.Equals(object, object) object.GetHashCode() object.GetType() object.MemberwiseClone() object.ReferenceEquals(object, object) object.ToString() Constructors MyClass() Enter description here for the first constructor. ID string generated is \"M:MyNamespace.MyClass.#ctor\". public MyClass() MyClass(int) Enter description here for the second constructor. ID string generated is \"M:MyNamespace.MyClass.#ctor(System.Int32)\". public MyClass(int i) Parameters i int Describe parameter. Fields Message Enter description here for field Message. ID string generated is \"F:MyNamespace.MyClass.Message\". public string? Message Field Value string PI Enter description for constant PI. ID string generated is \"F:MyNamespace.MyClass.PI\". public const double PI = 3.14 Field Value double Properties this[string] Enter description for index. ID string generated is \"P:MyNamespace.MyClass.Item(System.String)\". public int this[string s] { get; } Parameters s string Property Value int Prop Enter description for property. ID string generated is \"P:MyNamespace.MyClass.Prop\". public int Prop { get; set; } Property Value int Methods AnotherMethod(short[], int[,]) Enter description for method AnotherMethod. ID string generated is \"M:MyNamespace.MyClass.AnotherMethod(System.Int16[],System.Int32[0:,0:])\". public int AnotherMethod(short[] array1, int[,] array) Parameters array1 short[] Describe parameter. array int[,] Describe parameter. Returns int Describe return value. Func() Enter description for method Func. ID string generated is \"M:MyNamespace.MyClass.Func\". public int Func() Returns int Describe return value. Main(string[]) This is Main method for entry point public static void Main(string[] args) Parameters args string[] input args SomeMethod(string, ref int, int) Enter description for method SomeMethod. ID string generated is \"M:MyNamespace.MyClass.SomeMethod(System.String,System.Int32@,System.Void*)\". public int SomeMethod(string str, ref int num, int ptr) Parameters str string Describe parameter. num int Describe parameter. ptr int Describe parameter. Returns int Describe return value. Events OnHappened Enter description for event. ID string generated is \"E:MyNamespace.MyClass.OnHappened\". public event MyClass.Del? OnHappened Event Type MyClass.Del Operators operator +(MyClass, MyClass) Enter description for operator. ID string generated is \"M:MyNamespace.MyClass.op_Addition(MyNamespace.MyClass,MyNamespace.MyClass)\". public static MyClass operator +(MyClass first, MyClass second) Parameters first MyClass Describe parameter. second MyClass Describe parameter. Returns MyClass Describe return value. explicit operator int(MyClass) Enter description for operator. ID string generated is \"M:MyNamespace.MyClass.op_Explicit(MyNamespace.MyClass)~System.Int32\". public static explicit operator int(MyClass myParameter) Parameters myParameter MyClass Describe parameter. Returns int Describe return value."
+  },
+  "api/MyNamespace.html": {
+    "href": "api/MyNamespace.html",
+    "title": "Namespace MyNamespace",
+    "keywords": "Namespace MyNamespace Classes MyClass Enter description here for class X. ID string generated is \"T:MyNamespace.MyClass\". MyClass.Nested Enter description for class Nested. ID string generated is \"T:MyNamespace.MyClass.Nested\". Delegates MyClass.Del Enter description for delegate. ID string generated is \"T:MyNamespace.MyClass.Del\"."
+  },
+  "docs/getting-started.html": {
+    "href": "docs/getting-started.html",
+    "title": "Getting Started",
+    "keywords": "Getting Started"
+  },
+  "docs/introduction.html": {
+    "href": "docs/introduction.html",
+    "title": "Introduction",
+    "keywords": "Introduction"
+  },
+  "index.html": {
+    "href": "index.html",
+    "title": "This is the HOMEPAGE.",
+    "keywords": "This is the HOMEPAGE. Refer to Markdown for how to write markdown files. Quick Start Notes: Add images to the images folder if the file is referencing an image."
+  }
+}

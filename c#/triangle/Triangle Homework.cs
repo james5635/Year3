@@ -1,0 +1,110 @@
+﻿/* 
+ * Triangle Homework
+ * Problem: Create a console application to calculate areas of triangles known their 3 sides in OOP solution.
+ * Subject: C# Programming
+ *
+ * Name: Sou Chanrojame
+ * Email: sou.chanrojame.1222@rupp.edu.kh
+ * Date: 2024/11/03
+ * Class: M7
+ * Year: 3
+ */
+namespace Homework;
+
+/// <summary>
+/// Class representing triangle having 3 side a, b, and c
+/// </summary>
+public class Triangle
+{
+    /// <summary>
+    /// variables for side a
+    /// </summary>
+    public double a;
+    /// <summary>
+    /// variables for side b
+    /// </summary>
+    public double b;
+    /// <summary>
+    /// variables for side c
+    /// </summary>
+    public double c;
+    /// <summary>
+    /// Triangle constructor
+    /// </summary>
+    /// <param name="a">side a of triangle</param>
+    /// <param name="b">side b of triangle</param>
+    /// <param name="c">side c of triangle</param>
+    public Triangle(double a, double b, double c)
+    {
+        this.a = a;
+        this.b = b;
+        this.c = c;
+        if (!check())
+        {
+            throw new Exception("Not a triangle");
+        }
+
+    }
+    /// <summary>
+    /// Check if given value is valid triangle or not
+    /// </summary>
+    /// <remarks>
+    /// In mathematics, the triangle inequality states that for any triangle, the sum of the lengths of any two sides must be greater than or equal to the length of the remaining side.
+    /// This statement permits the inclusion of degenerate triangles, but some authors, especially those writing about elementary geometry, will exclude this possibility, thus leaving out the possibility of equality
+    /// If a, b, and c are the lengths of the sides of a triangle then the triangle inequality states that <![CDATA[c <= a+b]]>
+    /// </remarks>
+    /// <returns>true if valid triangle else false</returns>
+    public bool check()
+    {
+        if (2 * (Math.Max(Math.Max(a, b), c)) < a + b + c)
+            return true;
+        return false;
+    }
+    /// <summary>
+    /// Get perimeter of triangle
+    /// </summary>
+    /// <returns>perimeter of triangle</returns>
+    public double perimeter()
+    {
+        return a + b + c;
+    }
+    /// <summary>
+    /// Get semiperimeter of triangle
+    /// </summary>
+    /// <returns>semiperimeter of triangle</returns>
+    public double semiperimeter()
+    {
+        return perimeter() / 2;
+    }
+    /// <summary>
+    /// Get area of triangle
+    /// </summary>
+    /// <remarks>
+    /// Heron's formula, named after Heron of Alexandria, is a formula for finding the area of a triangle from the lengths of its sides a,b,c
+    /// letting s = (a+b+c)/2 be the semiperimeter, then area T = sqrt(s(s-a)(s-b)(s-c))
+    /// </remarks>
+    /// <returns>area of triangle</returns>
+    public double area()
+    {
+        // s represent semiperimeter of the triangle
+        double s = semiperimeter();
+        return Math.Sqrt(s * (s - a) * (s - b) * (s - c));
+    }
+}
+/// <summary>
+/// Main Class 
+/// </summary>
+internal class Program
+{
+    /// <summary>   
+    /// Main method
+    /// </summary>
+    /// <param name="args">input argument</param>
+    private static int Main(string[] args)
+    {
+        double a = 2.1, b = 3.5, c = 2.8;
+        Triangle t = new Triangle(a, b, c);
+        Console.WriteLine($"Area: {t.area():n2}");
+        return 0;
+    }
+}

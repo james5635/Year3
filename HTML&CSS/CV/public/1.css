@@ -1,0 +1,11 @@
+h1 {
+  font-family: "Ink Free", monospace;
+  /* color: red;
+  background: lightblue 
+  url("./photo_2024-11-03_10-28-05.jpg") 
+  no-repeat 
+  fixed
+  center; */
+  box-shadow:0
+4px	8px					rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19);
+}

@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "V4YcalDZ1lUHM1RR8zZDh6jeuIFnklmfjVVEe3qskabRBgKb5wwrJfTOvngfy5Nq1j7Hl+NrTONAfbn6Ig+MPg==",
+  "success": true,
+  "projectFilePath": "/home/jame/Desktop/public/Task/docs/homework/c#/triangle/triangle.csproj",
+  "expectedPackageFiles": [
+    "/home/jame/.nuget/packages/microsoft.aspnetcore.app.ref/8.0.10/microsoft.aspnetcore.app.ref.8.0.10.nupkg.sha512"
+  ],
+  "logs": []
+}

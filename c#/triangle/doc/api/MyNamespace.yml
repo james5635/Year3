@@ -1,0 +1,77 @@
+### YamlMime:ManagedReference
+items:
+- uid: MyNamespace
+  commentId: N:MyNamespace
+  id: MyNamespace
+  children:
+  - MyNamespace.MyClass
+  - MyNamespace.MyClass.Del
+  - MyNamespace.MyClass.Nested
+  langs:
+  - csharp
+  - vb
+  name: MyNamespace
+  nameWithType: MyNamespace
+  fullName: MyNamespace
+  type: Namespace
+  assemblies:
+  - triangle
+references:
+- uid: MyNamespace.MyClass
+  commentId: T:MyNamespace.MyClass
+  parent: MyNamespace
+  href: MyNamespace.MyClass.html
+  name: MyClass
+  nameWithType: MyClass
+  fullName: MyNamespace.MyClass
+- uid: MyNamespace.MyClass.Nested
+  commentId: T:MyNamespace.MyClass.Nested
+  href: MyNamespace.MyClass.html
+  name: MyClass.Nested
+  nameWithType: MyClass.Nested
+  fullName: MyNamespace.MyClass.Nested
+  spec.csharp:
+  - uid: MyNamespace.MyClass
+    name: MyClass
+    href: MyNamespace.MyClass.html
+  - name: .
+  - uid: MyNamespace.MyClass.Nested
+    name: Nested
+    href: MyNamespace.MyClass.Nested.html
+  spec.vb:
+  - uid: MyNamespace.MyClass
+    name: MyClass
+    href: MyNamespace.MyClass.html
+  - name: .
+  - uid: MyNamespace.MyClass.Nested
+    name: Nested
+    href: MyNamespace.MyClass.Nested.html
+- uid: MyNamespace.MyClass.Del
+  commentId: T:MyNamespace.MyClass.Del
+  parent: MyNamespace
+  href: MyNamespace.MyClass.html
+  name: MyClass.Del
+  nameWithType: MyClass.Del
+  fullName: MyNamespace.MyClass.Del
+  spec.csharp:
+  - uid: MyNamespace.MyClass
+    name: MyClass
+    href: MyNamespace.MyClass.html
+  - name: .
+  - uid: MyNamespace.MyClass.Del
+    name: Del
+    href: MyNamespace.MyClass.Del.html
+  spec.vb:
+  - uid: MyNamespace.MyClass
+    name: MyClass
+    href: MyNamespace.MyClass.html
+  - name: .
+  - uid: MyNamespace.MyClass.Del
+    name: Del
+    href: MyNamespace.MyClass.Del.html
+- uid: MyNamespace
+  commentId: N:MyNamespace
+  href: MyNamespace.html
+  name: MyNamespace
+  nameWithType: MyNamespace
+  fullName: MyNamespace

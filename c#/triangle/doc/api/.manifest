@@ -1,0 +1,12 @@
+{
+  "Homework": "Homework.yml",
+  "Homework.Triangle": "Homework.Triangle.yml",
+  "Homework.Triangle.#ctor(System.Double,System.Double,System.Double)": "Homework.Triangle.yml",
+  "Homework.Triangle.a": "Homework.Triangle.yml",
+  "Homework.Triangle.area": "Homework.Triangle.yml",
+  "Homework.Triangle.b": "Homework.Triangle.yml",
+  "Homework.Triangle.c": "Homework.Triangle.yml",
+  "Homework.Triangle.check": "Homework.Triangle.yml",
+  "Homework.Triangle.perimeter": "Homework.Triangle.yml",
+  "Homework.Triangle.semiperimeter": "Homework.Triangle.yml"
+}
