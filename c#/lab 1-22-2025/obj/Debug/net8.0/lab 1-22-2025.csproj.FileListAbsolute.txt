@@ -1,0 +1,18 @@
+/home/jame/Desktop/public/Year3/c#/lab 1-22-2025/obj/Debug/net8.0/lab 1-22-2025.GeneratedMSBuildEditorConfig.editorconfig
+/home/jame/Desktop/public/Year3/c#/lab 1-22-2025/obj/Debug/net8.0/lab 1-22-2025.AssemblyInfoInputs.cache
+/home/jame/Desktop/public/Year3/c#/lab 1-22-2025/obj/Debug/net8.0/lab 1-22-2025.AssemblyInfo.cs
+/home/jame/Desktop/public/Year3/c#/lab 1-22-2025/obj/Debug/net8.0/lab 1-22-2025.csproj.CoreCompileInputs.cache
+/home/jame/Desktop/public/Year3/c#/lab 1-22-2025/obj/Debug/net8.0/lab 1-22-2025.sourcelink.json
+/home/jame/Desktop/public/Year3/c#/lab 1-22-2025/bin/Debug/net8.0/lab 1-22-2025
+/home/jame/Desktop/public/Year3/c#/lab 1-22-2025/bin/Debug/net8.0/lab 1-22-2025.deps.json
+/home/jame/Desktop/public/Year3/c#/lab 1-22-2025/bin/Debug/net8.0/lab 1-22-2025.runtimeconfig.json
+/home/jame/Desktop/public/Year3/c#/lab 1-22-2025/bin/Debug/net8.0/lab 1-22-2025.dll
+/home/jame/Desktop/public/Year3/c#/lab 1-22-2025/bin/Debug/net8.0/lab 1-22-2025.pdb
+/home/jame/Desktop/public/Year3/c#/lab 1-22-2025/obj/Debug/net8.0/lab 1-22-2025.dll
+/home/jame/Desktop/public/Year3/c#/lab 1-22-2025/obj/Debug/net8.0/refint/lab 1-22-2025.dll
+/home/jame/Desktop/public/Year3/c#/lab 1-22-2025/obj/Debug/net8.0/lab 1-22-2025.pdb
+/home/jame/Desktop/public/Year3/c#/lab 1-22-2025/obj/Debug/net8.0/lab 1-22-2025.genruntimeconfig.cache
+/home/jame/Desktop/public/Year3/c#/lab 1-22-2025/obj/Debug/net8.0/ref/lab 1-22-2025.dll
+/home/jame/Desktop/public/Year3/c#/lab 1-22-2025/bin/Debug/net8.0/EntityCollection.dll
+/home/jame/Desktop/public/Year3/c#/lab 1-22-2025/obj/Debug/net8.0/lab 1-22-2025.csproj.AssemblyReference.cache
+/home/jame/Desktop/public/Year3/c#/lab 1-22-2025/obj/Debug/net8.0/lab 1-22-2025.csproj.CopyComplete

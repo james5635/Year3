@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "cP1aMBQ5ql7Lb5TWqfOQUZjFc/nRwEuassfBfNfjV/6PgN5KP/rmTCvHaefthBfMuJ0fwC8evO99gT4x0726Og==",
+  "success": true,
+  "projectFilePath": "/home/jame/Desktop/public/Year3/c#/lab 1-22-2025/lab 1-22-2025.csproj",
+  "expectedPackageFiles": [
+    "/home/jame/.nuget/packages/entitycollection/1.0.1/entitycollection.1.0.1.nupkg.sha512",
+    "/home/jame/.nuget/packages/microsoft.aspnetcore.app.ref/8.0.11/microsoft.aspnetcore.app.ref.8.0.11.nupkg.sha512"
+  ],
+  "logs": []
+}

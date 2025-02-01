@@ -1,0 +1,41 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "lab 1-22-2025/1.0.0": {
+        "dependencies": {
+          "EntityCollection": "1.0.1"
+        },
+        "runtime": {
+          "lab 1-22-2025.dll": {}
+        }
+      },
+      "EntityCollection/1.0.1": {
+        "runtime": {
+          "lib/net6.0/EntityCollection.dll": {
+            "assemblyVersion": "1.0.1.0",
+            "fileVersion": "1.0.1.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "lab 1-22-2025/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "EntityCollection/1.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-lKR9MRt35J2wi3fqWHUL+ZnMMAAr7Nfk4/fCKSNl9Ti20+pL58g24ijsdLTDIEX82CcZBH4/sjXc6UjRoYTnUA==",
+      "path": "entitycollection/1.0.1",
+      "hashPath": "entitycollection.1.0.1.nupkg.sha512"
+    }
+  }
+}

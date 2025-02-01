@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "ZZz4LR5GO2B48IgoEO4a2bH468Sp2mx9jG38ztnqslnv7A5OZsN7KKADxEWVhOPWunUP0EIoj7AS/irj9R9UFA==",
+  "success": true,
+  "projectFilePath": "/home/jame/Desktop/public/Year3/c#/lab11/lab11.csproj",
+  "expectedPackageFiles": [
+    "/home/jame/.nuget/packages/microsoft.aspnetcore.app.ref/8.0.11/microsoft.aspnetcore.app.ref.8.0.11.nupkg.sha512"
+  ],
+  "logs": []
+}

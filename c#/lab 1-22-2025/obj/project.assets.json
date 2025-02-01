@@ -1,0 +1,103 @@
+{
+  "version": 3,
+  "targets": {
+    "net8.0": {
+      "EntityCollection/1.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/EntityCollection.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/EntityCollection.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "EntityCollection/1.0.1": {
+      "sha512": "lKR9MRt35J2wi3fqWHUL+ZnMMAAr7Nfk4/fCKSNl9Ti20+pL58g24ijsdLTDIEX82CcZBH4/sjXc6UjRoYTnUA==",
+      "type": "package",
+      "path": "entitycollection/1.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "entitycollection.1.0.1.nupkg.sha512",
+        "entitycollection.nuspec",
+        "lib/net6.0/EntityCollection.dll"
+      ]
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net8.0": [
+      "EntityCollection >= 1.0.1"
+    ]
+  },
+  "packageFolders": {
+    "/home/jame/.nuget/packages/": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "/home/jame/Desktop/public/Year3/c#/lab 1-22-2025/lab 1-22-2025.csproj",
+      "projectName": "lab 1-22-2025",
+      "projectPath": "/home/jame/Desktop/public/Year3/c#/lab 1-22-2025/lab 1-22-2025.csproj",
+      "packagesPath": "/home/jame/.nuget/packages/",
+      "outputPath": "/home/jame/Desktop/public/Year3/c#/lab 1-22-2025/obj/",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "/home/jame/.nuget/NuGet/NuGet.Config"
+      ],
+      "originalTargetFrameworks": [
+        "net8.0"
+      ],
+      "sources": {
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "projectReferences": {}
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net8.0": {
+        "targetAlias": "net8.0",
+        "dependencies": {
+          "EntityCollection": {
+            "target": "Package",
+            "version": "[1.0.1, )"
+          }
+        },
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[8.0.11, 8.0.11]"
+          }
+        ],
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.111/PortableRuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

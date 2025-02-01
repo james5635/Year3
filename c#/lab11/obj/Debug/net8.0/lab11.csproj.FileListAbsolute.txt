@@ -1,0 +1,15 @@
+/home/jame/Desktop/public/Year3/c#/lab11/obj/Debug/net8.0/lab11.GeneratedMSBuildEditorConfig.editorconfig
+/home/jame/Desktop/public/Year3/c#/lab11/obj/Debug/net8.0/lab11.AssemblyInfoInputs.cache
+/home/jame/Desktop/public/Year3/c#/lab11/obj/Debug/net8.0/lab11.AssemblyInfo.cs
+/home/jame/Desktop/public/Year3/c#/lab11/obj/Debug/net8.0/lab11.csproj.CoreCompileInputs.cache
+/home/jame/Desktop/public/Year3/c#/lab11/obj/Debug/net8.0/lab11.sourcelink.json
+/home/jame/Desktop/public/Year3/c#/lab11/bin/Debug/net8.0/lab11
+/home/jame/Desktop/public/Year3/c#/lab11/bin/Debug/net8.0/lab11.deps.json
+/home/jame/Desktop/public/Year3/c#/lab11/bin/Debug/net8.0/lab11.runtimeconfig.json
+/home/jame/Desktop/public/Year3/c#/lab11/bin/Debug/net8.0/lab11.dll
+/home/jame/Desktop/public/Year3/c#/lab11/bin/Debug/net8.0/lab11.pdb
+/home/jame/Desktop/public/Year3/c#/lab11/obj/Debug/net8.0/lab11.dll
+/home/jame/Desktop/public/Year3/c#/lab11/obj/Debug/net8.0/refint/lab11.dll
+/home/jame/Desktop/public/Year3/c#/lab11/obj/Debug/net8.0/lab11.pdb
+/home/jame/Desktop/public/Year3/c#/lab11/obj/Debug/net8.0/lab11.genruntimeconfig.cache
+/home/jame/Desktop/public/Year3/c#/lab11/obj/Debug/net8.0/ref/lab11.dll
