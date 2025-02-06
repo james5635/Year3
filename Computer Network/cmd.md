@@ -62,22 +62,22 @@ int port-channel 1
 switchport mode trunk
 no shut
 
-int g0/0.10 
+int g0/0/0.10 
 Description default-gateway for VLAN 10
 encapsulation dot1Q 10
 ip address 192.168.10.1 255.255.255.0
 exit
-int g0/0.20 
+int g0/0/0.20 
 Description default-gateway for VLAN 20
 encapsulation dot1Q 20
 ip address 192.168.20.1 255.255.255.0
 exit
-int g0/0.99 
+int g0/0/0.99 
 Description default-gateway for VLAN 99
 encapsulation dot1Q 99
 ip address 192.168.99.1 255.255.255.0
 exit
-int g0/0
+int g0/0/0
 Description Trunk link to s1
 no shut
 end
@@ -87,12 +87,10 @@ end
 ```sh
 ip dhcp excluded-address 192.168.10.1 192.168.10.10
 ip dhcp excluded-address 192.168.20.1 192.168.20.10
-
 ip dhcp pool VLAN10-POOL
  network 192.168.10.0 255.255.255.0
  default-router 192.168.10.1
  dns-server 8.8.8.8
-
 ip dhcp pool VLAN20-POOL
  network 192.168.20.0 255.255.255.0
  default-router 192.168.20.1
