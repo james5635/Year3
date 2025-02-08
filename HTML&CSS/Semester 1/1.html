@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Person</title>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        document.querySelector("form").addEventListener("submit", (e) => {
+          e.preventDefault();
+          const id = document.querySelector("#id").value;
+          const name = document.querySelector("#name").value;
+          const sex = document.querySelector("#sex").value;
+          const age = document.querySelector("#age").value;
+          const BirthDate = document.querySelector("#BirthDate").value;
+          const job = document.querySelector("#job").value;
+          const tel = document.querySelector("#tel").value;
+          const allId = document.querySelectorAll("tbody tr td:first-child");
+          let isExist = false;
+          allId.forEach((element) => {
+            if (element.textContent === id) {
+              isExist = true;
+            }
+          });
+          if (isExist) {
+            alert("Id already exist");
+            return;
+          }
+          document.querySelector("tbody").innerHTML += `
+          <tr>
+          <td>${id}</td>
+          <td>${name}</td>
+          <td>${sex}</td>
+          <td>${age}</td>
+          <td>${BirthDate}</td>
+          <td>${job}</td>
+          <td>${tel}</td>
+          <td>
+            <button class="edit">Edit</button>
+            <button class="delete">Delete</button>
+          </td>
+        </tr       `;
+        });
+        document.querySelector(".edit").addEventListener("click", (e) => {
+          e.preventDefault();
+          document.querySelector("#submit-btn").hidden = true;
+          document.querySelector("#update-btn").hidden = false;
+
+          const tr = e.target.parentElement.parentElement;
+          const id = tr.querySelector("td").textContent;
+          const name = tr.querySelector("td:nth-child(2)").textContent;
+          const sex = tr.querySelector("td:nth-child(3)").textContent;
+          const age = tr.querySelector("td:nth-child(4)").textContent;
+          const BirthDate = tr.querySelector("td:nth-child(5)").textContent;
+          const job = tr.querySelector("td:nth-child(6)").textContent;
+          const tel = tr.querySelector("td:nth-child(7)").textContent;
+          document.querySelector("#id").value = id;
+          document.querySelector("#name").value = name;
+          document.querySelector("#sex").value = sex;
+          document.querySelector("#age").value = age;
+          document.querySelector("#BirthDate").valueAsDate = new Date(
+            BirthDate
+          );
+          document.querySelector("#job").value = job;
+          document.querySelector("#tel").value = tel;
+        });
+        document
+          .querySelector("#update-btn")
+          .addEventListener("click", (f) => {});
+        document.querySelector(".delete").addEventListener("click", (e) => {
+          e.preventDefault();
+          document
+            .querySelector("tbody")
+            .removeChild(e.target.parentElement.parentElement);
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <h2>Person</h2>
+
+    <form id="person-form" action="http://localhost:4000/submit" method="post">
+      <label for="id">Id: </label>
+      <input type="number" id="id" name="id" placeholder="Enter Id" required />
+      <br />
+      <label for="name">Name: </label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        placeholder="Enter name"
+        autocomplete="on"
+        required
+      />
+      <br />
+      <label for="sex">Sex: </label>
+      <select name="sex" id="sex">
+        <option>Male</option>
+        <option>Female</option>
+      </select>
+      <br />
+      <label for="age">Age: </label>
+      <input
+        type="number"
+        id="age"
+        name="age"
+        placeholder="Enter age"
+        required
+      />
+      <br />
+      <label for="BirthDate">Birth Date: </label>
+      <input type="date" id="BirthDate" name="BirthDate" required />
+      <br />
+      <label for="job">Job:</label>
+      <input type="text" id="job" name="job" placeholder="Enter job" />
+      <br />
+      <label for="tel">Telephone: </label>
+      <input
+        autocomplete="on"
+        type="tel"
+        id="tel"
+        name="tel"
+        placeholder="Enter Telephone"
+      />
+      <button id="submit-btn" type="submit">Submit</button>
+      <button id="update-btn" type="button" hidden>Update</button>
+    </form>
+
+    <h2>Person Information</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Name</th>
+          <th>Sex</th>
+          <th>Age</th>
+          <th>Birth Date</th>
+          <th>Job</th>
+          <th>Telephone</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Jame</td>
+          <td>Male</td>
+          <td>21</td>
+          <td>2004-02-01</td>
+          <td>Student</td>
+          <td>019887799</td>
+          <td>
+            <button class="edit">Edit</button>
+            <button class="delete">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>
