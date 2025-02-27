@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+     
+      document.addEventListener("DOMContentLoaded", () => {
+        document.querySelector("#a").addEventListener("click", (e) => {
+          e.preventDefault();
+          console.log("a clicked");
+        });
+        document.querySelector("#b").addEventListener("click", (e) => {
+          e.preventDefault();
+          console.log("b clicked");
+        });
+        document.querySelector("#c").addEventListener("click", (e) => {
+          e.preventDefault();
+          console.log("c clicked");
+        });
+        document.querySelector("#submit-btn").addEventListener("click", () => {
+          console.log("Button clicked");
+        });
+        document.addEventListener("click", (e) => {
+          console.log("Document clicked");
+        });
+        document.querySelector("#table").addEventListener("click", (e) => {
+          console.log("Table clicked");
+        });
+        document.querySelector("#thead").addEventListener("click", (e) => {
+          console.log("Thead clicked");
+        });
+        document.querySelector("#tbody").addEventListener("click", (e) => {
+          console.log("Tbody clicked");
+        });
+        document.querySelector("#btn").addEventListener("click", (e) => {
+          console.log("Button in tbody clicked");
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div id="a">
+      <div id="b">
+        <div id="c">
+          <button id="submit-btn">Submit</button>
+        </div>
+      </div>
+    </div>
+    <table id="table">
+      <thead id="thead">
+        <tr>
+          <th>Id</th>
+          <th>Name</th>
+        </tr>
+      </thead>
+      <tbody id="tbody">
+        <tr>
+          <td>1</td>
+          <td>John Doe</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Jane Doe</td>
+        </tr>
+        <tr>
+          <td>
+
+          <input type="button" id="btn" value="Click me" />
+        </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </body>
+</html>

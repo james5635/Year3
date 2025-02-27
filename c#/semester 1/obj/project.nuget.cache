@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "bwxI0n+GgvHDrKDDO/ZGbg66B/PJxinFBoElxWXlLNOuKjyA3bVihdylbq5RWXqlTXWM3PJ+zdRFaYcNPGMvxg==",
+  "success": true,
+  "projectFilePath": "/home/jame/Desktop/public/Year3/c#/semester 1/semester 1.csproj",
+  "expectedPackageFiles": [
+    "/home/jame/.nuget/packages/microsoft.aspnetcore.app.ref/8.0.11/microsoft.aspnetcore.app.ref.8.0.11.nupkg.sha512"
+  ],
+  "logs": []
+}

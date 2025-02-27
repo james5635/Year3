@@ -1,0 +1,15 @@
+/home/jame/Desktop/public/Year3/c#/semester 1/bin/Debug/net8.0/semester 1
+/home/jame/Desktop/public/Year3/c#/semester 1/bin/Debug/net8.0/semester 1.deps.json
+/home/jame/Desktop/public/Year3/c#/semester 1/bin/Debug/net8.0/semester 1.runtimeconfig.json
+/home/jame/Desktop/public/Year3/c#/semester 1/bin/Debug/net8.0/semester 1.dll
+/home/jame/Desktop/public/Year3/c#/semester 1/bin/Debug/net8.0/semester 1.pdb
+/home/jame/Desktop/public/Year3/c#/semester 1/obj/Debug/net8.0/semester 1.GeneratedMSBuildEditorConfig.editorconfig
+/home/jame/Desktop/public/Year3/c#/semester 1/obj/Debug/net8.0/semester 1.AssemblyInfoInputs.cache
+/home/jame/Desktop/public/Year3/c#/semester 1/obj/Debug/net8.0/semester 1.AssemblyInfo.cs
+/home/jame/Desktop/public/Year3/c#/semester 1/obj/Debug/net8.0/semester 1.csproj.CoreCompileInputs.cache
+/home/jame/Desktop/public/Year3/c#/semester 1/obj/Debug/net8.0/semester 1.sourcelink.json
+/home/jame/Desktop/public/Year3/c#/semester 1/obj/Debug/net8.0/semester 1.dll
+/home/jame/Desktop/public/Year3/c#/semester 1/obj/Debug/net8.0/refint/semester 1.dll
+/home/jame/Desktop/public/Year3/c#/semester 1/obj/Debug/net8.0/semester 1.pdb
+/home/jame/Desktop/public/Year3/c#/semester 1/obj/Debug/net8.0/semester 1.genruntimeconfig.cache
+/home/jame/Desktop/public/Year3/c#/semester 1/obj/Debug/net8.0/ref/semester 1.dll

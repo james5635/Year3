@@ -91,6 +91,7 @@ internal unsafe class Program
                 p,p1,s,e,e1,e2
         };
         var GreatestAgePerson = list.OrderByDescending(x => x.Age).First();
+        // var GreatestAgePerson = list.FirstOrDefault(x => x.Age == list.Max(x => x.Age));
         Console.WriteLine("********** Greatest age person **********");
         Console.WriteLine(GreatestAgePerson);
         Console.WriteLine("********** Before sorting salary **********");

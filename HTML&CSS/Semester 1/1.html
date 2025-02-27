@@ -4,75 +4,138 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Person</title>
-
     <script>
       document.addEventListener("DOMContentLoaded", () => {
-        document.querySelector("form").addEventListener("submit", (e) => {
+        // Keep track of the row that is currently being edited.
+        let currentRow = null;
+
+        // Grab common elements
+        const form = document.querySelector("#person-form");
+        const tbody = document.querySelector("tbody");
+        const submitBtn = document.querySelector("#submit-btn");
+        const updateBtn = document.querySelector("#update-btn");
+
+        // Handle form submission for adding a new person.
+        form.addEventListener("submit", (e) => {
           e.preventDefault();
+
+          // Get values from the form
           const id = document.querySelector("#id").value;
           const name = document.querySelector("#name").value;
           const sex = document.querySelector("#sex").value;
           const age = document.querySelector("#age").value;
-          const BirthDate = document.querySelector("#BirthDate").value;
+          const birthDate = document.querySelector("#BirthDate").value;
           const job = document.querySelector("#job").value;
           const tel = document.querySelector("#tel").value;
-          const allId = document.querySelectorAll("tbody tr td:first-child");
+
+          // Check if the given id already exists in any row.
           let isExist = false;
-          allId.forEach((element) => {
-            if (element.textContent === id) {
-              isExist = true;
-            }
-          });
+          document
+            .querySelectorAll("tbody tr td:first-child")
+            .forEach((cell) => {
+              if (cell.textContent === id) {
+                isExist = true;
+              }
+            });
           if (isExist) {
-            alert("Id already exist");
+            alert("Id already exists");
             return;
           }
-          document.querySelector("tbody").innerHTML += `
-          <tr>
-          <td>${id}</td>
-          <td>${name}</td>
-          <td>${sex}</td>
-          <td>${age}</td>
-          <td>${BirthDate}</td>
-          <td>${job}</td>
-          <td>${tel}</td>
-          <td>
-            <button class="edit">Edit</button>
-            <button class="delete">Delete</button>
-          </td>
-        </tr       `;
-        });
-        document.querySelector(".edit").addEventListener("click", (e) => {
-          e.preventDefault();
-          document.querySelector("#submit-btn").hidden = true;
-          document.querySelector("#update-btn").hidden = false;
 
-          const tr = e.target.parentElement.parentElement;
-          const id = tr.querySelector("td").textContent;
-          const name = tr.querySelector("td:nth-child(2)").textContent;
-          const sex = tr.querySelector("td:nth-child(3)").textContent;
-          const age = tr.querySelector("td:nth-child(4)").textContent;
-          const BirthDate = tr.querySelector("td:nth-child(5)").textContent;
-          const job = tr.querySelector("td:nth-child(6)").textContent;
-          const tel = tr.querySelector("td:nth-child(7)").textContent;
-          document.querySelector("#id").value = id;
-          document.querySelector("#name").value = name;
-          document.querySelector("#sex").value = sex;
-          document.querySelector("#age").value = age;
-          document.querySelector("#BirthDate").valueAsDate = new Date(
-            BirthDate
-          );
-          document.querySelector("#job").value = job;
-          document.querySelector("#tel").value = tel;
+          // Create a new table row with the entered data.
+          const row = document.createElement("tr");
+          row.innerHTML = `
+            <td>${id}</td>
+            <td>${name}</td>
+            <td>${sex}</td>
+            <td>${age}</td>
+            <td>${birthDate}</td>
+            <td>${job}</td>
+            <td>${tel}</td>
+            <td>
+              <button class="edit">Edit</button>
+              <button class="delete">Delete</button>
+            </td>
+          `;
+          tbody.appendChild(row);
+
+          // Optionally clear the form after submission.
+          form.reset();
         });
-        document
-          .querySelector("#update-btn")
-          .addEventListener("click", (f) => {});
-        document.querySelector(".delete").addEventListener("click", (e) => {
-          e.preventDefault();
+
+        // Use event delegation on the table body to handle Edit and Delete clicks.
+        tbody.addEventListener("click", (e) => {
+          // Handle the Edit button.
+          if (e.target.classList.contains("edit")) {
+            currentRow = e.target.closest("tr");
+            const cells = currentRow.querySelectorAll("td");
+
+            // Fill the form with the row's current data.
+            document.querySelector("#id").value = cells[0].textContent;
+            document.querySelector("#name").value = cells[1].textContent;
+            document.querySelector("#sex").value = cells[2].textContent;
+            document.querySelector("#age").value = cells[3].textContent;
+            document.querySelector("#BirthDate").value = cells[4].textContent;
+            document.querySelector("#job").value = cells[5].textContent;
+            document.querySelector("#tel").value = cells[6].textContent;
+
+            // Swap the buttons so that Update is visible.
+            submitBtn.hidden = true;
+            updateBtn.hidden = false;
+          }
+
+          // Handle the Delete button.
+          if (e.target.classList.contains("delete")) {
+            const row = e.target.closest("tr");
+            tbody.removeChild(row);
+          }
+        });
+
+        // Implement the Update button functionality.
+        updateBtn.addEventListener("click", () => {
+          if (!currentRow) return;
+
+          // Get the new values from the form.
+          const newId = document.querySelector("#id").value;
+          const newName = document.querySelector("#name").value;
+          const newSex = document.querySelector("#sex").value;
+          const newAge = document.querySelector("#age").value;
+          const newBirthDate = document.querySelector("#BirthDate").value;
+          const newJob = document.querySelector("#job").value;
+          const newTel = document.querySelector("#tel").value;
+
+          // Check for duplicate id among rows (ignore the row currently being updated).
+          let duplicate = false;
           document
-            .querySelector("tbody")
-            .removeChild(e.target.parentElement.parentElement);
+            .querySelectorAll("tbody tr td:first-child")
+            .forEach((cell) => {
+              if (
+                cell.textContent === newId &&
+                cell !== currentRow.querySelector("td:first-child")
+              ) {
+                duplicate = true;
+              }
+            });
+          if (duplicate) {
+            alert("Id already exists");
+            return;
+          }
+
+          // Update the row's cell values.
+          const cells = currentRow.querySelectorAll("td");
+          cells[0].textContent = newId;
+          cells[1].textContent = newName;
+          cells[2].textContent = newSex;
+          cells[3].textContent = newAge;
+          cells[4].textContent = newBirthDate;
+          cells[5].textContent = newJob;
+          cells[6].textContent = newTel;
+
+          // Reset the form and restore the Submit button.
+          form.reset();
+          currentRow = null;
+          submitBtn.hidden = false;
+          updateBtn.hidden = true;
         });
       });
     </script>
@@ -123,12 +186,13 @@
         name="tel"
         placeholder="Enter Telephone"
       />
+      <br />
       <button id="submit-btn" type="submit">Submit</button>
       <button id="update-btn" type="button" hidden>Update</button>
     </form>
 
     <h2>Person Information</h2>
-    <table>
+    <table border="1" cellspacing="0" cellpadding="5">
       <thead>
         <tr>
           <th>Id</th>
@@ -138,9 +202,11 @@
           <th>Birth Date</th>
           <th>Job</th>
           <th>Telephone</th>
+          <th>Actions</th>
         </tr>
       </thead>
       <tbody>
+        <!-- A sample row is included below. New rows will be appended here. -->
         <tr>
           <td>1</td>
           <td>Jame</td>
