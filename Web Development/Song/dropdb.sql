@@ -1,0 +1,1 @@
+DROP DATABASE music_db;

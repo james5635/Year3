@@ -1,0 +1,29 @@
+{
+  "name": "jame/song",
+  "description": "Web Application for tracking song",
+  "type": "project",
+  "license": "GPL-3.0-only",
+  "autoload": {
+    "psr-4": {
+      "Jame\\Song\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "james5635",
+      "email": "brorojame2029@gmail.com"
+    }
+  ],
+  "scripts": {
+    "dev": [
+      "php -S localhost:8080"
+    ],
+    "create_db": [
+      "mysql -u root -p < schema.sql  "
+    ],
+    "drop_db": [
+      "mysql -u root -p < dropdb.sql       "
+    ]
+  },
+  "require": {}
+}
