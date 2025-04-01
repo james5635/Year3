@@ -25,5 +25,8 @@
       "mysql -u root -p < dropdb.sql       "
     ]
   },
+  "config": {
+    "process-timeout": 0
+  },
   "require": {}
 }

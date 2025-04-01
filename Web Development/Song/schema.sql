@@ -1,3 +1,4 @@
+DROP DATABASE IF EXISTS music_db;
 CREATE DATABASE music_db;
 GRANT ALL PRIVILEGES ON song_db.* TO 'jame'@'localhost';
 USE music_db;
@@ -29,17 +30,20 @@ CREATE TABLE Songs (
     duration INT CHECK (duration > 0), -- Ensure duration is positive
     genre VARCHAR(50),
     release_date DATE,
+    file_path VARCHAR(255),
     FOREIGN KEY (artist_id) REFERENCES Artists (artist_id) ON DELETE CASCADE,
     FOREIGN KEY (album_id) REFERENCES Albums (album_id) ON DELETE SET NULL
 );
 
 -- Insert data into Artists
 INSERT INTO
-    Artists (name, country, birth_date)
+    Artists (name, country, birth_date, image_path)
 VALUES
-    ('The Beatles', 'UK', '1960-01-01'),
-    ('Eminem', 'USA', '1972-10-17'),
-    ('Taylor Swift', 'USA', '1989-12-13');
+    ('The Beatles', 'UK', '1960-01-01', 'uploads/the_beetles.jpg'),
+    ('Eminem', 'USA', '1972-10-17', 'uploads/eminem.webp'),
+    ('Taylor Swift', 'USA', '1989-12-13', 'uploads/taylor_swift.webp'),
+    ('Vannda', 'Cambodia', '1997-1-22', 'uploads/vannda.webp')
+    ;
 
 -- Insert data into Albums
 INSERT INTO
@@ -52,7 +56,9 @@ VALUES
         '2000-05-23',
         'Hip-Hop'
     ),
-    ('1989', 3, '2014-10-27', 'Pop');
+    ('1989', 3, '2014-10-27', 'Pop'),
+    ('TREY VISAI II', 4, '2025-3-21','Hip-Hop' )
+    ;
 
 -- Insert data into Songs
 INSERT INTO
@@ -62,9 +68,12 @@ INSERT INTO
         album_id,
         duration,
         genre,
-        release_date
+        release_date,
+        file_path
     )
 VALUES
-    ('Come Together', 1, 1, 259, 'Rock', '1969-09-26'),
-    ('Stan', 2, 2, 404, 'Hip-Hop', '2000-05-23'),
-    ('Shake It Off', 3, 3, 219, 'Pop', '2014-08-18');
+    ('Come Together', 1, 1, 259, 'Rock', '1969-09-26', 'uploads/songs/The Beatles - Come Together.mp3'),
+    ('Stan', 2, 2, 404, 'Hip-Hop', '2000-05-23', 'uploads/songs/Eminem - Stan (Lyrics) ft. Dido.mp3'),
+    ('Shake It Off', 3, 3, 219, 'Pop', '2014-08-18', 'uploads/songs/Taylor Swift - Shake It Off (Taylor''s Version) (Lyric Video).mp3'),
+    ('A SONG FOR YOU', 4, 4, 264, 'Hip-Hop', '2025-3-21', 'uploads/songs/VANNDA - A SONG FOR YOU (ចមរងជន Ex Part 3) [OFFICIAL AUDIO].mp3')
+    ;

@@ -1,1 +1,1 @@
-DROP DATABASE music_db;
+DROP DATABASE  music_db;
