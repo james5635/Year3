@@ -87,6 +87,7 @@ VALUES
     ('Shake It Off', 3, 3, 219, 'Pop', '2014-08-18', 'uploads/songs/Taylor Swift - Shake It Off (Taylor''s Version) (Lyric Video).mp3'),
     ('A SONG FOR YOU', 4, 4, 264, 'Pop', '2025-3-21', 'uploads/songs/VANNDA - A SONG FOR YOU (ចមរងជន Ex Part 3) [OFFICIAL AUDIO].mp3'),
     ('ជាប់រវល់', 5, NULL, 255, 'Pop', '2025-3-29', 'uploads/songs/Davit  ជបរវល [ Live Band cover ].mp3'),
+    ('ចងចាំ', 5, NULL, 251, 'Pop', '2023-10-10', 'uploads/songs/ចងច - LIVE BAND [COVER]  Davit Composer.mp3'),
     ('សង្រ្កាន្តស្គាល់ស្នេហ៍', 4,NULL, 292, 'Pop', '2024-4-5', 'uploads/songs/VANNDA - សង្រ្កាន្តស្គាល់ស្នេហ៍ (SANGKRAN MAGIC) [OFFICIAL MUSIC VIDEO] [Cpo3DmbdCxs].mp3'),
     ('អាមុំបងអើយ', 4,NULL, 255, 'Pop', '2024-11-12', 'uploads/songs/VANNDA - អាមុំបងអើយ (BAD LIL BOO) [OFFICIAL MUSIC VIDEO] [dXITrblyQCs].mp3'),
     ('មានអារម្មណ៍', 6,NULL, 298, 'Pop', '2024-11-22', 'uploads/songs/Mean Ah Rom.mp3'),
