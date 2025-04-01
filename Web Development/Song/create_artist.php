@@ -1,6 +1,6 @@
 <?php
 include 'connectDB.php';
-
+global $conn;
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = $_POST['name'];
     $country = $_POST['country'];
@@ -25,7 +25,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             VALUES ('$name', '$country', '$birth_date', '$image_path')";
 
     if ($conn->query($sql) === TRUE) {
-        echo "Artist added successfully!";
+        header("Location: index.php");
+        
+        // echo "Artist added successfully!";
     } else {
         echo "Error: " . $conn->error;
     }
