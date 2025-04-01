@@ -43,11 +43,13 @@ VALUES
     ('The Beatles', 'UK', '1960-01-01', 'uploads/the_beetles.jpg'),
     ('Eminem', 'USA', '1972-10-17', 'uploads/eminem.webp'),
     ('Taylor Swift', 'USA', '1989-12-13', 'uploads/taylor_swift.webp'),
-    ('Vannda', 'Cambodia', '1997-1-22', 'uploads/vannda.webp'),
+    ('Vannda (វណ្ណដា)', 'Cambodia', '1997-1-22', 'uploads/vannda.webp'),
 
-    ('Davit', 'Cambodia',NULL,'uploads/davit_composer.jpg'),
-    ('Tena', 'Cambodia','1993-10-20','uploads/tena.jpg'),
+    ('Davit (ដាវីត)', 'Cambodia',NULL,'uploads/davit_composer.jpg'),
+    ('Tena (ថេណា)', 'Cambodia','1993-10-20','uploads/tena.jpg'),
     ('Fujii Kaze (藤井 風)', 'Japan','1997-6-14','uploads/Fujii-Kaze-1.jpg')
+
+
 
     ;
 
@@ -82,5 +84,10 @@ VALUES
     ('Come Together', 1, 1, 259, 'Rock', '1969-09-26', 'uploads/songs/The Beatles - Come Together.mp3'),
     ('Stan', 2, 2, 404, 'Hip-Hop', '2000-05-23', 'uploads/songs/Eminem - Stan (Lyrics) ft. Dido.mp3'),
     ('Shake It Off', 3, 3, 219, 'Pop', '2014-08-18', 'uploads/songs/Taylor Swift - Shake It Off (Taylor''s Version) (Lyric Video).mp3'),
-    ('A SONG FOR YOU', 4, 4, 264, 'Hip-Hop', '2025-3-21', 'uploads/songs/VANNDA - A SONG FOR YOU (ចមរងជន Ex Part 3) [OFFICIAL AUDIO].mp3')
+    ('A SONG FOR YOU', 4, 4, 264, 'Pop', '2025-3-21', 'uploads/songs/VANNDA - A SONG FOR YOU (ចមរងជន Ex Part 3) [OFFICIAL AUDIO].mp3'),
+    ('ជាប់រវល់', 5, NULL, 255, 'Pop', '2025-3-29', 'uploads/songs/Davit  ជបរវល [ Live Band cover ].mp3'),
+    ('សង្រ្កាន្តស្គាល់ស្នេហ៍', 4,NULL, 292, 'Pop', '2024-4-5', 'uploads/songs/VANNDA - សង្រ្កាន្តស្គាល់ស្នេហ៍ (SANGKRAN MAGIC) [OFFICIAL MUSIC VIDEO] [Cpo3DmbdCxs].mp3'),
+    ('អាមុំបងអើយ', 4,NULL, 255, 'Pop', '2024-11-12', 'uploads/songs/VANNDA - អាមុំបងអើយ (BAD LIL BOO) [OFFICIAL MUSIC VIDEO] [dXITrblyQCs].mp3'),
+    ('មានអារម្មណ៍', 6,NULL, 298, 'Pop', '2024-11-22', 'uploads/songs/Mean Ah Rom.mp3'),
+     ('Matsuri', 7,NULL, 249, 'Pop', '2022-3-20', 'uploads/songs/Fujii Kaze -  Matsuri.mp3')
     ;
