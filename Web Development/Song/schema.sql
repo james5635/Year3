@@ -18,6 +18,7 @@ CREATE TABLE Albums (
     artist_id INT,
     release_date DATE,
     genre VARCHAR(50),
+    cover_image VARCHAR(255),
     FOREIGN KEY (artist_id) REFERENCES Artists (artist_id) ON DELETE CASCADE
 );
 
@@ -42,22 +43,28 @@ VALUES
     ('The Beatles', 'UK', '1960-01-01', 'uploads/the_beetles.jpg'),
     ('Eminem', 'USA', '1972-10-17', 'uploads/eminem.webp'),
     ('Taylor Swift', 'USA', '1989-12-13', 'uploads/taylor_swift.webp'),
-    ('Vannda', 'Cambodia', '1997-1-22', 'uploads/vannda.webp')
+    ('Vannda', 'Cambodia', '1997-1-22', 'uploads/vannda.webp'),
+
+    ('Davit', 'Cambodia',NULL,'uploads/davit_composer.jpg'),
+    ('Tena', 'Cambodia','1993-10-20','uploads/tena.jpg'),
+    ('Fujii Kaze (藤井 風)', 'Japan','1997-6-14','uploads/Fujii-Kaze-1.jpg')
+
     ;
 
 -- Insert data into Albums
 INSERT INTO
-    Albums (title, artist_id, release_date, genre)
+    Albums (title, artist_id, release_date, genre, cover_image)
 VALUES
-    ('Abbey Road', 1, '1969-09-26', 'Rock'),
+    ('Abbey Road', 1, '1969-09-26', 'Rock', 'uploads/albums/Beatles_-_Abbey_Road.jpg'),
     (
         'The Marshall Mathers LP',
         2,
         '2000-05-23',
-        'Hip-Hop'
+        'Hip-Hop',
+        'uploads/albums/The_Marshall_Mathers_LP.jpg'
     ),
-    ('1989', 3, '2014-10-27', 'Pop'),
-    ('TREY VISAI II', 4, '2025-3-21','Hip-Hop' )
+    ('1989', 3, '2014-10-27', 'Pop', 'uploads/albums/Album_Spotlight_Taylor_Swift_1989_Taylor_s_Version.png'),
+    ('TREY VISAI II', 4, '2025-3-21','Hip-Hop', 'uploads/albums/treyvisaiii.jpg' )
     ;
 
 -- Insert data into Songs
