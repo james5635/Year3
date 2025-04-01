@@ -32,6 +32,7 @@ CREATE TABLE Songs (
     genre VARCHAR(50),
     release_date DATE,
     file_path VARCHAR(255),
+    isActive TINYINT(1) DEFAULT 1,
     FOREIGN KEY (artist_id) REFERENCES Artists (artist_id) ON DELETE CASCADE,
     FOREIGN KEY (album_id) REFERENCES Albums (album_id) ON DELETE SET NULL
 );

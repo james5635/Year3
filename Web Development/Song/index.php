@@ -247,20 +247,36 @@ global $conn;
         </thead>
         <tbody>
             <?php
-            $sql = "SELECT
-                             Songs.song_id,
-                             Songs.title AS song_title,
-                             Artists.name AS artist_name,
-                             Albums.title AS album_title,
-                             Songs.duration,
-                             Songs.genre,
-                             Songs.release_date,
-                             Songs.file_path
-                         FROM Songs
-                         JOIN Artists ON Songs.artist_id = Artists.artist_id
-                         LEFT JOIN Albums ON Songs.album_id = Albums.album_id
-                         ORDER BY Songs.title";
+            // $sql = "SELECT
+            //                  Songs.song_id,
+            //                  Songs.title AS song_title,
+            //                  Artists.name AS artist_name,
+            //                  Albums.title AS album_title,
+            //                  Songs.duration,
+            //                  Songs.genre,
+            //                  Songs.release_date,
+            //                  Songs.file_path
+            //              FROM Songs
+            //              JOIN Artists ON Songs.artist_id = Artists.artist_id
+            //              LEFT JOIN Albums ON Songs.album_id = Albums.album_id
+            //              ORDER BY Songs.title";
 
+            $sql = "
+            SELECT
+                Songs.song_id,
+                Songs.title AS song_title,
+                Artists.name AS artist_name,
+                Albums.title AS album_title,
+                Songs.duration,
+                Songs.genre,
+                Songs.release_date,
+                Songs.file_path
+            FROM Songs
+            JOIN Artists ON Songs.artist_id = Artists.artist_id
+            LEFT JOIN Albums ON Songs.album_id = Albums.album_id
+            WHERE Songs.isActive = 1
+            ORDER BY Songs.title;
+            ";
             $result = $conn->query($sql);
             if ($result->num_rows > 0) {
                 $count = 1;
