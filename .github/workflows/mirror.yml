@@ -12,7 +12,7 @@ jobs:
       - name: Checkout full repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Ensures full history for mirroring
+          fetch-depth: 0  # Ensure full history for mirroring
 
       - name: Set up SSH
         run: |
@@ -32,12 +32,12 @@ jobs:
           ssh-keyscan gitlab.com >> ~/.ssh/known_hosts
           ssh-keyscan bitbucket.org >> ~/.ssh/known_hosts
 
-      - name: Push to GitLab
+      - name: Push to GitLab (Avoid Hidden Ref Errors)
         run: |
           git remote add gitlab git@gitlab.com:james5635/year3.git
-          git push --force --mirror gitlab
+          git push --prune gitlab "+refs/heads/*:refs/heads/*" "+refs/tags/*:refs/tags/*"
 
       - name: Push to Bitbucket
         run: |
           git remote add bitbucket git@bitbucket.org:jamesworkspace/year3.git
-          git push --force --mirror bitbucket
+          git push --prune bitbucket "+refs/heads/*:refs/heads/*" "+refs/tags/*:refs/tags/*"
