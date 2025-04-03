@@ -9,8 +9,10 @@ jobs:
   mirror:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: Checkout full repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Ensures full history for mirroring
 
       - name: Set up SSH
         run: |
@@ -27,9 +29,15 @@ jobs:
             IdentityFile ~/.ssh/bitbucket_key
             StrictHostKeyChecking no
           EOF
+          ssh-keyscan gitlab.com >> ~/.ssh/known_hosts
+          ssh-keyscan bitbucket.org >> ~/.ssh/known_hosts
 
       - name: Push to GitLab
-        run: git push --mirror git@gitlab.com:james5635/year3.git
+        run: |
+          git remote add gitlab git@gitlab.com:james5635/year3.git
+          git push --force --mirror gitlab
 
       - name: Push to Bitbucket
-        run: git push --mirror git@bitbucket.org:jamesworkspace/year3.git
+        run: |
+          git remote add bitbucket git@bitbucket.org:jamesworkspace/year3.git
+          git push --force --mirror bitbucket
