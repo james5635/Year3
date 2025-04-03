@@ -1,0 +1,35 @@
+name: Mirror to GitLab and Bitbucket
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.GITLAB_SSH_KEY }}" > ~/.ssh/gitlab_key
+          chmod 600 ~/.ssh/gitlab_key
+          echo "${{ secrets.BITBUCKET_SSH_KEY }}" > ~/.ssh/bitbucket_key
+          chmod 600 ~/.ssh/bitbucket_key
+          cat >> ~/.ssh/config <<EOF
+          Host gitlab.com
+            IdentityFile ~/.ssh/gitlab_key
+            StrictHostKeyChecking no
+          Host bitbucket.org
+            IdentityFile ~/.ssh/bitbucket_key
+            StrictHostKeyChecking no
+          EOF
+
+      - name: Push to GitLab
+        run: git push --mirror git@gitlab.com:james5635/year3.git
+
+      - name: Push to Bitbucket
+        run: git push --mirror git@bitbucket.org:jamesworkspace/year3.git
