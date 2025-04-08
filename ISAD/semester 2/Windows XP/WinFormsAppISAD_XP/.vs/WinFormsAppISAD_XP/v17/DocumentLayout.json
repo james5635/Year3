@@ -1,0 +1,69 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Docker\\Desktop\\Year3\\ISAD\\semester 2\\Windows XP\\WinFormsAppISAD_XP\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{1F21F5B0-F2FD-4461-8102-83BDFBEE4A3F}|WinFormsAppISAD_XP\\WinFormsAppISAD_XP.csproj|c:\\users\\docker\\desktop\\year3\\isad\\semester 2\\windows xp\\winformsappisad_xp\\winformsappisad_xp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1F21F5B0-F2FD-4461-8102-83BDFBEE4A3F}|WinFormsAppISAD_XP\\WinFormsAppISAD_XP.csproj|solutionrelative:winformsappisad_xp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1F21F5B0-F2FD-4461-8102-83BDFBEE4A3F}|WinFormsAppISAD_XP\\WinFormsAppISAD_XP.csproj|c:\\users\\docker\\desktop\\year3\\isad\\semester 2\\windows xp\\winformsappisad_xp\\winformsappisad_xp\\frmstaffs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{1F21F5B0-F2FD-4461-8102-83BDFBEE4A3F}|WinFormsAppISAD_XP\\WinFormsAppISAD_XP.csproj|solutionrelative:winformsappisad_xp\\frmstaffs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1F21F5B0-F2FD-4461-8102-83BDFBEE4A3F}|WinFormsAppISAD_XP\\WinFormsAppISAD_XP.csproj|c:\\users\\docker\\desktop\\year3\\isad\\semester 2\\windows xp\\winformsappisad_xp\\winformsappisad_xp\\frmimportdetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{1F21F5B0-F2FD-4461-8102-83BDFBEE4A3F}|WinFormsAppISAD_XP\\WinFormsAppISAD_XP.csproj|solutionrelative:winformsappisad_xp\\frmimportdetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "frmStaffs.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Docker\\Desktop\\Year3\\ISAD\\semester 2\\Windows XP\\WinFormsAppISAD_XP\\WinFormsAppISAD_XP\\frmStaffs.cs",
+              "RelativeDocumentMoniker": "WinFormsAppISAD_XP\\frmStaffs.cs",
+              "ToolTip": "C:\\Users\\Docker\\Desktop\\Year3\\ISAD\\semester 2\\Windows XP\\WinFormsAppISAD_XP\\WinFormsAppISAD_XP\\frmStaffs.cs [Design]",
+              "RelativeToolTip": "WinFormsAppISAD_XP\\frmStaffs.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-08T10:21:42.759Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "frmImportDetail.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Docker\\Desktop\\Year3\\ISAD\\semester 2\\Windows XP\\WinFormsAppISAD_XP\\WinFormsAppISAD_XP\\frmImportDetail.cs",
+              "RelativeDocumentMoniker": "WinFormsAppISAD_XP\\frmImportDetail.cs",
+              "ToolTip": "C:\\Users\\Docker\\Desktop\\Year3\\ISAD\\semester 2\\Windows XP\\WinFormsAppISAD_XP\\WinFormsAppISAD_XP\\frmImportDetail.cs [Design]",
+              "RelativeToolTip": "WinFormsAppISAD_XP\\frmImportDetail.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-08T10:21:35.073Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Docker\\Desktop\\Year3\\ISAD\\semester 2\\Windows XP\\WinFormsAppISAD_XP\\WinFormsAppISAD_XP\\Program.cs",
+              "RelativeDocumentMoniker": "WinFormsAppISAD_XP\\Program.cs",
+              "ToolTip": "C:\\Users\\Docker\\Desktop\\Year3\\ISAD\\semester 2\\Windows XP\\WinFormsAppISAD_XP\\WinFormsAppISAD_XP\\Program.cs",
+              "RelativeToolTip": "WinFormsAppISAD_XP\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-08T10:19:12.885Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
