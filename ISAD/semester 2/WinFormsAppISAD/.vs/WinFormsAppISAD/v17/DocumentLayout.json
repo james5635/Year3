@@ -1,46 +1,14 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Docker\\Desktop\\jame\\WinFormsAppISAD\\",
+  "WorkspaceRootPath": "C:\\Users\\Docker\\Desktop\\Year3\\ISAD\\semester 2\\WinFormsAppISAD\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{27928E4A-2BCC-4E67-A133-6FA8156D8D83}|WinFormsAppISAD\\WinFormsAppISAD.csproj|c:\\users\\docker\\desktop\\jame\\winformsappisad\\winformsappisad\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{27928E4A-2BCC-4E67-A133-6FA8156D8D83}|WinFormsAppISAD\\WinFormsAppISAD.csproj|solutionrelative:winformsappisad\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{27928E4A-2BCC-4E67-A133-6FA8156D8D83}|WinFormsAppISAD\\WinFormsAppISAD.csproj|C:\\Users\\Docker\\Desktop\\jame\\WinFormsAppISAD\\winformsappisad\\frmorderdetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{27928E4A-2BCC-4E67-A133-6FA8156D8D83}|WinFormsAppISAD\\WinFormsAppISAD.csproj|solutionrelative:winformsappisad\\frmorderdetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{27928E4A-2BCC-4E67-A133-6FA8156D8D83}|WinFormsAppISAD\\WinFormsAppISAD.csproj|c:\\users\\docker\\desktop\\jame\\winformsappisad\\winformsappisad\\winformsappisad.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{27928E4A-2BCC-4E67-A133-6FA8156D8D83}|WinFormsAppISAD\\WinFormsAppISAD.csproj|solutionrelative:winformsappisad\\winformsappisad.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{27928E4A-2BCC-4E67-A133-6FA8156D8D83}|WinFormsAppISAD\\WinFormsAppISAD.csproj|C:\\Users\\Docker\\Desktop\\jame\\WinFormsAppISAD\\winformsappisad\\frmimportdetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{27928E4A-2BCC-4E67-A133-6FA8156D8D83}|WinFormsAppISAD\\WinFormsAppISAD.csproj|solutionrelative:winformsappisad\\frmimportdetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{27928E4A-2BCC-4E67-A133-6FA8156D8D83}|WinFormsAppISAD\\WinFormsAppISAD.csproj|C:\\Users\\Docker\\Desktop\\jame\\WinFormsAppISAD\\winformsappisad\\frmpayments.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{27928E4A-2BCC-4E67-A133-6FA8156D8D83}|WinFormsAppISAD\\WinFormsAppISAD.csproj|solutionrelative:winformsappisad\\frmpayments.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{27928E4A-2BCC-4E67-A133-6FA8156D8D83}|WinFormsAppISAD\\WinFormsAppISAD.csproj|C:\\Users\\Docker\\Desktop\\jame\\WinFormsAppISAD\\winformsappisad\\frmproducts.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{27928E4A-2BCC-4E67-A133-6FA8156D8D83}|WinFormsAppISAD\\WinFormsAppISAD.csproj|solutionrelative:winformsappisad\\frmproducts.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{27928E4A-2BCC-4E67-A133-6FA8156D8D83}|WinFormsAppISAD\\WinFormsAppISAD.csproj|C:\\Users\\Docker\\Desktop\\jame\\WinFormsAppISAD\\winformsappisad\\frmcustomers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{27928E4A-2BCC-4E67-A133-6FA8156D8D83}|WinFormsAppISAD\\WinFormsAppISAD.csproj|solutionrelative:winformsappisad\\frmcustomers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{27928E4A-2BCC-4E67-A133-6FA8156D8D83}|WinFormsAppISAD\\WinFormsAppISAD.csproj|C:\\Users\\Docker\\Desktop\\jame\\WinFormsAppISAD\\winformsappisad\\frmsuppliers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{27928E4A-2BCC-4E67-A133-6FA8156D8D83}|WinFormsAppISAD\\WinFormsAppISAD.csproj|solutionrelative:winformsappisad\\frmsuppliers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{27928E4A-2BCC-4E67-A133-6FA8156D8D83}|WinFormsAppISAD\\WinFormsAppISAD.csproj|C:\\Users\\Docker\\Desktop\\jame\\WinFormsAppISAD\\winformsappisad\\frmstaffs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{27928E4A-2BCC-4E67-A133-6FA8156D8D83}|WinFormsAppISAD\\WinFormsAppISAD.csproj|c:\\users\\docker\\desktop\\year3\\isad\\semester 2\\winformsappisad\\winformsappisad\\frmstaffs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{27928E4A-2BCC-4E67-A133-6FA8156D8D83}|WinFormsAppISAD\\WinFormsAppISAD.csproj|solutionrelative:winformsappisad\\frmstaffs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{27928E4A-2BCC-4E67-A133-6FA8156D8D83}|WinFormsAppISAD\\WinFormsAppISAD.csproj|C:\\Users\\Docker\\Desktop\\jame\\WinFormsAppISAD\\winformsappisad\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{27928E4A-2BCC-4E67-A133-6FA8156D8D83}|WinFormsAppISAD\\WinFormsAppISAD.csproj|solutionrelative:winformsappisad\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{27928E4A-2BCC-4E67-A133-6FA8156D8D83}|WinFormsAppISAD\\WinFormsAppISAD.csproj|c:\\users\\docker\\desktop\\year3\\isad\\semester 2\\winformsappisad\\winformsappisad\\frmstaffs.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{27928E4A-2BCC-4E67-A133-6FA8156D8D83}|WinFormsAppISAD\\WinFormsAppISAD.csproj|solutionrelative:winformsappisad\\frmstaffs.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -50,124 +18,32 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 0,
           "Children": [
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "frmStaffs.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Docker\\Desktop\\Year3\\ISAD\\semester 2\\WinFormsAppISAD\\WinFormsAppISAD\\frmStaffs.cs",
+              "RelativeDocumentMoniker": "WinFormsAppISAD\\frmStaffs.cs",
+              "ToolTip": "C:\\Users\\Docker\\Desktop\\Year3\\ISAD\\semester 2\\WinFormsAppISAD\\WinFormsAppISAD\\frmStaffs.cs [Design]",
+              "RelativeToolTip": "WinFormsAppISAD\\frmStaffs.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-08T08:21:50.791Z",
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "frmOrderDetail.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\Docker\\Desktop\\jame\\WinFormsAppISAD\\WinFormsAppISAD\\frmOrderDetail.cs",
-              "RelativeDocumentMoniker": "WinFormsAppISAD\\frmOrderDetail.cs",
-              "ToolTip": "C:\\Users\\Docker\\Desktop\\jame\\WinFormsAppISAD\\WinFormsAppISAD\\frmOrderDetail.cs [Design]",
-              "RelativeToolTip": "WinFormsAppISAD\\frmOrderDetail.cs [Design]",
+              "Title": "frmStaffs.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\Docker\\Desktop\\Year3\\ISAD\\semester 2\\WinFormsAppISAD\\WinFormsAppISAD\\frmStaffs.Designer.cs",
+              "RelativeDocumentMoniker": "WinFormsAppISAD\\frmStaffs.Designer.cs",
+              "ToolTip": "C:\\Users\\Docker\\Desktop\\Year3\\ISAD\\semester 2\\WinFormsAppISAD\\WinFormsAppISAD\\frmStaffs.Designer.cs",
+              "RelativeToolTip": "WinFormsAppISAD\\frmStaffs.Designer.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-22T09:10:32.028Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "frmImportDetail.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\Docker\\Desktop\\jame\\WinFormsAppISAD\\WinFormsAppISAD\\frmImportDetail.cs",
-              "RelativeDocumentMoniker": "WinFormsAppISAD\\frmImportDetail.cs",
-              "ToolTip": "C:\\Users\\Docker\\Desktop\\jame\\WinFormsAppISAD\\WinFormsAppISAD\\frmImportDetail.cs [Design]",
-              "RelativeToolTip": "WinFormsAppISAD\\frmImportDetail.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-22T09:09:46.049Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "frmPayments.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\Docker\\Desktop\\jame\\WinFormsAppISAD\\WinFormsAppISAD\\frmPayments.cs",
-              "RelativeDocumentMoniker": "WinFormsAppISAD\\frmPayments.cs",
-              "ToolTip": "C:\\Users\\Docker\\Desktop\\jame\\WinFormsAppISAD\\WinFormsAppISAD\\frmPayments.cs [Design]",
-              "RelativeToolTip": "WinFormsAppISAD\\frmPayments.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-22T09:09:17.597Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "frmProducts.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\Docker\\Desktop\\jame\\WinFormsAppISAD\\WinFormsAppISAD\\frmProducts.cs",
-              "RelativeDocumentMoniker": "WinFormsAppISAD\\frmProducts.cs",
-              "ToolTip": "C:\\Users\\Docker\\Desktop\\jame\\WinFormsAppISAD\\WinFormsAppISAD\\frmProducts.cs [Design]",
-              "RelativeToolTip": "WinFormsAppISAD\\frmProducts.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-22T09:08:46.158Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\Docker\\Desktop\\jame\\WinFormsAppISAD\\WinFormsAppISAD\\Program.cs",
-              "RelativeDocumentMoniker": "WinFormsAppISAD\\Program.cs",
-              "ToolTip": "C:\\Users\\Docker\\Desktop\\jame\\WinFormsAppISAD\\WinFormsAppISAD\\Program.cs",
-              "RelativeToolTip": "WinFormsAppISAD\\Program.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAYwBcAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-22T09:02:55.711Z",
+              "WhenOpened": "2025-04-08T08:20:18.96Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "frmCustomers.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\Docker\\Desktop\\jame\\WinFormsAppISAD\\WinFormsAppISAD\\frmCustomers.cs",
-              "RelativeDocumentMoniker": "WinFormsAppISAD\\frmCustomers.cs",
-              "ToolTip": "C:\\Users\\Docker\\Desktop\\jame\\WinFormsAppISAD\\WinFormsAppISAD\\frmCustomers.cs [Design]",
-              "RelativeToolTip": "WinFormsAppISAD\\frmCustomers.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-22T09:07:46.076Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "WinFormsAppISAD.csproj",
-              "DocumentMoniker": "C:\\Users\\Docker\\Desktop\\jame\\WinFormsAppISAD\\WinFormsAppISAD\\WinFormsAppISAD.csproj",
-              "RelativeDocumentMoniker": "WinFormsAppISAD\\WinFormsAppISAD.csproj",
-              "ToolTip": "C:\\Users\\Docker\\Desktop\\jame\\WinFormsAppISAD\\WinFormsAppISAD\\WinFormsAppISAD.csproj",
-              "RelativeToolTip": "WinFormsAppISAD\\WinFormsAppISAD.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-03-22T09:03:25.706Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "frmSuppliers.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\Docker\\Desktop\\jame\\WinFormsAppISAD\\WinFormsAppISAD\\frmSuppliers.cs",
-              "RelativeDocumentMoniker": "WinFormsAppISAD\\frmSuppliers.cs",
-              "ToolTip": "C:\\Users\\Docker\\Desktop\\jame\\WinFormsAppISAD\\WinFormsAppISAD\\frmSuppliers.cs [Design]",
-              "RelativeToolTip": "WinFormsAppISAD\\frmSuppliers.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-22T09:07:03.227Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "frmStaffs.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\Docker\\Desktop\\jame\\WinFormsAppISAD\\WinFormsAppISAD\\frmStaffs.cs",
-              "RelativeDocumentMoniker": "WinFormsAppISAD\\frmStaffs.cs",
-              "ToolTip": "C:\\Users\\Docker\\Desktop\\jame\\WinFormsAppISAD\\WinFormsAppISAD\\frmStaffs.cs [Design]",
-              "RelativeToolTip": "WinFormsAppISAD\\frmStaffs.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-22T09:06:11.961Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Form1.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\Docker\\Desktop\\jame\\WinFormsAppISAD\\WinFormsAppISAD\\Form1.cs",
-              "RelativeDocumentMoniker": "WinFormsAppISAD\\Form1.cs",
-              "ToolTip": "C:\\Users\\Docker\\Desktop\\jame\\WinFormsAppISAD\\WinFormsAppISAD\\Form1.cs [Design]",
-              "RelativeToolTip": "WinFormsAppISAD\\Form1.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-22T09:01:03.356Z"
             }
           ]
         }
