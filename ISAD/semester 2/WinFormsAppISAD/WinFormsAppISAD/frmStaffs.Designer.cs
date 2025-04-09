@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmStaffs));
             button1 = new Button();
             textBox1 = new TextBox();
             label1 = new Label();
@@ -46,6 +47,7 @@
             checkBox1 = new CheckBox();
             pictureBox1 = new PictureBox();
             label8 = new Label();
+            button2 = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -57,7 +59,7 @@
             button1.Name = "button1";
             button1.Size = new Size(75, 23);
             button1.TabIndex = 0;
-            button1.Text = "button1";
+            button1.Text = "Edit";
             button1.TextAlign = ContentAlignment.MiddleRight;
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
@@ -211,11 +213,25 @@
             label8.TabIndex = 18;
             label8.Text = "Staff's Information";
             // 
+            // button2
+            // 
+            button2.Image = (Image)resources.GetObject("button2.Image");
+            button2.ImageAlign = ContentAlignment.MiddleLeft;
+            button2.Location = new Point(613, 337);
+            button2.Name = "button2";
+            button2.Size = new Size(75, 23);
+            button2.TabIndex = 19;
+            button2.Text = "Add";
+            button2.TextAlign = ContentAlignment.MiddleRight;
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
+            // 
             // frmStaffs
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(714, 559);
+            Controls.Add(button2);
             Controls.Add(label8);
             Controls.Add(pictureBox1);
             Controls.Add(checkBox1);
@@ -261,5 +277,6 @@
         private CheckBox checkBox1;
         private PictureBox pictureBox1;
         private Label label8;
+        private Button button2;
     }
 }
