@@ -6,5 +6,10 @@
         {
             InitializeComponent();
         }
+
+        private void frmCustomers_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

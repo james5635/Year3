@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmStaffs));
             button1 = new Button();
             textBox1 = new TextBox();
             label1 = new Label();
@@ -48,7 +47,9 @@
             pictureBox1 = new PictureBox();
             label8 = new Label();
             button2 = new Button();
+            dataGridView1 = new DataGridView();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // button1
@@ -215,7 +216,7 @@
             // 
             // button2
             // 
-            button2.Image = (Image)resources.GetObject("button2.Image");
+            button2.Image = Properties.Resources.Add;
             button2.ImageAlign = ContentAlignment.MiddleLeft;
             button2.Location = new Point(613, 337);
             button2.Name = "button2";
@@ -226,11 +227,20 @@
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
             // 
+            // dataGridView1
+            // 
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(23, 380);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.Size = new Size(679, 189);
+            dataGridView1.TabIndex = 20;
+            // 
             // frmStaffs
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(714, 559);
+            ClientSize = new Size(714, 581);
+            Controls.Add(dataGridView1);
             Controls.Add(button2);
             Controls.Add(label8);
             Controls.Add(pictureBox1);
@@ -253,6 +263,7 @@
             Name = "frmStaffs";
             Text = "frmStaffs";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -278,5 +289,6 @@
         private PictureBox pictureBox1;
         private Label label8;
         private Button button2;
+        private DataGridView dataGridView1;
     }
 }
