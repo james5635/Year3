@@ -215,5 +215,5 @@ FROM Result
 GROUP BY [Student ID]
 GO
 
-SELECT * FRoM FinalResult1
-SELECT * FRoM FinalResult2
+SELECT * FROM FinalResult1
+SELECT * FROM FinalResult2
