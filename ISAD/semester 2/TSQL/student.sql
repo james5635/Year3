@@ -158,7 +158,8 @@ When FirstExamScore <80 Then 'C'
 When FirstExamScore <90 Then 'B'
 Else
 'A'
-End As FirstGrade, SecondExamScore as [Semester 2],
+End As [FirstGrade], 
+    SecondExamScore as [Semester 2],
         Case When SecondExamScore<50 Then 'F'
 When SecondExamScore<60 Then 'E'
 When SecondExamScore <70 Then 'D'
@@ -166,7 +167,7 @@ When SecondExamScore <80 Then 'C'
 When SecondExamScore <90 Then 'B'
 Else
 'A'
-End As SecondGrade,
+End As [SecondGrade],
         (FirstExamScore + SecondExamScore) /2 as [Final],
         Case When  (FirstExamScore + SecondExamScore) /2 <50 Then 'F'
 When (FirstExamScore + SecondExamScore) /2 <60 Then 'E'
@@ -175,7 +176,7 @@ When (FirstExamScore + SecondExamScore) /2  <80 Then 'C'
 When (FirstExamScore + SecondExamScore) /2  <90 Then 'B'
 Else
 'A'
-End As FinalGrade
+End AS [FinalGrade]
     From tbSubject B Inner Join(tbExam E Inner Join tbStudent S On
 E.StuID=S.StuID) On B.SubjectID=E.SubjectID
 GO
@@ -214,5 +215,5 @@ FROM Result
 GROUP BY [Student ID]
 GO
 
-SELECT * FROM FinalResult1
-SELECT * FROM FinalResult2
+SELECT * FRoM FinalResult1
+SELECT * FRoM FinalResult2
