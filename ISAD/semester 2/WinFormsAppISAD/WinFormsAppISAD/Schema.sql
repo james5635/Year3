@@ -1,3 +1,5 @@
+SET ANSI_NULLS, QUOTED_IDENTIFIER ON;
+
 USE master
 GO
 
@@ -17,11 +19,13 @@ GO
 
 -- Create database
 CREATE DATABASE [WinFormsAppISAD];
-GO
 PRINT 'Database WinFormsAppISAD created.';
-
+GO
+ALTER DATABASE WinFormsAppISAD SET ENABLE_BROKER WITH ROLLBACK IMMEDIATE;
+GO
 USE [WinFormsAppISAD];
 GO
+
 
 -- ========================================================
 -- CREATE TABLES
@@ -1374,6 +1378,22 @@ VALUES
     -- Adjusted Amount
     (100, 11, 'Gaming Mouse X', 11, 70, 770);
 PRINT 'Data insertion into tbOrderDetail complete (100 records).';
+GO
 
-PRINT 'Script execution completed successfully.';
+PRINT 'creating procedure spGetAllStaff ';
+GO
+-- In SQL Server, there must be only CREATE PROCEDURE/ ALTER PROCEDURE in a batch
+CREATE PROCEDURE spGetAllStaff As
+Select 
+    staffID,
+    FullName as [Name],
+    Gen as [Sex] ,
+    Dob as [Birth],
+    Position ,
+    Salary ,
+    Stopwork 
+-- Make sure to use two-part table name for the supported SELECT statement (i.e. [dbo].[tbStaffs])
+From [dbo].[tbStaffs];
+GO
+ PRINT 'spGetAllStaff created successfully.';
 GO
