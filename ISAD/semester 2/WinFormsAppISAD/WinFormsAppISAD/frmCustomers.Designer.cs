@@ -45,7 +45,7 @@
             // 
             button2.Image = Properties.Resources.Add;
             button2.ImageAlign = ContentAlignment.MiddleLeft;
-            button2.Location = new Point(657, 135);
+            button2.Location = new Point(258, 152);
             button2.Name = "button2";
             button2.Size = new Size(75, 23);
             button2.TabIndex = 42;
@@ -57,7 +57,7 @@
             // 
             button1.Image = Properties.Resources.Edit;
             button1.ImageAlign = ContentAlignment.MiddleLeft;
-            button1.Location = new Point(502, 135);
+            button1.Location = new Point(258, 110);
             button1.Name = "button1";
             button1.Size = new Size(75, 23);
             button1.TabIndex = 41;
@@ -67,10 +67,13 @@
             // 
             // dataGridView1
             // 
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.AllowUserToDeleteRows = false;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Location = new Point(17, 203);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(767, 237);
+            dataGridView1.Size = new Size(325, 237);
             dataGridView1.TabIndex = 40;
             // 
             // label3
@@ -87,7 +90,7 @@
             // 
             textBox3.Location = new Point(101, 157);
             textBox3.Name = "textBox3";
-            textBox3.Size = new Size(140, 23);
+            textBox3.Size = new Size(113, 23);
             textBox3.TabIndex = 38;
             // 
             // label8
@@ -95,7 +98,7 @@
             label8.AutoSize = true;
             label8.Font = new Font("Ink Free", 21.7499962F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label8.ForeColor = Color.Blue;
-            label8.Location = new Point(250, 11);
+            label8.Location = new Point(12, 9);
             label8.Name = "label8";
             label8.Size = new Size(330, 36);
             label8.TabIndex = 35;
@@ -115,7 +118,7 @@
             // 
             textBox2.Location = new Point(101, 115);
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(242, 23);
+            textBox2.Size = new Size(140, 23);
             textBox2.TabIndex = 33;
             // 
             // label1
@@ -131,14 +134,14 @@
             // 
             textBox1.Location = new Point(101, 73);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(101, 23);
+            textBox1.Size = new Size(71, 23);
             textBox1.TabIndex = 31;
             // 
             // frmCustomers
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(358, 450);
             Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(dataGridView1);

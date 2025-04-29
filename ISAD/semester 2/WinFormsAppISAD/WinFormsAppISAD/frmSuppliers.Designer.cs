@@ -48,7 +48,7 @@
             label8.AutoSize = true;
             label8.Font = new Font("Ink Free", 21.7499962F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label8.ForeColor = Color.Blue;
-            label8.Location = new Point(254, 9);
+            label8.Location = new Point(85, 9);
             label8.Name = "label8";
             label8.Size = new Size(311, 36);
             label8.TabIndex = 23;
@@ -122,17 +122,21 @@
             // 
             // dataGridView1
             // 
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.AllowUserToDeleteRows = false;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Location = new Point(21, 246);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(767, 192);
+            dataGridView1.ReadOnly = true;
+            dataGridView1.Size = new Size(559, 192);
             dataGridView1.TabIndex = 28;
             // 
             // button2
             // 
             button2.Image = Properties.Resources.Add;
             button2.ImageAlign = ContentAlignment.MiddleLeft;
-            button2.Location = new Point(661, 133);
+            button2.Location = new Point(444, 176);
             button2.Name = "button2";
             button2.Size = new Size(75, 23);
             button2.TabIndex = 30;
@@ -144,19 +148,20 @@
             // 
             button1.Image = Properties.Resources.Edit;
             button1.ImageAlign = ContentAlignment.MiddleLeft;
-            button1.Location = new Point(506, 133);
+            button1.Location = new Point(444, 108);
             button1.Name = "button1";
             button1.Size = new Size(75, 23);
             button1.TabIndex = 29;
             button1.Text = "Edit";
             button1.TextAlign = ContentAlignment.MiddleRight;
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // frmSuppliers
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(598, 450);
             Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(dataGridView1);
@@ -171,6 +176,7 @@
             Controls.Add(textBox1);
             Name = "frmSuppliers";
             Text = "frmSuppliers";
+            Load += frmSuppliers_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();

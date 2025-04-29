@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             button2 = new Button();
             button1 = new Button();
             dataGridView1 = new DataGridView();
@@ -49,7 +50,7 @@
             // 
             button2.Image = Properties.Resources.Add;
             button2.ImageAlign = ContentAlignment.MiddleLeft;
-            button2.Location = new Point(657, 135);
+            button2.Location = new Point(502, 243);
             button2.Name = "button2";
             button2.Size = new Size(75, 23);
             button2.TabIndex = 42;
@@ -61,7 +62,7 @@
             // 
             button1.Image = Properties.Resources.Edit;
             button1.ImageAlign = ContentAlignment.MiddleLeft;
-            button1.Location = new Point(502, 135);
+            button1.Location = new Point(502, 197);
             button1.Name = "button1";
             button1.Size = new Size(75, 23);
             button1.TabIndex = 41;
@@ -71,11 +72,24 @@
             // 
             // dataGridView1
             // 
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.AllowUserToDeleteRows = false;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
+            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Location = new Point(12, 297);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(767, 250);
+            dataGridView1.ReadOnly = true;
+            dataGridView1.Size = new Size(657, 250);
             dataGridView1.TabIndex = 40;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // label3
             // 
@@ -115,7 +129,7 @@
             label8.AutoSize = true;
             label8.Font = new Font("Ink Free", 21.7499962F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label8.ForeColor = Color.Blue;
-            label8.Location = new Point(250, 11);
+            label8.Location = new Point(192, 9);
             label8.Name = "label8";
             label8.Size = new Size(306, 36);
             label8.TabIndex = 35;
@@ -175,12 +189,11 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 559);
+            ClientSize = new Size(681, 559);
             Controls.Add(label5);
             Controls.Add(textBox5);
             Controls.Add(button2);
             Controls.Add(button1);
-            Controls.Add(dataGridView1);
             Controls.Add(label3);
             Controls.Add(textBox3);
             Controls.Add(label4);
@@ -190,8 +203,10 @@
             Controls.Add(textBox2);
             Controls.Add(label1);
             Controls.Add(textBox1);
+            Controls.Add(dataGridView1);
             Name = "frmProducts";
             Text = "frmProducts";
+            Load += frmProducts_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();

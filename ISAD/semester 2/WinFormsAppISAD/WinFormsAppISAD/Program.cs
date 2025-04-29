@@ -21,7 +21,11 @@ namespace WinFormsAppISAD
             //    Application.Run(new frmSuppliers());
             //});
             //while (true) { }
-            Application.Run(new frmStaffs());
+            //Application.Run(new frmStaffs());
+            //Application.Run(new frmSuppliers());
+            //Application.Run(new frmCustomers());
+            Application.Run(new frmProducts());
+
         }
     }
 }

@@ -1397,3 +1397,45 @@ From [dbo].[tbStaffs];
 GO
  PRINT 'spGetAllStaff created successfully.';
 GO
+
+PRINT 'creating procedure spGetAllSupplier ';
+GO
+CREATE PROCEDURE spGetAllSupplier As
+Select 
+    supID ,
+    Supplier ,
+    SupAdd as [Supplier Address],
+    SupCon as [Phone]
+-- Make sure to use two-part table name for the supported SELECT statement (i.e. [dbo].[tbStaffs])
+From [dbo].[tbSuppliers];
+GO
+PRINT 'spGetAllSupplier created successfully.';
+GO
+
+PRINT 'creating procedure spGetAllCustomer ';
+GO
+CREATE PROCEDURE spGetAllCustomer As
+Select 
+    cusID ,
+    CusName as [Name],
+    CusContact as [Phone]
+-- Make sure to use two-part table name for the supported SELECT statement (i.e. [dbo].[tbStaffs])
+From [dbo].[tbCustomers];
+GO
+PRINT 'spGetAllCustomer created successfully.';
+GO
+
+PRINT 'creating procedure spGetAllProduct ';
+GO
+CREATE PROCEDURE spGetAllProduct As
+Select 
+    ProCode as [Product code],
+    ProName as [Name],
+    Qty as [Quantity],
+    UPIS as [Unit price in stock],
+    SUP as [Sale unit price]
+-- Make sure to use two-part table name for the supported SELECT statement (i.e. [dbo].[tbStaffs])
+From [dbo].[tbProducts];
+GO
+PRINT 'spGetAllProduct created successfully.';
+GO

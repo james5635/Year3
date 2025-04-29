@@ -48,19 +48,21 @@
             label8 = new Label();
             button2 = new Button();
             dataGridView1 = new DataGridView();
+            button3 = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // button1
             // 
-            button1.Image = Properties.Resources.Edit;
+            button1.Enabled = false;
+            button1.Image = Properties.Resources.UpdateDatabase;
             button1.ImageAlign = ContentAlignment.MiddleLeft;
-            button1.Location = new Point(458, 337);
+            button1.Location = new Point(516, 337);
             button1.Name = "button1";
             button1.Size = new Size(75, 23);
             button1.TabIndex = 0;
-            button1.Text = "Edit";
+            button1.Text = "Updtae";
             button1.TextAlign = ContentAlignment.MiddleRight;
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
@@ -108,6 +110,7 @@
             radioButton1.TabStop = true;
             radioButton1.Text = "F";
             radioButton1.UseVisualStyleBackColor = true;
+            radioButton1.CheckedChanged += radioButton1_CheckedChanged;
             // 
             // label3
             // 
@@ -197,7 +200,7 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Location = new Point(458, 12);
+            pictureBox1.Location = new Point(539, 12);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(244, 305);
             pictureBox1.TabIndex = 17;
@@ -218,7 +221,7 @@
             // 
             button2.Image = Properties.Resources.Add;
             button2.ImageAlign = ContentAlignment.MiddleLeft;
-            button2.Location = new Point(613, 337);
+            button2.Location = new Point(708, 337);
             button2.Name = "button2";
             button2.Size = new Size(75, 23);
             button2.TabIndex = 19;
@@ -229,17 +232,36 @@
             // 
             // dataGridView1
             // 
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.AllowUserToDeleteRows = false;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Location = new Point(23, 380);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(679, 189);
+            dataGridView1.ReadOnly = true;
+            dataGridView1.Size = new Size(745, 189);
             dataGridView1.TabIndex = 20;
+            dataGridView1.CellClick += dataGridView1_CellClick;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick_1;
+            // 
+            // button3
+            // 
+            button3.Image = Properties.Resources.Edit;
+            button3.ImageAlign = ContentAlignment.MiddleLeft;
+            button3.Location = new Point(615, 337);
+            button3.Name = "button3";
+            button3.Size = new Size(75, 23);
+            button3.TabIndex = 21;
+            button3.Text = "Edit";
+            button3.TextAlign = ContentAlignment.MiddleRight;
+            button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
             // 
             // frmStaffs
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(714, 581);
+            ClientSize = new Size(800, 581);
+            Controls.Add(button3);
             Controls.Add(dataGridView1);
             Controls.Add(button2);
             Controls.Add(label8);
@@ -262,6 +284,7 @@
             Controls.Add(button1);
             Name = "frmStaffs";
             Text = "frmStaffs";
+            Load += frmStaffs_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
@@ -290,5 +313,6 @@
         private Label label8;
         private Button button2;
         private DataGridView dataGridView1;
+        private Button button3;
     }
 }

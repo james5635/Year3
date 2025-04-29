@@ -79,5 +79,15 @@ namespace WinFormsAppISAD.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap UpdateDatabase {
+            get {
+                object obj = ResourceManager.GetObject("UpdateDatabase", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }
