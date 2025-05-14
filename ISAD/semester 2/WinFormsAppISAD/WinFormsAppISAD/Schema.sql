@@ -50,7 +50,8 @@ CREATE TABLE tbStaffs
     Dob DATE NOT NULL,
     Position VARCHAR(50) NOT NULL,
     Salary MONEY NOT NULL CHECK (Salary >= 0),
-    Stopwork BIT NOT NULL DEFAULT 0
+    Stopwork BIT NOT NULL DEFAULT 0,
+    Photo VARBINARY(MAX)
     -- Changed NULL to NOT NULL DEFAULT 0
 );
 PRINT 'Table tbStaffs created.';
@@ -88,8 +89,8 @@ CREATE TABLE tbImports
     Supplier NVARCHAR(100) NOT NULL,
     -- Match tbSuppliers.Supplier type
     Total MONEY NOT NULL CHECK (Total >= 0),
-    FOREIGN KEY (staffID) REFERENCES tbStaffs(staffID),
-    FOREIGN KEY (supID) REFERENCES tbSuppliers(supID)
+    FOREIGN KEY (staffID) REFERENCES tbStaffs(staffID) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (supID) REFERENCES tbSuppliers(supID) ON DELETE CASCADE ON UPDATE CASCADE
 );
 PRINT 'Table tbImports created.';
 
@@ -104,8 +105,8 @@ CREATE TABLE tbOrders
     cusName VARCHAR(100) NOT NULL,
     -- Match tbCustomers.CusName type
     Total MONEY NOT NULL CHECK (Total >= 0),
-    FOREIGN KEY (staffID) REFERENCES tbStaffs(staffID),
-    FOREIGN KEY (cusID) REFERENCES tbCustomers(cusID)
+    FOREIGN KEY (staffID) REFERENCES tbStaffs(staffID) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (cusID) REFERENCES tbCustomers(cusID) ON DELETE CASCADE ON UPDATE CASCADE
 );
 PRINT 'Table tbOrders created.';
 
@@ -118,8 +119,8 @@ CREATE TABLE tbPayments
     -- Match tbStaffs.FullName type
     OrdCode INT NOT NULL,
     Amount MONEY NOT NULL CHECK (Amount >= 0),
-    FOREIGN KEY (staffID) REFERENCES tbStaffs(staffID),
-    FOREIGN KEY (OrdCode) REFERENCES tbOrders(OrdCode)
+    FOREIGN KEY (staffID) REFERENCES tbStaffs(staffID) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (OrdCode) REFERENCES tbOrders(OrdCode) ON DELETE CASCADE ON UPDATE CASCADE
 );
 PRINT 'Table tbPayments created.';
 
@@ -134,9 +135,9 @@ CREATE TABLE tbImportdetail
     Price MONEY NOT NULL CHECK (Price >= 0),
     Amount MONEY NOT NULL CHECK (Amount >= 0),
     PRIMARY KEY (ImpCode, ProCode),
-    FOREIGN KEY (ImpCode) REFERENCES tbImports(ImpCode) ON DELETE CASCADE,
+    FOREIGN KEY (ImpCode) REFERENCES tbImports(ImpCode) ON DELETE CASCADE ON UPDATE CASCADE,
     -- Optional: Cascade delete
-    FOREIGN KEY (ProCode) REFERENCES tbProducts(ProCode)
+    FOREIGN KEY (ProCode) REFERENCES tbProducts(ProCode) ON DELETE CASCADE ON UPDATE CASCADE
 );
 PRINT 'Table tbImportdetail created.';
 
@@ -151,9 +152,9 @@ CREATE TABLE tbOrderDetail
     Price MONEY NOT NULL CHECK (Price >= 0),
     Amount MONEY NOT NULL CHECK (Amount >= 0),
     PRIMARY KEY (OrdCode, ProCode),
-    FOREIGN KEY (OrdCode) REFERENCES tbOrders(OrdCode) ON DELETE CASCADE,
+    FOREIGN KEY (OrdCode) REFERENCES tbOrders(OrdCode) ON DELETE CASCADE ON UPDATE CASCADE,
     -- Optional: Cascade delete
-    FOREIGN KEY (ProCode) REFERENCES tbProducts(ProCode)
+    FOREIGN KEY (ProCode) REFERENCES tbProducts(ProCode) ON DELETE CASCADE ON UPDATE CASCADE
 );
 PRINT 'Table tbOrderDetail created.';
 GO
@@ -1391,7 +1392,8 @@ Select
     Dob as [Birth],
     Position ,
     Salary ,
-    Stopwork 
+    Stopwork ,
+    Photo
 -- Make sure to use two-part table name for the supported SELECT statement (i.e. [dbo].[tbStaffs])
 From [dbo].[tbStaffs];
 GO
