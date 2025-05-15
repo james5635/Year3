@@ -1383,6 +1383,9 @@ GO
 
 
 -- procedure for select
+PRINT 'creating procedure for select ';
+GO
+
 PRINT 'creating procedure spGetAllStaff ';
 GO
 -- In SQL Server, there must be only CREATE PROCEDURE/ ALTER PROCEDURE in a batch
@@ -1397,7 +1400,8 @@ Select
     Stopwork ,
     Photo
 -- Make sure to use two-part table name for the supported SELECT statement (i.e. [dbo].[tbStaffs])
-From [dbo].[tbStaffs];
+From [dbo].[tbStaffs]
+Where Stopwork = 0;
 GO
  PRINT 'spGetAllStaff created successfully.';
 GO
@@ -1443,8 +1447,12 @@ From [dbo].[tbProducts];
 GO
 PRINT 'spGetAllProduct created successfully.';
 GO
+PRINT 'procedure for select created successfully.';
+GO
 
 -- procdure for insert
+PRINT 'creating procedure for insert ';
+GO
 CREATE PROCEDURE spInsertStaff
     @id TINYINT,
     @name NVARCHAR(50), @gender CHAR(1), @dob DATE, @position NVARCHAR(50), @salary MONEY, 
@@ -1454,9 +1462,34 @@ AS
     (staffID, FullName, Gen, Dob, Position, Salary, Stopwork, Photo) 
     VALUES (@id, @name, @gender, @dob, @position, @salary, @stopwork, @photo)
 GO
-
+CREATE PROCEDURE spInsertSupplier
+    @id INT,
+    @supplier NVARCHAR(100), @supAdd NVARCHAR(100), @supCon VARCHAR(100)
+AS
+    INSERT INTO [dbo].[tbSuppliers] 
+    (supID, Supplier, SupAdd, SupCon)
+    values (@id, @supplier, @supAdd, @supCon)
+GO
+CREATE PROCEDURE spInsertCustomer
+    @id INT, cusName VARCHAR(100), cusContact VARCHAR(15)
+AS
+    INSERT INTO [dbo].[tbCustomers]
+    (cusID, CusName, CusContact)
+    VALUES (@id, @cusName, @cusContact)
+GO
+CREATE PROCEDURE spInsertProduct
+    @code INT, @name VARCHAR(100), @qty SMALLINT, @UPIS MONEY, @SUP MONEY
+AS
+    INSERT INTO [dbo].[tbProducts]
+    (ProCode, ProName, Qty, UPIS, SUP)
+    VALUES (@code, @name, @qty, @UPIS, @SUP)
+GO
+PRINT 'procedure for insert created successfully.';
+GO
 
 -- procedure for update
+PRINT 'creating procedure for update ';
+GO
 CREATE PROCEDURE spUpdateStaff
     @id TINYINT,
     @name NVARCHAR(50), @gender CHAR(1), @dob DATE, @position NVARCHAR(50), @salary MONEY, 
@@ -1468,4 +1501,44 @@ AS
     Salary = @salary, Stopwork = @stopwork ,
     Photo = @Photo
     WHERE staffID = @id
+GO
+CREATE PROCEDURE spUpdateSupplier
+    @id INT,
+    @supplier NVARCHAR(100), @supAdd NVARCHAR(100), @supCon VARCHAR(100)
+AS
+    Supplier = @supplier,
+    SupAdd = @supAdd,
+    SupCon = @supCon
+    WHERE supID = @id
+GO
+CREATE PROCEDURE spUpdateCustomer
+    @id INT, @cusName VARCHAR(100), @cusContact VARCHAR(15)
+AS
+    UPDATE [dbo].[tbCustomers]
+    SET CusName = @cusName,
+    CusContact = @cusContact
+    WHERE cusID = @id
+GO
+CREATE PROCEDURE spUpdateProduct
+    @code INT, @name VARCHAR(100), 
+    @qty SMALLINT, @UPIS MONEY, @SUP MONEY
+AS
+    UPDATE [dbo].[tbProducts]
+    SET ProName = @name,
+    Qty = @qty, UPIS = @UPIS, SUP = @SUP
+    WHERE ProCode = @code
+GO
+PRINT 'procedure for update created successfully.';
+GO
+-- procedure for delete
+PRINT 'creating procedure for delete ';
+GO
+CREATE PROCEDURE spDeleteStaff
+    @id TINYINT
+AS
+    UPDATE [dbo].[tbStaffs]
+    SET Stopwork = 1
+    WHERE staffID = @id
+GO
+PRINT 'procedure for delete created successfully.';
 GO

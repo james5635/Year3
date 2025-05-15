@@ -191,6 +191,7 @@ namespace WinFormsAppISAD
             dap.Fill(dt);
             dgv.DataSource = dt;
             dgv.Columns["Photo"].Visible = false; // Hide the photo column
+            dgv.Columns["Stopwork"].Visible = false; // Hide the Stopwork column
 
             // Configure columns after data load
             if (dgv.Columns.Count > 0)
@@ -202,7 +203,7 @@ namespace WinFormsAppISAD
                 dgv.Columns["Position"].HeaderText = "Position";
                 dgv.Columns["Salary"].HeaderText = "Salary";
                 dgv.Columns["Salary"].DefaultCellStyle.Format = "C2";
-                dgv.Columns["Stopwork"].HeaderText = "Inactive";
+                //  dgv.Columns["Stopwork"].HeaderText = "Inactive";
             }
         }
 
@@ -255,7 +256,7 @@ namespace WinFormsAppISAD
                 cmd.Parameters.AddWithValue("@position", txtPos.Text.Trim());
                 cmd.Parameters.AddWithValue("@salary", decimal.Parse(txtSalary.Text));
                 cmd.Parameters.AddWithValue("@stopwork", txtStatus.Checked);
-                cmd.Parameters.Add("@photo", SqlDbType.VarBinary).Value =  pBox.Image is Image img ? new Func<byte[]>(() => {  var ms = new MemoryStream(); img.Save(ms, pBox.Image.RawFormat); return ms.ToArray(); })() : DBNull.Value ;
+                cmd.Parameters.Add("@photo", SqlDbType.VarBinary).Value = pBox.Image is Image img ? new Func<byte[]>(() => { var ms = new MemoryStream(); img.Save(ms, pBox.Image.RawFormat); return ms.ToArray(); })() : DBNull.Value;
 
 
                 conn.Open();
@@ -286,11 +287,21 @@ namespace WinFormsAppISAD
                 using (SqlConnection conn = new(connStr))
                 {
                     conn.Open();
-                    using SqlCommand checkCmd = new("SELECT COUNT(*) FROM tbStaffs WHERE staffID = @id", conn);
-                    checkCmd.Parameters.AddWithValue("@id", int.Parse(txtId.Text));
-                    int exists = (int)checkCmd.ExecuteScalar();
+                    // using SqlCommand checkCmd = new("SELECT COUNT(*) FROM tbStaffs WHERE staffID = @id", conn);
+                    // checkCmd.Parameters.AddWithValue("@id", int.Parse(txtId.Text));
+                    // int exists = (int)checkCmd.ExecuteScalar();
 
-                    if (exists > 0)
+                    // if (exists > 0)
+                    // {
+                    //     MessageBox.Show("Staff ID already exists. Please use a different ID.", "Error",
+                    //         MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //     return;
+                    // }
+
+                    bool IdExist = dgv.Rows
+                       .Cast<DataGridViewRow>()
+                       .Any(row => row.Cells["staffID"].Value?.ToString() == txtId.Text);
+                    if (IdExist)
                     {
                         MessageBox.Show("Staff ID already exists. Please use a different ID.", "Error",
                             MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -298,7 +309,6 @@ namespace WinFormsAppISAD
                     }
 
                     string query = @"spInsertStaff";
-
                     using SqlCommand cmd = new(query, conn);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@id", int.Parse(txtId.Text));
@@ -308,7 +318,7 @@ namespace WinFormsAppISAD
                     cmd.Parameters.AddWithValue("@position", txtPos.Text.Trim());
                     cmd.Parameters.AddWithValue("@salary", decimal.Parse(txtSalary.Text));
                     cmd.Parameters.AddWithValue("@stopwork", txtStatus.Checked);
-                    cmd.Parameters.Add("@photo", SqlDbType.VarBinary).Value =  pBox.Image is Image img ? new Func<byte[]>(() => {  var ms = new MemoryStream(); img.Save(ms, pBox.Image.RawFormat); return ms.ToArray(); })() : DBNull.Value ;
+                    cmd.Parameters.Add("@photo", SqlDbType.VarBinary).Value = pBox.Image is Image img ? new Func<byte[]>(() => { var ms = new MemoryStream(); img.Save(ms, pBox.Image.RawFormat); return ms.ToArray(); })() : DBNull.Value;
 
                     // cmd.Parameters.AddWithValue("@photo", new Func<byte[]>(() =>
                     //{
@@ -371,8 +381,12 @@ namespace WinFormsAppISAD
                 }
                 if (row.Cells["Photo"].Value is byte[] p)
                 {
-                    var ms = new MemoryStream(p) ;
+                    var ms = new MemoryStream(p);
                     pBox.Image = Image.FromStream(ms);
+                }
+                else
+                {
+                    pBox.Image = null;
                 }
 
                 isEditing = true;
@@ -408,10 +422,11 @@ namespace WinFormsAppISAD
                 try
                 {
                     using SqlConnection conn = new(connStr);
-                    string query = "DELETE FROM tbStaffs WHERE staffID = @id";
+                    string query = "spDeleteStaff";
 
                     using SqlCommand cmd = new(query, conn);
-                    cmd.Parameters.AddWithValue("@id", int.Parse(staffId ?? "0"));
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@id", int.Parse(staffId!));
 
                     conn.Open();
                     int rowsAffected = cmd.ExecuteNonQuery();
