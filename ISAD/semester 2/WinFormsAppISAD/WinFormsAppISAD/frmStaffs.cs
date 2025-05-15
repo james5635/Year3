@@ -1,8 +1,10 @@
-﻿using System.Data;
-using Microsoft.Data.SqlClient;
+﻿using Microsoft.Data.SqlClient;
+using System.Data;
 using System.Drawing;
-using System.Windows.Forms;
+using System.Globalization;
 using System.IO;
+using System.Windows.Forms;
+using System.Globalization;
 
 namespace WinFormsAppISAD
 {
@@ -26,7 +28,6 @@ namespace WinFormsAppISAD
 
 
             // Set placeholder texts
-            txtId.PlaceholderText = "Enter Staff ID";
             txtFName.PlaceholderText = "Enter Full Name";
             txtPos.PlaceholderText = "Enter Position";
             txtSalary.PlaceholderText = "Enter Salary";
@@ -221,10 +222,6 @@ namespace WinFormsAppISAD
 
         private void ValidateInput()
         {
-            if (string.IsNullOrWhiteSpace(txtId.Text))
-                throw new Exception("Staff ID is required.");
-            if (!int.TryParse(txtId.Text, out _))
-                throw new Exception("Staff ID must be a number.");
             if (string.IsNullOrWhiteSpace(txtFName.Text))
                 throw new Exception("Full name is required.");
             if (!rdoF.Checked && !rdoM.Checked)
@@ -311,12 +308,12 @@ namespace WinFormsAppISAD
                     string query = @"spInsertStaff";
                     using SqlCommand cmd = new(query, conn);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@id", int.Parse(txtId.Text));
+
                     cmd.Parameters.AddWithValue("@name", txtFName.Text.Trim());
                     cmd.Parameters.AddWithValue("@gender", rdoF.Checked ? "F" : "M");
                     cmd.Parameters.AddWithValue("@dob", dtpDOB.Value);
                     cmd.Parameters.AddWithValue("@position", txtPos.Text.Trim());
-                    cmd.Parameters.AddWithValue("@salary", decimal.Parse(txtSalary.Text));
+                    cmd.Parameters.AddWithValue("@salary", decimal.Parse( txtSalary.Text));
                     cmd.Parameters.AddWithValue("@stopwork", txtStatus.Checked);
                     cmd.Parameters.Add("@photo", SqlDbType.VarBinary).Value = pBox.Image is Image img ? new Func<byte[]>(() => { var ms = new MemoryStream(); img.Save(ms, pBox.Image.RawFormat); return ms.ToArray(); })() : DBNull.Value;
 
@@ -373,7 +370,7 @@ namespace WinFormsAppISAD
                 }
 
                 txtPos.Text = row.Cells["Position"].Value?.ToString() ?? "";
-                txtSalary.Text = row.Cells["Salary"].Value?.ToString() ?? "";
+                txtSalary.Text =  row.Cells["Salary"].Value is decimal sal ?  $"{sal:F2}": "";
 
                 if (row.Cells["Stopwork"].Value is bool stopwork)
                 {
@@ -494,5 +491,11 @@ namespace WinFormsAppISAD
         {
 
         }
+
+        private void frmStaffs_Load_1(object sender, EventArgs e)
+        {
+
+        }
     }
+
 }

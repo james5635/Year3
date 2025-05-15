@@ -28,173 +28,216 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label8 = new Label();
-            label2 = new Label();
-            textBox2 = new TextBox();
-            label1 = new Label();
-            textBox1 = new TextBox();
-            label3 = new Label();
-            textBox3 = new TextBox();
-            label4 = new Label();
-            textBox4 = new TextBox();
-            dataGridView1 = new DataGridView();
-            button2 = new Button();
-            button1 = new Button();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            lblManagement = new Label();
+            lblSupName = new Label();
+            txtSupName = new TextBox();
+            lblSupID = new Label();
+            txtSupID = new TextBox();
+            lblCont = new Label();
+            txtCont = new TextBox();
+            lblAddr = new Label();
+            txtAddr = new TextBox();
+            dgv = new DataGridView();
+            btnAdd = new Button();
+            btnEdit = new Button();
+            btnUpdate = new Button();
+            ((System.ComponentModel.ISupportInitialize)dgv).BeginInit();
             SuspendLayout();
             // 
-            // label8
+            // lblManagement
             // 
-            label8.AutoSize = true;
-            label8.Font = new Font("Ink Free", 21.7499962F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label8.ForeColor = Color.Blue;
-            label8.Location = new Point(85, 9);
-            label8.Name = "label8";
-            label8.Size = new Size(311, 36);
-            label8.TabIndex = 23;
-            label8.Text = "Supplier's Information";
+            lblManagement.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblManagement.ForeColor = Color.FromArgb(0, 150, 136);
+            lblManagement.Location = new Point(20, 7);
+            lblManagement.Name = "lblManagement";
+            lblManagement.Size = new Size(426, 45);
+            lblManagement.TabIndex = 23;
+            lblManagement.Text = "🏢 Supplier Management";
             // 
-            // label2
+            // lblSupName
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(21, 116);
-            label2.Name = "label2";
-            label2.RightToLeft = RightToLeft.Yes;
-            label2.Size = new Size(50, 15);
-            label2.TabIndex = 22;
-            label2.Text = "Supplier";
+            lblSupName.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblSupName.ForeColor = Color.FromArgb(33, 33, 33);
+            lblSupName.Location = new Point(23, 116);
+            lblSupName.Name = "lblSupName";
+            lblSupName.Size = new Size(141, 19);
+            lblSupName.TabIndex = 22;
+            lblSupName.Text = "👥 Supplier Name:";
             // 
-            // textBox2
+            // txtSupName
             // 
-            textBox2.Location = new Point(105, 113);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(242, 23);
-            textBox2.TabIndex = 21;
+            txtSupName.BackColor = Color.FromArgb(245, 245, 245);
+            txtSupName.BorderStyle = BorderStyle.FixedSingle;
+            txtSupName.Location = new Point(172, 116);
+            txtSupName.Name = "txtSupName";
+            txtSupName.Size = new Size(411, 23);
+            txtSupName.TabIndex = 21;
             // 
-            // label1
+            // lblSupID
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(21, 74);
-            label1.Name = "label1";
-            label1.Size = new Size(37, 15);
-            label1.TabIndex = 20;
-            label1.Text = "supID";
+            lblSupID.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblSupID.ForeColor = Color.FromArgb(33, 33, 33);
+            lblSupID.Location = new Point(23, 74);
+            lblSupID.Name = "lblSupID";
+            lblSupID.Size = new Size(125, 19);
+            lblSupID.TabIndex = 20;
+            lblSupID.Text = "🆔 Supplier ID:";
             // 
-            // textBox1
+            // txtSupID
             // 
-            textBox1.Location = new Point(105, 71);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(101, 23);
-            textBox1.TabIndex = 19;
+            txtSupID.BackColor = Color.FromArgb(245, 245, 245);
+            txtSupID.BorderStyle = BorderStyle.FixedSingle;
+            txtSupID.Location = new Point(153, 74);
+            txtSupID.Name = "txtSupID";
+            txtSupID.ReadOnly = true;
+            txtSupID.Size = new Size(150, 23);
+            txtSupID.TabIndex = 19;
             // 
-            // label3
+            // lblCont
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(21, 199);
-            label3.Name = "label3";
-            label3.RightToLeft = RightToLeft.Yes;
-            label3.Size = new Size(49, 15);
-            label3.TabIndex = 27;
-            label3.Text = "SupCon";
+            lblCont.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblCont.ForeColor = Color.FromArgb(33, 33, 33);
+            lblCont.Location = new Point(23, 199);
+            lblCont.Name = "lblCont";
+            lblCont.Size = new Size(90, 19);
+            lblCont.TabIndex = 27;
+            lblCont.Text = "📞 Contact:";
             // 
-            // textBox3
+            // txtCont
             // 
-            textBox3.Location = new Point(105, 196);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(140, 23);
-            textBox3.TabIndex = 26;
+            txtCont.BackColor = SystemColors.Control;
+            txtCont.BorderStyle = BorderStyle.FixedSingle;
+            txtCont.Location = new Point(120, 196);
+            txtCont.Name = "txtCont";
+            txtCont.Size = new Size(463, 23);
+            txtCont.TabIndex = 26;
             // 
-            // label4
+            // lblAddr
             // 
-            label4.AutoSize = true;
-            label4.Location = new Point(21, 157);
-            label4.Name = "label4";
-            label4.Size = new Size(49, 15);
-            label4.TabIndex = 25;
-            label4.Text = "SupAdd";
+            lblAddr.BackColor = SystemColors.Control;
+            lblAddr.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblAddr.ForeColor = Color.Black;
+            lblAddr.Location = new Point(23, 157);
+            lblAddr.Name = "lblAddr";
+            lblAddr.Size = new Size(113, 19);
+            lblAddr.TabIndex = 25;
+            lblAddr.Text = "📍  Address:";
             // 
-            // textBox4
+            // txtAddr
             // 
-            textBox4.Location = new Point(105, 154);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(242, 23);
-            textBox4.TabIndex = 24;
+            txtAddr.BackColor = Color.FromArgb(245, 245, 245);
+            txtAddr.BorderStyle = BorderStyle.FixedSingle;
+            txtAddr.Location = new Point(153, 157);
+            txtAddr.Name = "txtAddr";
+            txtAddr.Size = new Size(430, 23);
+            txtAddr.TabIndex = 24;
             // 
-            // dataGridView1
+            // dgv
             // 
-            dataGridView1.AllowUserToAddRows = false;
-            dataGridView1.AllowUserToDeleteRows = false;
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(21, 246);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.ReadOnly = true;
-            dataGridView1.Size = new Size(559, 192);
-            dataGridView1.TabIndex = 28;
+            dgv.AllowUserToAddRows = false;
+            dgv.AllowUserToDeleteRows = false;
+            dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgv.Location = new Point(21, 274);
+            dgv.Name = "dgv";
+            dgv.ReadOnly = true;
+            dgv.Size = new Size(702, 320);
+            dgv.TabIndex = 28;
+            dgv.CellClick += dgv_CellClick;
+            dgv.CellContentClick += dgv_CellContentClick;
             // 
-            // button2
+            // btnAdd
             // 
-            button2.Image = Properties.Resources.Add;
-            button2.ImageAlign = ContentAlignment.MiddleLeft;
-            button2.Location = new Point(444, 176);
-            button2.Name = "button2";
-            button2.Size = new Size(75, 23);
-            button2.TabIndex = 30;
-            button2.Text = "Add";
-            button2.TextAlign = ContentAlignment.MiddleRight;
-            button2.UseVisualStyleBackColor = true;
+            btnAdd.BackColor = Color.FromArgb(76, 175, 80);
+            btnAdd.Cursor = Cursors.Hand;
+            btnAdd.FlatAppearance.BorderSize = 0;
+            btnAdd.FlatStyle = FlatStyle.Flat;
+            btnAdd.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnAdd.ForeColor = Color.White;
+            btnAdd.ImageAlign = ContentAlignment.MiddleLeft;
+            btnAdd.Location = new Point(624, 58);
+            btnAdd.Name = "btnAdd";
+            btnAdd.Size = new Size(100, 35);
+            btnAdd.TabIndex = 30;
+            btnAdd.Text = "➕ Add";
+            btnAdd.UseVisualStyleBackColor = false;
+            btnAdd.Click += btnAddOrUp_Click;
             // 
-            // button1
+            // btnEdit
             // 
-            button1.Image = Properties.Resources.Edit;
-            button1.ImageAlign = ContentAlignment.MiddleLeft;
-            button1.Location = new Point(444, 108);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 29;
-            button1.Text = "Edit";
-            button1.TextAlign = ContentAlignment.MiddleRight;
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            btnEdit.BackColor = Color.FromArgb(63, 81, 181);
+            btnEdit.Cursor = Cursors.Hand;
+            btnEdit.FlatAppearance.BorderSize = 0;
+            btnEdit.FlatStyle = FlatStyle.Flat;
+            btnEdit.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnEdit.ForeColor = Color.White;
+            btnEdit.ImageAlign = ContentAlignment.MiddleLeft;
+            btnEdit.Location = new Point(623, 121);
+            btnEdit.Name = "btnEdit";
+            btnEdit.Size = new Size(100, 35);
+            btnEdit.TabIndex = 29;
+            btnEdit.Text = "✏️ Edit";
+            btnEdit.UseVisualStyleBackColor = false;
+            btnEdit.Click += btnEdit_Click;
+            // 
+            // btnUpdate
+            // 
+            btnUpdate.BackColor = Color.FromArgb(0, 150, 136);
+            btnUpdate.Cursor = Cursors.Hand;
+            btnUpdate.Enabled = false;
+            btnUpdate.FlatAppearance.BorderSize = 0;
+            btnUpdate.FlatStyle = FlatStyle.Flat;
+            btnUpdate.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnUpdate.ForeColor = Color.White;
+            btnUpdate.ImageAlign = ContentAlignment.MiddleLeft;
+            btnUpdate.Location = new Point(623, 183);
+            btnUpdate.Name = "btnUpdate";
+            btnUpdate.Size = new Size(100, 35);
+            btnUpdate.TabIndex = 31;
+            btnUpdate.Text = "✏️ Update";
+            btnUpdate.UseVisualStyleBackColor = false;
+            btnUpdate.Click += btnAddOrUp_Click;
             // 
             // frmSuppliers
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(598, 450);
-            Controls.Add(button2);
-            Controls.Add(button1);
-            Controls.Add(dataGridView1);
-            Controls.Add(label3);
-            Controls.Add(textBox3);
-            Controls.Add(label4);
-            Controls.Add(textBox4);
-            Controls.Add(label8);
-            Controls.Add(label2);
-            Controls.Add(textBox2);
-            Controls.Add(label1);
-            Controls.Add(textBox1);
+            ClientSize = new Size(736, 606);
+            Controls.Add(btnUpdate);
+            Controls.Add(btnAdd);
+            Controls.Add(btnEdit);
+            Controls.Add(dgv);
+            Controls.Add(lblCont);
+            Controls.Add(txtCont);
+            Controls.Add(lblAddr);
+            Controls.Add(txtAddr);
+            Controls.Add(lblManagement);
+            Controls.Add(lblSupName);
+            Controls.Add(txtSupName);
+            Controls.Add(lblSupID);
+            Controls.Add(txtSupID);
             Name = "frmSuppliers";
             Text = "frmSuppliers";
             Load += frmSuppliers_Load;
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgv).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private Label label8;
-        private Label label2;
-        private TextBox textBox2;
-        private Label label1;
-        private TextBox textBox1;
-        private Label label3;
-        private TextBox textBox3;
-        private Label label4;
-        private TextBox textBox4;
-        private DataGridView dataGridView1;
-        private Button button2;
-        private Button button1;
+        private Label lblManagement;
+        private Label lblSupName;
+        private TextBox txtSupName;
+        private Label lblSupID;
+        private TextBox txtSupID;
+        private Label lblCont;
+        private TextBox txtCont;
+        private Label lblAddr;
+        private TextBox txtAddr;
+        private DataGridView dgv;
+        private Button btnAdd;
+        private Button btnEdit;
+        private Button btnUpdate;
     }
 }

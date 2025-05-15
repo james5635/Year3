@@ -1,4 +1,5 @@
 SET ANSI_NULLS, QUOTED_IDENTIFIER ON;
+GO
 
 USE master
 GO
@@ -43,7 +44,7 @@ PRINT 'Table tbSuppliers created.';
 
 CREATE TABLE tbStaffs
 (
-    staffID TINYINT PRIMARY KEY,
+    staffID TINYINT IDENTITY(1,1) PRIMARY KEY,
     -- Allows IDs from 0 to 255
     FullName NVARCHAR(50) NOT NULL,
     Gen CHAR(1) NOT NULL CHECK (Gen IN ('M', 'F')),
@@ -294,113 +295,113 @@ PRINT 'Data insertion into tbSuppliers complete (100 records).';
 GO
 
 -- Insert into tbStaffs (100 Records)
--- Note: staffID is PRIMARY KEY, manually assigned 1-100
+-- Note: staffID is IDENTITY PRIMARY KEY, start at 1
 PRINT 'Inserting data into tbStaffs...';
 INSERT INTO tbStaffs
-    (staffID, FullName, Gen, Dob, Position, Salary, Stopwork)
+    ( FullName, Gen, Dob, Position, Salary, Stopwork)
 VALUES
     -- Original 10
-    (1, 'Alice Johnson', 'F', '1990-05-14', 'Manager', 70000, 0),
-    (2, 'Bob Smith', 'M', '1985-02-23', 'Sales', 50000, 0),
-    (3, 'Charlie Brown', 'M', '1992-08-12', 'Accountant', 55000, 0),
-    (4, 'Daisy Ridley', 'F', '1988-11-30', 'Support', 45000, 1),
-    (5, 'Evan Wright', 'M', '1995-07-19', 'Sales', 48000, 0),
-    (6, 'Fiona Glenanne', 'F', '1991-04-02', 'Manager', 72000, 0),
-    (7, 'George Martin', 'M', '1980-01-17', 'Support', 40000, 1),
-    (8, 'Hannah Baker', 'F', '1993-03-21', 'Accountant', 53000, 0),
-    (9, 'Ivan Petrov', 'M', '1987-09-25', 'Sales', 51000, 0),
-    (10, 'Jane Doe', 'F', '1994-12-10', 'Support', 42000, 0),
+    ( 'Alice Johnson', 'F', '1990-05-14', 'Manager', 70000, 0),
+    ( 'Bob Smith', 'M', '1985-02-23', 'Sales', 50000, 0),
+    ( 'Charlie Brown', 'M', '1992-08-12', 'Accountant', 55000, 0),
+    ( 'Daisy Ridley', 'F', '1988-11-30', 'Support', 45000, 1),
+    ( 'Evan Wright', 'M', '1995-07-19', 'Sales', 48000, 0),
+    ( 'Fiona Glenanne', 'F', '1991-04-02', 'Manager', 72000, 0),
+    ( 'George Martin', 'M', '1980-01-17', 'Support', 40000, 1),
+    ( 'Hannah Baker', 'F', '1993-03-21', 'Accountant', 53000, 0),
+    ( 'Ivan Petrov', 'M', '1987-09-25', 'Sales', 51000, 0),
+    ( 'Jane Doe', 'F', '1994-12-10', 'Support', 42000, 0),
     -- Added 90
-    (11, 'Kevin Lee', 'M', '1996-10-05', 'Technician', 47000, 0),
-    (12, 'Laura Palmer', 'F', '1989-06-15', 'HR Specialist', 60000, 0),
-    (13, 'Michael Scott', 'M', '1982-03-18', 'Regional Manager', 75000, 0),
-    (14, 'Nancy Drew', 'F', '1997-01-20', 'Analyst', 58000, 0),
-    (15, 'Oliver Twist', 'M', '1998-08-08', 'Intern', 25000, 0),
-    (16, 'Pam Beesly', 'F', '1990-07-07', 'Admin', 46000, 0),
-    (17, 'Quentin Crisp', 'M', '1984-12-01', 'Marketing Lead', 62000, 0),
-    (18, 'Rachel Green', 'F', '1991-02-14', 'Sales Associate', 52000, 0),
-    (19, 'Sam Winchester', 'M', '1986-05-02', 'Senior Technician', 59000, 0),
-    (20, 'Tina Fey', 'F', '1988-09-11', 'Lead Manager', 78000, 0),
-    (21, 'Uma Thurman', 'F', '1993-04-29', 'Customer Success', 44000, 0),
-    (22, 'Vince Vaughn', 'M', '1981-11-05', 'Senior Sales', 56000, 0),
-    (23, 'Walter White', 'M', '1979-09-07', 'Logistics', 57000, 1),
-    (24, 'Xena Warrior', 'F', '1983-03-15', 'Security Officer', 50000, 0),
-    (25, 'Yuri Gagarin', 'M', '1970-10-21', 'Consultant', 90000, 0),
-    (26, 'Zoe Saldana', 'F', '1992-07-24', 'Content Writer', 57000, 0),
-    (27, 'Arthur Pendragon', 'M', '1987-01-09', 'Sales Engineer', 61500, 0),
-    (28, 'Betty Cooper', 'F', '1995-01-17', 'Office Admin', 47500, 0),
-    (29, 'Conan Edogawa', 'M', '1993-04-18', 'Marketing Assistant', 41000, 0),
-    (30, 'Drew Barrymore', 'F', '1990-02-22', 'Operations Manager', 74000, 0),
-    (31, 'Ethan Hunt', 'M', '1981-06-28', 'Field Engineer', 65000, 0),
-    (32, 'Gwen Stacy', 'F', '1999-08-15', 'Junior Developer', 52000, 0),
-    (33, 'Harry Potter', 'M', '1991-07-31', 'IT Support', 48000, 0),
-    (34, 'Iris West', 'F', '1994-05-20', 'HR Assistant', 49000, 0),
-    (35, 'Jack Sparrow', 'M', '1980-11-11', 'Purchasing Agent', 53000, 0),
-    (36, 'Kim Possible', 'F', '1997-06-07', 'Project Coordinator', 54000, 0),
-    (37, 'Luke Skywalker', 'M', '1988-03-25', 'Systems Analyst', 63000, 0),
-    (38, 'Mary Jane Watson', 'F', '1993-09-10', 'Receptionist', 41000, 0),
-    (39, 'Neo Anderson', 'M', '1984-03-13', 'Network Engineer', 67000, 0),
-    (40, 'Olivia Pope', 'F', '1985-12-01', 'PR Manager', 76000, 0),
-    (41, 'Peter Pan', 'M', '1996-02-29', 'Sales Intern', 28000, 0),
-    (42, 'Quinn Fabray', 'F', '1994-11-08', 'Account Manager', 61000, 0),
-    (43, 'Rick Grimes', 'M', '1978-09-19', 'Warehouse Manager', 60000, 1),
-    (44, 'Sarah Connor', 'F', '1982-10-22', 'Logistics Coordinator', 51000, 0),
-    (45, 'Tony Stark', 'M', '1975-05-29', 'CEO', 150000, 0),
-    (46, 'Ursula Buffay', 'F', '1987-07-15', 'Support Specialist', 46000, 0),
-    (47, 'Victor Frankenstein', 'M', '1990-01-30', 'R&D Specialist', 69000, 0),
-    (48, 'Willow Rosenberg', 'F', '1992-08-21', 'IT Manager', 73000, 0),
-    (49, 'Xavier Charles', 'M', '1976-04-16', 'Senior Consultant', 95000, 0),
-    (50, 'Ygritte Snow', 'F', '1991-03-17', 'Field Sales', 53000, 0),
-    (51, 'Zachary Taylor', 'M', '1983-11-24', 'Accountant II', 59000, 0),
-    (52, 'Amy Santiago', 'F', '1990-09-01', 'Office Manager', 62000, 0),
-    (53, 'Bilbo Baggins', 'M', '1965-09-22', 'Archivist', 54000, 1),
-    (54, 'Carmen Sandiego', 'F', '1985-03-05', 'Travel Coordinator', 50000, 0),
-    (55, 'Dexter Morgan', 'M', '1980-02-01', 'Forensic Analyst', 68000, 0),
-    (56, 'Elle Woods', 'F', '1993-10-13', 'Legal Counsel', 85000, 0),
-    (57, 'Forrest Gump', 'M', '1977-07-06', 'Operations Support', 45000, 0),
-    (58, 'Ginny Weasley', 'F', '1992-08-11', 'Marketing Manager', 71000, 0),
-    (59, 'Han Solo', 'M', '1982-01-25', 'Logistics Driver', 48000, 0),
-    (60, 'Isabelle Lightwood', 'F', '1995-05-12', 'Security Analyst', 66000, 0),
-    (61, 'James Bond', 'M', '1979-11-16', 'Risk Analyst', 77000, 0),
-    (62, 'Katniss Everdeen', 'F', '1996-05-08', 'Procurement Specialist', 57000, 0),
-    (63, 'Legolas Greenleaf', 'M', '1989-04-01', 'Customer Relations', 52000, 0),
-    (64, 'Mulan Fa', 'F', '1991-06-20', 'Training Coordinator', 56000, 0),
-    (65, 'Naruto Uzumaki', 'M', '1998-10-10', 'Junior Sales', 46000, 0),
-    (66, 'Oprah Winfrey', 'F', '1974-01-29', 'Communications Director', 98000, 0),
-    (67, 'Paddington Bear', 'M', '1986-12-25', 'Receptionist', 42000, 0),
-    (68, 'Queen Elsa', 'F', '1990-12-21', 'Facilities Manager', 64000, 0),
-    (69, 'Ron Swanson', 'M', '1970-03-03', 'Director', 88000, 0),
-    (70, 'Sakura Haruno', 'F', '1998-03-28', 'Medical Officer', 70000, 0),
-    (71, 'Sherlock Holmes', 'M', '1981-01-06', 'Lead Analyst', 82000, 0),
-    (72, 'Tiana Princess', 'F', '1994-09-16', 'Culinary Manager', 58000, 0),
-    (73, 'Usain Bolt', 'M', '1986-08-21', 'Logistics Expediter', 50000, 0),
-    (74, 'Violet Baudelaire', 'F', '1999-04-04', 'Junior Engineer', 55000, 0),
-    (75, 'Willy Wonka', 'M', '1972-02-15', 'Product Development Lead', 79000, 0),
-    (76, 'Xavier McDaniel', 'M', '1985-06-04', 'Sales Manager', 80000, 0),
-    (77, 'Yara Greyjoy', 'F', '1990-11-19', 'Fleet Manager', 63000, 0),
-    (78, 'Zorro Vega', 'M', '1978-07-09', 'Brand Ambassador', 61000, 0),
-    (79, 'Archie Andrews', 'M', '1997-12-07', 'Support Technician', 44000, 0),
-    (80, 'Buffy Summers', 'F', '1993-01-19', 'Night Security', 47000, 0),
-    (81, 'Chuck Bartowski', 'M', '1988-09-24', 'Senior IT Support', 58000, 0),
-    (82, 'Daenerys Targaryen', 'F', '1992-06-23', 'Executive Assistant', 65000, 0),
-    (83, 'Eddard Stark', 'M', '1975-04-17', 'Compliance Officer', 72000, 1),
-    (84, 'Felicity Smoak', 'F', '1991-07-24', 'Network Administrator', 68000, 0),
-    (85, 'Gregory House', 'M', '1979-06-11', 'Medical Consultant', 92000, 0),
-    (86, 'Hermione Granger', 'F', '1991-09-19', 'Research Lead', 74000, 0),
-    (87, 'Indiana Jones', 'M', '1968-07-01', 'Acquisitions Specialist', 70000, 0),
-    (88, 'Jessica Jones', 'F', '1987-03-12', 'Investigator', 63000, 0),
-    (89, 'Khal Drogo', 'M', '1984-08-01', 'Security Consultant', 69000, 1),
-    (90, 'Lara Croft', 'F', '1990-02-14', 'Field Researcher', 66000, 0),
-    (91, 'Marty McFly', 'M', '1995-06-09', 'Logistics Assistant', 43000, 0),
-    (92, 'Natasha Romanoff', 'F', '1988-11-22', 'Special Operations', 81000, 0),
-    (93, 'Optimus Prime', 'M', '1960-01-01', 'Fleet Commander', 100000, 0),
-    (94, 'Pepper Potts', 'F', '1983-10-15', 'Chief Operations Officer', 120000, 0),
-    (95, 'Remy LeBeau', 'M', '1989-05-05', 'Sales Representative', 54000, 0),
-    (96, 'Steve Rogers', 'M', '1970-07-04', 'Ethics Officer', 85000, 0),
-    (97, 'Trinity Matrix', 'F', '1986-09-09', 'Systems Security', 78000, 0),
-    (98, 'Uhtred Ragnarson', 'M', '1977-03-20', 'Territory Manager', 76000, 0),
-    (99, 'Vanessa Ives', 'F', '1980-11-03', 'Archivist', 56000, 0),
-    (100, 'Wolverine Logan', 'M', '1965-04-22', 'Security Specialist', 71000, 0);
+    ( 'Kevin Lee', 'M', '1996-10-05', 'Technician', 47000, 0),
+    ( 'Laura Palmer', 'F', '1989-06-15', 'HR Specialist', 60000, 0),
+    ( 'Michael Scott', 'M', '1982-03-18', 'Regional Manager', 75000, 0),
+    ( 'Nancy Drew', 'F', '1997-01-20', 'Analyst', 58000, 0),
+    ( 'Oliver Twist', 'M', '1998-08-08', 'Intern', 25000, 0),
+    ( 'Pam Beesly', 'F', '1990-07-07', 'Admin', 46000, 0),
+    ( 'Quentin Crisp', 'M', '1984-12-01', 'Marketing Lead', 62000, 0),
+    ( 'Rachel Green', 'F', '1991-02-14', 'Sales Associate', 52000, 0),
+    ( 'Sam Winchester', 'M', '1986-05-02', 'Senior Technician', 59000, 0),
+    ( 'Tina Fey', 'F', '1988-09-11', 'Lead Manager', 78000, 0),
+    ( 'Uma Thurman', 'F', '1993-04-29', 'Customer Success', 44000, 0),
+    ( 'Vince Vaughn', 'M', '1981-11-05', 'Senior Sales', 56000, 0),
+    ( 'Walter White', 'M', '1979-09-07', 'Logistics', 57000, 1),
+    ( 'Xena Warrior', 'F', '1983-03-15', 'Security Officer', 50000, 0),
+    ( 'Yuri Gagarin', 'M', '1970-10-21', 'Consultant', 90000, 0),
+    ( 'Zoe Saldana', 'F', '1992-07-24', 'Content Writer', 57000, 0),
+    ( 'Arthur Pendragon', 'M', '1987-01-09', 'Sales Engineer', 61500, 0),
+    ( 'Betty Cooper', 'F', '1995-01-17', 'Office Admin', 47500, 0),
+    ( 'Conan Edogawa', 'M', '1993-04-18', 'Marketing Assistant', 41000, 0),
+    ( 'Drew Barrymore', 'F', '1990-02-22', 'Operations Manager', 74000, 0),
+    ( 'Ethan Hunt', 'M', '1981-06-28', 'Field Engineer', 65000, 0),
+    ( 'Gwen Stacy', 'F', '1999-08-15', 'Junior Developer', 52000, 0),
+    ( 'Harry Potter', 'M', '1991-07-31', 'IT Support', 48000, 0),
+    ( 'Iris West', 'F', '1994-05-20', 'HR Assistant', 49000, 0),
+    ( 'Jack Sparrow', 'M', '1980-11-11', 'Purchasing Agent', 53000, 0),
+    ( 'Kim Possible', 'F', '1997-06-07', 'Project Coordinator', 54000, 0),
+    ( 'Luke Skywalker', 'M', '1988-03-25', 'Systems Analyst', 63000, 0),
+    ( 'Mary Jane Watson', 'F', '1993-09-10', 'Receptionist', 41000, 0),
+    ( 'Neo Anderson', 'M', '1984-03-13', 'Network Engineer', 67000, 0),
+    ( 'Olivia Pope', 'F', '1985-12-01', 'PR Manager', 76000, 0),
+    ( 'Peter Pan', 'M', '1996-02-29', 'Sales Intern', 28000, 0),
+    ( 'Quinn Fabray', 'F', '1994-11-08', 'Account Manager', 61000, 0),
+    ( 'Rick Grimes', 'M', '1978-09-19', 'Warehouse Manager', 60000, 1),
+    ( 'Sarah Connor', 'F', '1982-10-22', 'Logistics Coordinator', 51000, 0),
+    ( 'Tony Stark', 'M', '1975-05-29', 'CEO', 150000, 0),
+    ( 'Ursula Buffay', 'F', '1987-07-15', 'Support Specialist', 46000, 0),
+    ( 'Victor Frankenstein', 'M', '1990-01-30', 'R&D Specialist', 69000, 0),
+    ( 'Willow Rosenberg', 'F', '1992-08-21', 'IT Manager', 73000, 0),
+    ( 'Xavier Charles', 'M', '1976-04-16', 'Senior Consultant', 95000, 0),
+    ( 'Ygritte Snow', 'F', '1991-03-17', 'Field Sales', 53000, 0),
+    ( 'Zachary Taylor', 'M', '1983-11-24', 'Accountant II', 59000, 0),
+    ( 'Amy Santiago', 'F', '1990-09-01', 'Office Manager', 62000, 0),
+    ( 'Bilbo Baggins', 'M', '1965-09-22', 'Archivist', 54000, 1),
+    ( 'Carmen Sandiego', 'F', '1985-03-05', 'Travel Coordinator', 50000, 0),
+    ( 'Dexter Morgan', 'M', '1980-02-01', 'Forensic Analyst', 68000, 0),
+    ( 'Elle Woods', 'F', '1993-10-13', 'Legal Counsel', 85000, 0),
+    ( 'Forrest Gump', 'M', '1977-07-06', 'Operations Support', 45000, 0),
+    ( 'Ginny Weasley', 'F', '1992-08-11', 'Marketing Manager', 71000, 0),
+    ( 'Han Solo', 'M', '1982-01-25', 'Logistics Driver', 48000, 0),
+    ( 'Isabelle Lightwood', 'F', '1995-05-12', 'Security Analyst', 66000, 0),
+    ( 'James Bond', 'M', '1979-11-16', 'Risk Analyst', 77000, 0),
+    ( 'Katniss Everdeen', 'F', '1996-05-08', 'Procurement Specialist', 57000, 0),
+    ( 'Legolas Greenleaf', 'M', '1989-04-01', 'Customer Relations', 52000, 0),
+    ( 'Mulan Fa', 'F', '1991-06-20', 'Training Coordinator', 56000, 0),
+    ( 'Naruto Uzumaki', 'M', '1998-10-10', 'Junior Sales', 46000, 0),
+    ( 'Oprah Winfrey', 'F', '1974-01-29', 'Communications Director', 98000, 0),
+    ( 'Paddington Bear', 'M', '1986-12-25', 'Receptionist', 42000, 0),
+    ( 'Queen Elsa', 'F', '1990-12-21', 'Facilities Manager', 64000, 0),
+    ( 'Ron Swanson', 'M', '1970-03-03', 'Director', 88000, 0),
+    ( 'Sakura Haruno', 'F', '1998-03-28', 'Medical Officer', 70000, 0),
+    ( 'Sherlock Holmes', 'M', '1981-01-06', 'Lead Analyst', 82000, 0),
+    ( 'Tiana Princess', 'F', '1994-09-16', 'Culinary Manager', 58000, 0),
+    ( 'Usain Bolt', 'M', '1986-08-21', 'Logistics Expediter', 50000, 0),
+    ( 'Violet Baudelaire', 'F', '1999-04-04', 'Junior Engineer', 55000, 0),
+    ( 'Willy Wonka', 'M', '1972-02-15', 'Product Development Lead', 79000, 0),
+    ( 'Xavier McDaniel', 'M', '1985-06-04', 'Sales Manager', 80000, 0),
+    ( 'Yara Greyjoy', 'F', '1990-11-19', 'Fleet Manager', 63000, 0),
+    ( 'Zorro Vega', 'M', '1978-07-09', 'Brand Ambassador', 61000, 0),
+    ( 'Archie Andrews', 'M', '1997-12-07', 'Support Technician', 44000, 0),
+    ( 'Buffy Summers', 'F', '1993-01-19', 'Night Security', 47000, 0),
+    ( 'Chuck Bartowski', 'M', '1988-09-24', 'Senior IT Support', 58000, 0),
+    ( 'Daenerys Targaryen', 'F', '1992-06-23', 'Executive Assistant', 65000, 0),
+    ( 'Eddard Stark', 'M', '1975-04-17', 'Compliance Officer', 72000, 1),
+    ( 'Felicity Smoak', 'F', '1991-07-24', 'Network Administrator', 68000, 0),
+    ( 'Gregory House', 'M', '1979-06-11', 'Medical Consultant', 92000, 0),
+    ( 'Hermione Granger', 'F', '1991-09-19', 'Research Lead', 74000, 0),
+    ( 'Indiana Jones', 'M', '1968-07-01', 'Acquisitions Specialist', 70000, 0),
+    ( 'Jessica Jones', 'F', '1987-03-12', 'Investigator', 63000, 0),
+    ( 'Khal Drogo', 'M', '1984-08-01', 'Security Consultant', 69000, 1),
+    ( 'Lara Croft', 'F', '1990-02-14', 'Field Researcher', 66000, 0),
+    ( 'Marty McFly', 'M', '1995-06-09', 'Logistics Assistant', 43000, 0),
+    ( 'Natasha Romanoff', 'F', '1988-11-22', 'Special Operations', 81000, 0),
+    ( 'Optimus Prime', 'M', '1960-01-01', 'Fleet Commander', 100000, 0),
+    ( 'Pepper Potts', 'F', '1983-10-15', 'Chief Operations Officer', 120000, 0),
+    ( 'Remy LeBeau', 'M', '1989-05-05', 'Sales Representative', 54000, 0),
+    ( 'Steve Rogers', 'M', '1970-07-04', 'Ethics Officer', 85000, 0),
+    ( 'Trinity Matrix', 'F', '1986-09-09', 'Systems Security', 78000, 0),
+    ( 'Uhtred Ragnarson', 'M', '1977-03-20', 'Territory Manager', 76000, 0),
+    ( 'Vanessa Ives', 'F', '1980-11-03', 'Archivist', 56000, 0),
+    ( 'Wolverine Logan', 'M', '1965-04-22', 'Security Specialist', 71000, 0);
 PRINT 'Data insertion into tbStaffs complete (100 records).';
 GO
 
@@ -1381,7 +1382,6 @@ VALUES
 PRINT 'Data insertion into tbOrderDetail complete (100 records).';
 GO
 
-
 -- procedure for select
 PRINT 'creating procedure for select ';
 GO
@@ -1454,35 +1454,34 @@ GO
 PRINT 'creating procedure for insert ';
 GO
 CREATE PROCEDURE spInsertStaff
-    @id TINYINT,
     @name NVARCHAR(50), @gender CHAR(1), @dob DATE, @position NVARCHAR(50), @salary MONEY, 
     @stopwork BIT, @photo VARBINARY(MAX)
 AS
     INSERT INTO [dbo].[tbStaffs] 
-    (staffID, FullName, Gen, Dob, Position, Salary, Stopwork, Photo) 
-    VALUES (@id, @name, @gender, @dob, @position, @salary, @stopwork, @photo)
+    ( FullName, Gen, Dob, Position, Salary, Stopwork, Photo) 
+    VALUES ( @name, @gender, @dob, @position, @salary, @stopwork, @photo)
 GO
 CREATE PROCEDURE spInsertSupplier
-    @id INT,
+  
     @supplier NVARCHAR(100), @supAdd NVARCHAR(100), @supCon VARCHAR(100)
 AS
     INSERT INTO [dbo].[tbSuppliers] 
-    (supID, Supplier, SupAdd, SupCon)
-    values (@id, @supplier, @supAdd, @supCon)
+    ( Supplier, SupAdd, SupCon)
+    values ( @supplier, @supAdd, @supCon)
 GO
 CREATE PROCEDURE spInsertCustomer
-    @id INT, cusName VARCHAR(100), cusContact VARCHAR(15)
+  @cusName VARCHAR(100), @cusContact VARCHAR(15)
 AS
     INSERT INTO [dbo].[tbCustomers]
-    (cusID, CusName, CusContact)
-    VALUES (@id, @cusName, @cusContact)
+    ( CusName, CusContact)
+    VALUES ( @cusName, @cusContact)
 GO
 CREATE PROCEDURE spInsertProduct
-    @code INT, @name VARCHAR(100), @qty SMALLINT, @UPIS MONEY, @SUP MONEY
+   @name VARCHAR(100), @qty SMALLINT, @UPIS MONEY, @SUP MONEY
 AS
     INSERT INTO [dbo].[tbProducts]
-    (ProCode, ProName, Qty, UPIS, SUP)
-    VALUES (@code, @name, @qty, @UPIS, @SUP)
+    ( ProName, Qty, UPIS, SUP)
+    VALUES ( @name, @qty, @UPIS, @SUP)
 GO
 PRINT 'procedure for insert created successfully.';
 GO
@@ -1506,7 +1505,8 @@ CREATE PROCEDURE spUpdateSupplier
     @id INT,
     @supplier NVARCHAR(100), @supAdd NVARCHAR(100), @supCon VARCHAR(100)
 AS
-    Supplier = @supplier,
+    UPDATE [dbo].[tbSuppliers]
+    SET Supplier = @supplier,
     SupAdd = @supAdd,
     SupCon = @supCon
     WHERE supID = @id

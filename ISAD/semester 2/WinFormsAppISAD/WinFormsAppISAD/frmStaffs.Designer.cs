@@ -32,22 +32,22 @@
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             btnUpdate = new Button();
             txtId = new TextBox();
-            label1 = new Label();
-            label2 = new Label();
+            lblStaffID = new Label();
+            lblFN = new Label();
             txtFName = new TextBox();
             rdoF = new RadioButton();
-            label3 = new Label();
+            lblGen = new Label();
             rdoM = new RadioButton();
-            label4 = new Label();
+            lblBod = new Label();
             dtpDOB = new DateTimePicker();
-            label5 = new Label();
+            lblPos = new Label();
             txtPos = new TextBox();
-            label6 = new Label();
+            lblSalary = new Label();
             txtSalary = new TextBox();
-            label7 = new Label();
+            lblStatus = new Label();
             txtStatus = new CheckBox();
             pBox = new PictureBox();
-            label8 = new Label();
+            lblSM = new Label();
             btnAdd = new Button();
             dgv = new DataGridView();
             btnEdit = new Button();
@@ -83,30 +83,31 @@
             txtId.BorderStyle = BorderStyle.FixedSingle;
             txtId.Location = new Point(120, 74);
             txtId.Name = "txtId";
+            txtId.ReadOnly = true;
             txtId.Size = new Size(150, 23);
             txtId.TabIndex = 2;
             // 
-            // label1
+            // lblStaffID
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            label1.ForeColor = Color.FromArgb(33, 33, 33);
-            label1.Location = new Point(23, 77);
-            label1.Name = "label1";
-            label1.Size = new Size(86, 19);
-            label1.TabIndex = 1;
-            label1.Text = "🆔 Staff ID:";
+            lblStaffID.AutoSize = true;
+            lblStaffID.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblStaffID.ForeColor = Color.FromArgb(33, 33, 33);
+            lblStaffID.Location = new Point(23, 77);
+            lblStaffID.Name = "lblStaffID";
+            lblStaffID.Size = new Size(86, 19);
+            lblStaffID.TabIndex = 1;
+            lblStaffID.Text = "🆔 Staff ID:";
             // 
-            // label2
+            // lblFN
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            label2.ForeColor = Color.FromArgb(33, 33, 33);
-            label2.Location = new Point(23, 119);
-            label2.Name = "label2";
-            label2.Size = new Size(104, 19);
-            label2.TabIndex = 3;
-            label2.Text = "👤 Full Name:";
+            lblFN.AutoSize = true;
+            lblFN.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblFN.ForeColor = Color.FromArgb(33, 33, 33);
+            lblFN.Location = new Point(23, 119);
+            lblFN.Name = "lblFN";
+            lblFN.Size = new Size(104, 19);
+            lblFN.TabIndex = 3;
+            lblFN.Text = "👤 Full Name:";
             // 
             // txtFName
             // 
@@ -127,16 +128,16 @@
             rdoF.TabIndex = 0;
             rdoF.Text = "👩 Female";
             // 
-            // label3
+            // lblGen
             // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            label3.ForeColor = Color.FromArgb(33, 33, 33);
-            label3.Location = new Point(23, 164);
-            label3.Name = "label3";
-            label3.Size = new Size(80, 19);
-            label3.TabIndex = 5;
-            label3.Text = "⚤ Gender:";
+            lblGen.AutoSize = true;
+            lblGen.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblGen.ForeColor = Color.FromArgb(33, 33, 33);
+            lblGen.Location = new Point(23, 164);
+            lblGen.Name = "lblGen";
+            lblGen.Size = new Size(80, 19);
+            lblGen.TabIndex = 5;
+            lblGen.Text = "⚤ Gender:";
             // 
             // rdoM
             // 
@@ -147,16 +148,16 @@
             rdoM.TabIndex = 1;
             rdoM.Text = "👨 Male";
             // 
-            // label4
+            // lblBod
             // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            label4.ForeColor = Color.FromArgb(33, 33, 33);
-            label4.Location = new Point(23, 206);
-            label4.Name = "label4";
-            label4.Size = new Size(104, 19);
-            label4.TabIndex = 7;
-            label4.Text = "📅 Birth Date:";
+            lblBod.AutoSize = true;
+            lblBod.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblBod.ForeColor = Color.FromArgb(33, 33, 33);
+            lblBod.Location = new Point(23, 206);
+            lblBod.Name = "lblBod";
+            lblBod.Size = new Size(104, 19);
+            lblBod.TabIndex = 7;
+            lblBod.Text = "📅 Birth Date:";
             // 
             // dtpDOB
             // 
@@ -167,16 +168,16 @@
             dtpDOB.Size = new Size(250, 23);
             dtpDOB.TabIndex = 8;
             // 
-            // label5
+            // lblPos
             // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            label5.ForeColor = Color.FromArgb(33, 33, 33);
-            label5.Location = new Point(23, 253);
-            label5.Name = "label5";
-            label5.Size = new Size(91, 19);
-            label5.TabIndex = 9;
-            label5.Text = "💼 Position:";
+            lblPos.AutoSize = true;
+            lblPos.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblPos.ForeColor = Color.FromArgb(33, 33, 33);
+            lblPos.Location = new Point(23, 253);
+            lblPos.Name = "lblPos";
+            lblPos.Size = new Size(91, 19);
+            lblPos.TabIndex = 9;
+            lblPos.Text = "💼 Position:";
             // 
             // txtPos
             // 
@@ -187,16 +188,16 @@
             txtPos.Size = new Size(250, 23);
             txtPos.TabIndex = 10;
             // 
-            // label6
+            // lblSalary
             // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            label6.ForeColor = Color.FromArgb(33, 33, 33);
-            label6.Location = new Point(23, 297);
-            label6.Name = "label6";
-            label6.Size = new Size(80, 19);
-            label6.TabIndex = 11;
-            label6.Text = "💰 Salary:";
+            lblSalary.AutoSize = true;
+            lblSalary.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblSalary.ForeColor = Color.FromArgb(33, 33, 33);
+            lblSalary.Location = new Point(23, 297);
+            lblSalary.Name = "lblSalary";
+            lblSalary.Size = new Size(80, 19);
+            lblSalary.TabIndex = 11;
+            lblSalary.Text = "💰 Salary:";
             // 
             // txtSalary
             // 
@@ -206,17 +207,18 @@
             txtSalary.Name = "txtSalary";
             txtSalary.Size = new Size(250, 23);
             txtSalary.TabIndex = 12;
+    
             // 
-            // label7
+            // lblStatus
             // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            label7.ForeColor = Color.FromArgb(33, 33, 33);
-            label7.Location = new Point(23, 337);
-            label7.Name = "label7";
-            label7.Size = new Size(77, 19);
-            label7.TabIndex = 13;
-            label7.Text = "🔄 Status:";
+            lblStatus.AutoSize = true;
+            lblStatus.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblStatus.ForeColor = Color.FromArgb(33, 33, 33);
+            lblStatus.Location = new Point(23, 337);
+            lblStatus.Name = "lblStatus";
+            lblStatus.Size = new Size(77, 19);
+            lblStatus.TabIndex = 13;
+            lblStatus.Text = "🔄 Status:";
             // 
             // txtStatus
             // 
@@ -240,17 +242,17 @@
             pBox.TabStop = false;
             pBox.Click += pBox_Click;
             // 
-            // label8
+            // lblSM
             // 
-            label8.AutoSize = true;
-            label8.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label8.ForeColor = Color.FromArgb(0, 150, 136);
-            label8.Location = new Point(20, 7);
-            label8.Name = "label8";
-            label8.Size = new Size(351, 45);
-            label8.TabIndex = 0;
-            label8.Text = "👥 Staff Management";
-            label8.TextAlign = ContentAlignment.MiddleCenter;
+            lblSM.AutoSize = true;
+            lblSM.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblSM.ForeColor = Color.FromArgb(0, 150, 136);
+            lblSM.Location = new Point(20, 7);
+            lblSM.Name = "lblSM";
+            lblSM.Size = new Size(351, 45);
+            lblSM.TabIndex = 0;
+            lblSM.Text = "👥 Staff Management";
+            lblSM.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // btnAdd
             // 
@@ -381,20 +383,20 @@
             BackColor = Color.White;
             ClientSize = new Size(850, 600);
             Controls.Add(btnView);
-            Controls.Add(label8);
-            Controls.Add(label1);
+            Controls.Add(lblSM);
+            Controls.Add(lblStaffID);
             Controls.Add(txtId);
-            Controls.Add(label2);
+            Controls.Add(lblFN);
             Controls.Add(txtFName);
-            Controls.Add(label3);
+            Controls.Add(lblGen);
             Controls.Add(genderPanel);
-            Controls.Add(label4);
+            Controls.Add(lblBod);
             Controls.Add(dtpDOB);
-            Controls.Add(label5);
+            Controls.Add(lblPos);
             Controls.Add(txtPos);
-            Controls.Add(label6);
+            Controls.Add(lblSalary);
             Controls.Add(txtSalary);
-            Controls.Add(label7);
+            Controls.Add(lblStatus);
             Controls.Add(txtStatus);
             Controls.Add(photoLabel);
             Controls.Add(pBox);
@@ -408,7 +410,7 @@
             Name = "frmStaffs";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "👥 Staff Management";
-           
+            Load += frmStaffs_Load_1;
             ((System.ComponentModel.ISupportInitialize)pBox).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgv).EndInit();
             genderPanel.ResumeLayout(false);
@@ -420,22 +422,22 @@
 
         private Button btnUpdate;
         private TextBox txtId;
-        private Label label1;
-        private Label label2;
+        private Label lblStaffID;
+        private Label lblFN;
         private TextBox txtFName;
         private RadioButton rdoF;
-        private Label label3;
+        private Label lblGen;
         private RadioButton rdoM;
-        private Label label4;
+        private Label lblBod;
         private DateTimePicker dtpDOB;
-        private Label label5;
+        private Label lblPos;
         private TextBox txtPos;
-        private Label label6;
+        private Label lblSalary;
         private TextBox txtSalary;
-        private Label label7;
+        private Label lblStatus;
         private CheckBox txtStatus;
         private PictureBox pBox;
-        private Label label8;
+        private Label lblSM;
         private Button btnAdd;
         private DataGridView dgv;
         private Button btnEdit;
