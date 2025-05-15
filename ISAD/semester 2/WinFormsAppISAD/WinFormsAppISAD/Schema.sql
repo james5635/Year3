@@ -1381,6 +1381,8 @@ VALUES
 PRINT 'Data insertion into tbOrderDetail complete (100 records).';
 GO
 
+
+-- procedure for select
 PRINT 'creating procedure spGetAllStaff ';
 GO
 -- In SQL Server, there must be only CREATE PROCEDURE/ ALTER PROCEDURE in a batch
@@ -1440,4 +1442,30 @@ Select
 From [dbo].[tbProducts];
 GO
 PRINT 'spGetAllProduct created successfully.';
+GO
+
+-- procdure for insert
+CREATE PROCEDURE spInsertStaff
+    @id TINYINT,
+    @name NVARCHAR(50), @gender CHAR(1), @dob DATE, @position NVARCHAR(50), @salary MONEY, 
+    @stopwork BIT, @photo VARBINARY(MAX)
+AS
+    INSERT INTO [dbo].[tbStaffs] 
+    (staffID, FullName, Gen, Dob, Position, Salary, Stopwork, Photo) 
+    VALUES (@id, @name, @gender, @dob, @position, @salary, @stopwork, @photo)
+GO
+
+
+-- procedure for update
+CREATE PROCEDURE spUpdateStaff
+    @id TINYINT,
+    @name NVARCHAR(50), @gender CHAR(1), @dob DATE, @position NVARCHAR(50), @salary MONEY, 
+    @stopwork BIT, @photo VARBINARY(MAX) 
+AS
+    UPDATE [dbo].[tbStaffs] 
+    SET FullName = @name, Gen = @gender, 
+    Dob = @dob, Position = @position, 
+    Salary = @salary, Stopwork = @stopwork ,
+    Photo = @Photo
+    WHERE staffID = @id
 GO

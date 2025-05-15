@@ -13,6 +13,7 @@ namespace WinFormsAppISAD
         private TextBox txtSearch = null!;
         private bool isEditing = false;
 
+        public int? x { get; set; } = null;
         public frmStaffs()
         {
             InitializeComponent();
@@ -112,8 +113,10 @@ namespace WinFormsAppISAD
         {
             if (dgv.DataSource is DataTable dt)
             {
-                dt.DefaultView.RowFilter = string.Format("Name LIKE '%{0}%' OR Position LIKE '%{0}%'",
+                // make sure ' is handled properly (example: O'Reilly => 'O''Reilly')
+                string searchStr = string.Format("Name LIKE '%{0}%' OR Position LIKE '%{0}%'",
                     txtSearch.Text.Replace("'", "''"));
+                dt.DefaultView.RowFilter = searchStr;
             }
         }
 
@@ -240,16 +243,11 @@ namespace WinFormsAppISAD
 
             try
             {
-
-
                 using SqlConnection conn = new(connStr);
-                string query = @"UPDATE tbStaffs 
-                               SET FullName = @name, Gen = @gender, 
-                                   Dob = @dob, Position = @position, 
-                                   Salary = @salary, Stopwork = @stopwork 
-                               WHERE staffID = @id";
+                string query = @"spUpdateStaff";
 
                 using SqlCommand cmd = new(query, conn);
+                cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@id", int.Parse(txtId.Text));
                 cmd.Parameters.AddWithValue("@name", txtFName.Text.Trim());
                 cmd.Parameters.AddWithValue("@gender", rdoF.Checked ? "F" : "M");
@@ -257,6 +255,8 @@ namespace WinFormsAppISAD
                 cmd.Parameters.AddWithValue("@position", txtPos.Text.Trim());
                 cmd.Parameters.AddWithValue("@salary", decimal.Parse(txtSalary.Text));
                 cmd.Parameters.AddWithValue("@stopwork", txtStatus.Checked);
+                cmd.Parameters.Add("@photo", SqlDbType.VarBinary).Value =  pBox.Image is Image img ? new Func<byte[]>(() => {  var ms = new MemoryStream(); img.Save(ms, pBox.Image.RawFormat); return ms.ToArray(); })() : DBNull.Value ;
+
 
                 conn.Open();
                 int result = cmd.ExecuteNonQuery();
@@ -297,10 +297,10 @@ namespace WinFormsAppISAD
                         return;
                     }
 
-                    string query = @"INSERT INTO tbStaffs (staffID, FullName, Gen, Dob, Position, Salary, Stopwork, Photo)
-                                   VALUES (@id, @name, @gender, @dob, @position, @salary, @stopwork, @photo)";
+                    string query = @"spInsertStaff";
 
                     using SqlCommand cmd = new(query, conn);
+                    cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@id", int.Parse(txtId.Text));
                     cmd.Parameters.AddWithValue("@name", txtFName.Text.Trim());
                     cmd.Parameters.AddWithValue("@gender", rdoF.Checked ? "F" : "M");
@@ -308,7 +308,8 @@ namespace WinFormsAppISAD
                     cmd.Parameters.AddWithValue("@position", txtPos.Text.Trim());
                     cmd.Parameters.AddWithValue("@salary", decimal.Parse(txtSalary.Text));
                     cmd.Parameters.AddWithValue("@stopwork", txtStatus.Checked);
-                    cmd.Parameters.AddWithValue("@photo", new Func<byte[]>(() => { using MemoryStream ms = new(); pBox.Image.Save(ms, pBox.Image.RawFormat); return ms.ToArray(); })());
+                    cmd.Parameters.Add("@photo", SqlDbType.VarBinary).Value =  pBox.Image is Image img ? new Func<byte[]>(() => {  var ms = new MemoryStream(); img.Save(ms, pBox.Image.RawFormat); return ms.ToArray(); })() : DBNull.Value ;
+
                     // cmd.Parameters.AddWithValue("@photo", new Func<byte[]>(() =>
                     //{
                     //    Image img = pBox.Image;
@@ -370,7 +371,8 @@ namespace WinFormsAppISAD
                 }
                 if (row.Cells["Photo"].Value is byte[] p)
                 {
-                    using (var ms = new MemoryStream(p)) pBox.Image = Image.FromStream(ms);
+                    var ms = new MemoryStream(p) ;
+                    pBox.Image = Image.FromStream(ms);
                 }
 
                 isEditing = true;
