@@ -117,7 +117,7 @@
             txtFName.Name = "txtFName";
             txtFName.Size = new Size(250, 23);
             txtFName.TabIndex = 4;
-            txtFName.TextChanged += textBox2_TextChanged;
+
             // 
             // rdoF
             // 
@@ -207,7 +207,6 @@
             txtSalary.Name = "txtSalary";
             txtSalary.Size = new Size(250, 23);
             txtSalary.TabIndex = 12;
-    
             // 
             // lblStatus
             // 
@@ -410,7 +409,7 @@
             Name = "frmStaffs";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "👥 Staff Management";
-            Load += frmStaffs_Load_1;
+         
             ((System.ComponentModel.ISupportInitialize)pBox).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgv).EndInit();
             genderPanel.ResumeLayout(false);

@@ -123,6 +123,7 @@ namespace WinFormsAppISAD
             txtSupID.Enabled = true;
             btnUpdate.Enabled = false; // Disable update button
             btnEdit.Enabled = true; // Enable edit button
+            btnAdd.Enabled = true; // Enable add button
         }
 
         private void ValidateInput()
@@ -195,6 +196,7 @@ namespace WinFormsAppISAD
                 txtSupID.Enabled = false;
                 btnUpdate.Enabled = true;
                 btnEdit.Enabled = false;
+                btnAdd.Enabled = false; // Disable add button
 
             }
             catch (Exception ex)

@@ -313,7 +313,7 @@ namespace WinFormsAppISAD
                     cmd.Parameters.AddWithValue("@gender", rdoF.Checked ? "F" : "M");
                     cmd.Parameters.AddWithValue("@dob", dtpDOB.Value);
                     cmd.Parameters.AddWithValue("@position", txtPos.Text.Trim());
-                    cmd.Parameters.AddWithValue("@salary", decimal.Parse( txtSalary.Text));
+                    cmd.Parameters.AddWithValue("@salary", decimal.Parse(txtSalary.Text));
                     cmd.Parameters.AddWithValue("@stopwork", txtStatus.Checked);
                     cmd.Parameters.Add("@photo", SqlDbType.VarBinary).Value = pBox.Image is Image img ? new Func<byte[]>(() => { var ms = new MemoryStream(); img.Save(ms, pBox.Image.RawFormat); return ms.ToArray(); })() : DBNull.Value;
 
@@ -370,7 +370,7 @@ namespace WinFormsAppISAD
                 }
 
                 txtPos.Text = row.Cells["Position"].Value?.ToString() ?? "";
-                txtSalary.Text =  row.Cells["Salary"].Value is decimal sal ?  $"{sal:F2}": "";
+                txtSalary.Text = row.Cells["Salary"].Value is decimal sal ? $"{sal:F2}" : "";
 
                 if (row.Cells["Stopwork"].Value is bool stopwork)
                 {
@@ -451,18 +451,6 @@ namespace WinFormsAppISAD
             UpdateButtonStates(rowSelected);
         }
 
-        private void frmStaffs_Load(object sender, EventArgs e) { }
-        private void label1_Click(object sender, EventArgs e) { }
-        private void radioButton1_CheckedChanged(object sender, EventArgs e) { }
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
-        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e) { }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-
 
         private void btnView_Click(object sender, EventArgs e)
         {
@@ -487,15 +475,6 @@ namespace WinFormsAppISAD
             }
         }
 
-        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
-
-        private void frmStaffs_Load_1(object sender, EventArgs e)
-        {
-
-        }
     }
 
 }

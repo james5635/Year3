@@ -19,9 +19,8 @@ namespace WinFormsAppISAD
             ClearForm();
 
             // Set placeholder texts
-            textBox1.PlaceholderText = "Enter Customer ID";
-            textBox2.PlaceholderText = "Enter Customer Name";
-            textBox3.PlaceholderText = "Enter Contact Number";
+            txtName.PlaceholderText = "Enter Customer Name";
+            txtCont.PlaceholderText = "Enter Contact Number";
 
             // Add keyboard shortcuts
             this.KeyPreview = true;
@@ -31,7 +30,7 @@ namespace WinFormsAppISAD
         private void InitializeSearchBox()
         {
             txtSearch = new TextBox();
-            txtSearch.Location = new Point(dataGridView1.Location.X, dataGridView1.Location.Y - 30);
+            txtSearch.Location = new Point(dgv.Location.X, dgv.Location.Y - 30);
             txtSearch.Size = new Size(200, 23);
             txtSearch.PlaceholderText = "Search customers...";
             txtSearch.TextChanged += TxtSearch_TextChanged!;
@@ -40,21 +39,21 @@ namespace WinFormsAppISAD
 
         private void ConfigureDataGridView()
         {
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView1.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(240, 240, 240);
-            dataGridView1.DefaultCellStyle.SelectionBackColor = Color.FromArgb(33, 150, 243);
-            dataGridView1.DefaultCellStyle.SelectionForeColor = Color.White;
-            dataGridView1.RowHeadersVisible = false;
-            dataGridView1.BorderStyle = BorderStyle.None;
-            dataGridView1.EnableHeadersVisualStyles = false;
-            dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(33, 150, 243);
-            dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-            dataGridView1.ColumnHeadersHeight = 40;
+            dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgv.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(240, 240, 240);
+            dgv.DefaultCellStyle.SelectionBackColor = Color.FromArgb(33, 150, 243);
+            dgv.DefaultCellStyle.SelectionForeColor = Color.White;
+            dgv.RowHeadersVisible = false;
+            dgv.BorderStyle = BorderStyle.None;
+            dgv.EnableHeadersVisualStyles = false;
+            dgv.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(33, 150, 243);
+            dgv.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dgv.ColumnHeadersHeight = 40;
         }
 
         private void TxtSearch_TextChanged(object sender, EventArgs e)
         {
-            if (dataGridView1.DataSource is DataTable dt)
+            if (dgv.DataSource is DataTable dt)
             {
                 string searchStr = string.Format("Name LIKE '%{0}%' OR Phone LIKE '%{0}%'",
                     txtSearch.Text.Replace("'", "''"));
@@ -69,10 +68,10 @@ namespace WinFormsAppISAD
                 switch (e.KeyCode)
                 {
                     case Keys.A:
-                        button2.PerformClick(); // Add
+                        btnAdd.PerformClick(); // Add
                         break;
                     case Keys.E:
-                        button1.PerformClick(); // Edit
+                        btnEdit.PerformClick(); // Edit
                         break;
                 }
             }
@@ -100,13 +99,13 @@ namespace WinFormsAppISAD
                     SqlDataAdapter dap = new SqlDataAdapter(com);
                     DataTable dt = new DataTable();
                     dap.Fill(dt);
-                    dataGridView1.DataSource = dt;
+                    dgv.DataSource = dt;
 
-                    if (dataGridView1.Columns.Count > 0)
+                    if (dgv.Columns.Count > 0)
                     {
-                        dataGridView1.Columns["cusID"].HeaderText = "ID";
-                        dataGridView1.Columns["Name"].HeaderText = "Customer Name";
-                        dataGridView1.Columns["Phone"].HeaderText = "Contact";
+                        dgv.Columns["cusID"].HeaderText = "ID";
+                        dgv.Columns["Name"].HeaderText = "Customer Name";
+                        dgv.Columns["Phone"].HeaderText = "Contact";
                     }
                 }
             }
@@ -115,28 +114,27 @@ namespace WinFormsAppISAD
         private void ClearForm()
         {
             isEditing = false;
-            textBox1.Clear(); // ID
-            textBox2.Clear(); // Name
-            textBox3.Clear(); // Contact
-            textBox1.Enabled = true;
-            button2.Text = "➕ Add";
+            txtID.Clear(); // ID
+            txtName.Clear(); // Name
+            txtCont.Clear(); // Contact
+            txtID.Enabled = true;
+            btnUpdate.Enabled = false; // Disable update button
+            btnAdd.Enabled = true; // Enable add button
+            btnEdit.Enabled = true; // Enable edit button
         }
 
         private void ValidateInput()
         {
-            if (string.IsNullOrWhiteSpace(textBox1.Text))
-                throw new Exception("Customer ID is required.");
-            if (!int.TryParse(textBox1.Text, out _))
-                throw new Exception("Customer ID must be a number.");
-            if (string.IsNullOrWhiteSpace(textBox2.Text))
+
+            if (string.IsNullOrWhiteSpace(txtName.Text))
                 throw new Exception("Customer Name is required.");
-            if (string.IsNullOrWhiteSpace(textBox3.Text))
+            if (string.IsNullOrWhiteSpace(txtCont.Text))
                 throw new Exception("Contact number is required.");
-            if (textBox3.Text.Length > 15)
+            if (txtCont.Text.Length > 15)
                 throw new Exception("Contact number cannot exceed 15 characters.");
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnAddOrUp_Click(object sender, EventArgs e)
         {
             try
             {
@@ -147,9 +145,11 @@ namespace WinFormsAppISAD
 
                 using SqlCommand cmd = new(query, conn);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@id", int.Parse(textBox1.Text));
-                cmd.Parameters.AddWithValue("@cusName", textBox2.Text.Trim());
-                cmd.Parameters.AddWithValue("@cusContact", textBox3.Text.Trim());
+
+                if (isEditing)
+                    cmd.Parameters.AddWithValue("@id", int.Parse(txtID.Text));
+                cmd.Parameters.AddWithValue("@cusName", txtName.Text.Trim());
+                cmd.Parameters.AddWithValue("@cusContact", txtCont.Text.Trim());
 
                 conn.Open();
                 int result = cmd.ExecuteNonQuery();
@@ -170,9 +170,9 @@ namespace WinFormsAppISAD
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnEdit_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.CurrentRow == null)
+            if (dgv.CurrentRow == null)
             {
                 MessageBox.Show("Please select a customer to edit.", "Information",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -181,14 +181,16 @@ namespace WinFormsAppISAD
 
             try
             {
-                var row = dataGridView1.CurrentRow;
-                textBox1.Text = row.Cells["cusID"].Value?.ToString() ?? "";
-                textBox2.Text = row.Cells["Name"].Value?.ToString() ?? "";
-                textBox3.Text = row.Cells["Phone"].Value?.ToString() ?? "";
+                var row = dgv.CurrentRow;
+                txtID.Text = row.Cells["cusID"].Value?.ToString() ?? "";
+                txtName.Text = row.Cells["Name"].Value?.ToString() ?? "";
+                txtCont.Text = row.Cells["Phone"].Value?.ToString() ?? "";
 
                 isEditing = true;
-                textBox1.Enabled = false;
-                button2.Text = "✏️ Update";
+                txtID.Enabled = false;
+                btnUpdate.Enabled = true;
+                btnAdd.Enabled = false;
+                btnEdit.Enabled = false; // Disable edit button
             }
             catch (Exception ex)
             {
@@ -202,5 +204,7 @@ namespace WinFormsAppISAD
             SqlDependency.Start(connStr);
             loadData();
         }
+
+
     }
 }

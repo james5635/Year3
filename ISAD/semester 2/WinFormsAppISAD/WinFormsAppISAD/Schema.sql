@@ -73,7 +73,7 @@ CREATE TABLE tbProducts
     -- Added UNIQUE constraint
     Qty SMALLINT NOT NULL CHECK (Qty >= 0),
     UPIS MONEY NOT NULL CHECK (UPIS >= 0),
-    -- Unit Price Import/Stock
+    -- Unit Price In Stock
     SUP MONEY NOT NULL CHECK (SUP >= 0)
     -- Sales Unit Price
 );

@@ -19,11 +19,10 @@ namespace WinFormsAppISAD
             ClearForm();
 
             // Set placeholder texts
-            textBox1.PlaceholderText = "Enter Product Code";
-            textBox2.PlaceholderText = "Enter Product Name";
-            textBox3.PlaceholderText = "Enter Quantity";
-            textBox4.PlaceholderText = "Enter Unit Price (Stock)";
-            textBox5.PlaceholderText = "Enter Sale Price";
+            txtName.PlaceholderText = "Enter Product Name";
+            txtUPIS.PlaceholderText = "Enter Quantity";
+            txtQty.PlaceholderText = "Enter Unit Price (Stock)";
+            txtSUP.PlaceholderText = "Enter Sale Price";
 
             // Add keyboard shortcuts
             this.KeyPreview = true;
@@ -33,7 +32,7 @@ namespace WinFormsAppISAD
         private void InitializeSearchBox()
         {
             txtSearch = new TextBox();
-            txtSearch.Location = new Point(dataGridView1.Location.X, dataGridView1.Location.Y - 30);
+            txtSearch.Location = new Point(dgv.Location.X, dgv.Location.Y - 30);
             txtSearch.Size = new Size(200, 23);
             txtSearch.PlaceholderText = "Search products...";
             txtSearch.TextChanged += TxtSearch_TextChanged!;
@@ -42,23 +41,23 @@ namespace WinFormsAppISAD
 
         private void ConfigureDataGridView()
         {
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView1.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(240, 240, 240);
-            dataGridView1.DefaultCellStyle.SelectionBackColor = Color.FromArgb(76, 175, 80);
-            dataGridView1.DefaultCellStyle.SelectionForeColor = Color.White;
-            dataGridView1.RowHeadersVisible = false;
-            dataGridView1.BorderStyle = BorderStyle.None;
-            dataGridView1.EnableHeadersVisualStyles = false;
-            dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(76, 175, 80);
-            dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-            dataGridView1.ColumnHeadersHeight = 40;
+            dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgv.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(240, 240, 240);
+            dgv.DefaultCellStyle.SelectionBackColor = Color.FromArgb(76, 175, 80);
+            dgv.DefaultCellStyle.SelectionForeColor = Color.White;
+            dgv.RowHeadersVisible = false;
+            dgv.BorderStyle = BorderStyle.None;
+            dgv.EnableHeadersVisualStyles = false;
+            dgv.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(76, 175, 80);
+            dgv.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dgv.ColumnHeadersHeight = 40;
         }
 
         private void TxtSearch_TextChanged(object sender, EventArgs e)
         {
-            if (dataGridView1.DataSource is DataTable dt)
+            if (dgv.DataSource is DataTable dt)
             {
-                string searchStr = string.Format("Name LIKE '%{0}%'", 
+                string searchStr = string.Format("Name LIKE '%{0}%'",
                     txtSearch.Text.Replace("'", "''"));
                 dt.DefaultView.RowFilter = searchStr;
             }
@@ -71,10 +70,10 @@ namespace WinFormsAppISAD
                 switch (e.KeyCode)
                 {
                     case Keys.A:
-                        button2.PerformClick(); // Add
+                        btnAdd.PerformClick(); // Add
                         break;
                     case Keys.E:
-                        button1.PerformClick(); // Edit
+                        btnEdit.PerformClick(); // Edit
                         break;
                 }
             }
@@ -102,19 +101,19 @@ namespace WinFormsAppISAD
                     SqlDataAdapter dap = new SqlDataAdapter(com);
                     DataTable dt = new DataTable();
                     dap.Fill(dt);
-                    dataGridView1.DataSource = dt;
+                    dgv.DataSource = dt;
 
-                    if (dataGridView1.Columns.Count > 0)
+                    if (dgv.Columns.Count > 0)
                     {
-                        dataGridView1.Columns["Product code"].HeaderText = "Code";
-                        dataGridView1.Columns["Name"].HeaderText = "Product Name";
-                        dataGridView1.Columns["Quantity"].HeaderText = "Stock Qty";
-                        dataGridView1.Columns["Unit price in stock"].HeaderText = "Unit Price";
-                        dataGridView1.Columns["Sale unit price"].HeaderText = "Sale Price";
+                        dgv.Columns["Product code"].HeaderText = "Code";
+                        dgv.Columns["Name"].HeaderText = "Product Name";
+                        dgv.Columns["Quantity"].HeaderText = "Stock Qty";
+                        dgv.Columns["Unit price in stock"].HeaderText = "Unit Price";
+                        dgv.Columns["Sale unit price"].HeaderText = "Sale Price";
 
                         // Format currency columns
-                        dataGridView1.Columns["Unit price in stock"].DefaultCellStyle.Format = "C2";
-                        dataGridView1.Columns["Sale unit price"].DefaultCellStyle.Format = "C2";
+                        dgv.Columns["Unit price in stock"].DefaultCellStyle.Format = "C2";
+                        dgv.Columns["Sale unit price"].DefaultCellStyle.Format = "C2";
                     }
                 }
             }
@@ -123,34 +122,31 @@ namespace WinFormsAppISAD
         private void ClearForm()
         {
             isEditing = false;
-            textBox1.Clear(); // Product Code
-            textBox2.Clear(); // Name
-            textBox3.Clear(); // Quantity
-            textBox4.Clear(); // Unit Price
-            textBox5.Clear(); // Sale Price
-            textBox1.Enabled = true;
-            button2.Text = "➕ Add";
+            txtCode.Clear(); // Product Code
+            txtName.Clear(); // Name
+            txtUPIS.Clear(); // Quantity
+            txtQty.Clear(); // Unit Price
+            txtSUP.Clear(); // Sale Price
+            btnAdd.Enabled = true;
+            btnEdit.Enabled = true;
+            btnUpdate.Enabled = false;
+
         }
 
         private void ValidateInput()
         {
-            if (string.IsNullOrWhiteSpace(textBox1.Text))
-                throw new Exception("Product Code is required.");
-            if (!int.TryParse(textBox1.Text, out _))
-                throw new Exception("Product Code must be a number.");
-            if (string.IsNullOrWhiteSpace(textBox2.Text))
+            if (string.IsNullOrWhiteSpace(txtName.Text))
                 throw new Exception("Product Name is required.");
-            if (string.IsNullOrWhiteSpace(textBox3.Text) || !short.TryParse(textBox3.Text, out short qty) || qty < 0)
+            if (string.IsNullOrWhiteSpace(txtQty.Text) || !short.TryParse(txtQty.Text, out short qty) || qty < 0)
                 throw new Exception("Quantity must be a valid non-negative number.");
-            if (string.IsNullOrWhiteSpace(textBox4.Text) || !decimal.TryParse(textBox4.Text, out decimal upis) || upis < 0)
+            if (string.IsNullOrWhiteSpace(txtUPIS.Text) || !decimal.TryParse(txtUPIS.Text, out decimal uprice) || uprice < 0)
                 throw new Exception("Unit Price must be a valid non-negative number.");
-            if (string.IsNullOrWhiteSpace(textBox5.Text) || !decimal.TryParse(textBox5.Text, out decimal sup) || sup < 0)
+            if (string.IsNullOrWhiteSpace(txtSUP.Text) || !decimal.TryParse(txtSUP.Text, out decimal sprice) || sprice < 0)
                 throw new Exception("Sale Price must be a valid non-negative number.");
-            if (sup < upis)
-                throw new Exception("Sale Price cannot be less than Unit Price.");
+
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnAddOrUp_Click(object sender, EventArgs e)
         {
             try
             {
@@ -161,11 +157,12 @@ namespace WinFormsAppISAD
 
                 using SqlCommand cmd = new(query, conn);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@code", int.Parse(textBox1.Text));
-                cmd.Parameters.AddWithValue("@name", textBox2.Text.Trim());
-                cmd.Parameters.AddWithValue("@qty", short.Parse(textBox3.Text));
-                cmd.Parameters.AddWithValue("@UPIS", decimal.Parse(textBox4.Text));
-                cmd.Parameters.AddWithValue("@SUP", decimal.Parse(textBox5.Text));
+                if (isEditing)
+                    cmd.Parameters.AddWithValue("@code", int.Parse(txtCode.Text));
+                cmd.Parameters.AddWithValue("@name", txtName.Text.Trim());
+                cmd.Parameters.AddWithValue("@qty", short.Parse(txtQty.Text));
+                cmd.Parameters.AddWithValue("@UPIS", decimal.Parse(txtUPIS.Text));
+                cmd.Parameters.AddWithValue("@SUP", decimal.Parse(txtSUP.Text));
 
                 conn.Open();
                 int result = cmd.ExecuteNonQuery();
@@ -186,9 +183,9 @@ namespace WinFormsAppISAD
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnEdit_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.CurrentRow == null)
+            if (dgv.CurrentRow == null)
             {
                 MessageBox.Show("Please select a product to edit.", "Information",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -196,24 +193,20 @@ namespace WinFormsAppISAD
             }
 
             try
-            {                var row = dataGridView1.CurrentRow;
-                textBox1.Text = row.Cells["Product code"].Value?.ToString() ?? "";
-                textBox2.Text = row.Cells["Name"].Value?.ToString() ?? "";
-                textBox3.Text = row.Cells["Quantity"].Value?.ToString() ?? "";
-                textBox4.Text = row.Cells["Unit price in stock"].Value?.ToString() ?? "";
-                textBox5.Text = row.Cells["Sale unit price"].Value?.ToString() ?? "";
+            {
+                var row = dgv.CurrentRow;
+                txtCode.Text = row.Cells["Product code"].Value?.ToString() ?? "";
+                txtName.Text = row.Cells["Name"].Value?.ToString() ?? "";
+                txtQty.Text = row.Cells["Quantity"].Value?.ToString() ?? "";
+                txtUPIS.Text = row.Cells["Unit price in stock"].Value is decimal UPIS ? $"{UPIS:F2}" : "";
+                txtSUP.Text = row.Cells["Sale unit price"].Value is decimal SUP ? $"{SUP:F2}" : "";
 
                 isEditing = true;
-                textBox1.Enabled = false;
-                button2.Text = "✏️ Update";
-                textBox2.Text = row.Cells["Name"].Value?.ToString() ?? "";
-                textBox3.Text = row.Cells["Quantity"].Value?.ToString() ?? "";
-                textBox4.Text = row.Cells["Unit price in stock"].Value?.ToString() ?? "";
-                textBox5.Text = row.Cells["Sale unit price"].Value?.ToString() ?? "";
+                btnAdd.Enabled = false;
+                btnEdit.Enabled = false;
+                btnUpdate.Enabled = true;
 
-                isEditing = true;
-                textBox1.Enabled = false;
-                button2.Text = "✏️ Update";
+
             }
             catch (Exception ex)
             {
@@ -227,9 +220,5 @@ namespace WinFormsAppISAD
             loadData();
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
     }
 }
