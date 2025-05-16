@@ -112,7 +112,7 @@
             Controls.Add(btnSupplierM);
             Controls.Add(btnStaffM);
             Name = "frmStart";
-            Text = "Form1";
+            Text = "Start";
             ResumeLayout(false);
         }
 
