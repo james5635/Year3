@@ -4,9 +4,9 @@ USE Math;
 
 CREATE TABLE MathTopics (
     id INT PRIMARY KEY AUTO_INCREMENT,
+    topic_name VARCHAR(100),      -- e.g., Definite Integrals
     category VARCHAR(100),        -- e.g., Calculus
     sub_category VARCHAR(100),    -- e.g., Integral Calculus
-    topic_name VARCHAR(100),      -- e.g., Definite Integrals
     description TEXT,
     difficulty_level ENUM('Beginner', 'Intermediate', 'Advanced'),
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
