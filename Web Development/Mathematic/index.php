@@ -1,7 +1,9 @@
 <?php
 header("Content-Type: application/json");
 header("Access-Control-Allow-Origin: *");
+// header("Access-Control-Allow-Origin: http://localhost:5173");
 header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");
+header("Access-Control-Allow-Headers: Content-Type");
 
 require_once "db.php";
 $conn = getConnection();
@@ -49,46 +51,44 @@ switch ($method) {
         }
         break;
     case "PUT":
-        // not working
-        // parse_str(file_get_contents("php://input"), $data);
         $data = json_decode(file_get_contents("php://input"), true);
+        if (isset($_GET["id"]) && is_array($data) && !empty($data)) {
+            $allowedFields = [
+                "topic_name",
+                "category",
+                "sub_category",
+                "description",
+                "difficulty_level",
+                "is_active",
+            ];
 
-        // echo $_GET["id"];
-        // echo $data["topic_name"];
-        // echo $data["category"];
-        // echo $data["sub_category"];
-        // echo $data["description"];
-        // echo $data["difficulty_level"];
-        if (
-            isset(
-                $_GET["id"],
-                $data["topic_name"],
-                $data["category"],
-                $data["sub_category"],
-                $data["description"],
-                $data["difficulty_level"],
-                $data["created_at"],
-                $data["updated_at"],
-                $data["is_active"]
-            )
-        ) {
+            $updates = array_intersect_key($data, array_flip($allowedFields));
+            if (empty($updates)) {
+                echo json_encode(["message" => "No valid fields to update"]);
+                break;
+            }
+
+            $setStatements = [];
+            $params = [":id" => $_GET["id"]];
+
+            foreach ($updates as $field => $value) {
+                $setStatements[] = "$field = :$field";
+                $params[":$field"] = $value;
+            }
+
             $sql = $conn->prepare(
-                "UPDATE MathTopics SET topic_name = :topic_name, category = :category, sub_category = :sub_category, description = :description, difficulty_level = :difficulty_level, created_at = :created_at, updated_at = :updated_at, is_active = :is_active WHERE id = :id"
+                "UPDATE MathTopics SET " .
+                    implode(", ", $setStatements) .
+                    " WHERE id = :id"
             );
-            $sql->execute([
-                ":id" => $_GET["id"],
-                ":topic_name" => $data["topic_name"],
-                ":category" => $data["category"],
-                ":sub_category" => $data["sub_category"],
-                ":description" => $data["description"],
-                ":difficulty_level" => $data["difficulty_level"],
-                ":created_at" => $data["created_at"],
-                ":updated_at" => $data["updated_at"],
-                ":is_active" => $data["is_active"],
-            ]);
-            echo json_encode(["message" => "Topic updated successfully"]);
+
+            if ($sql->execute($params)) {
+                echo json_encode(["message" => "Topic updated successfully"]);
+            } else {
+                echo json_encode(["message" => "Failed to update topic"]);
+            }
         } else {
-            echo json_encode(["message" => "Invalid data"]);
+            echo json_encode(["message" => "Invalid data or missing ID"]);
         }
         break;
     case "DELETE":

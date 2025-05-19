@@ -2,3 +2,4 @@ vendor/
 .env
 tests/
 .git
+Web UI/
