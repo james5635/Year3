@@ -11,6 +11,7 @@ interface TopicsTableProps {
 }
 
 export const TopicsTable = ({ topics, onEdit, onDelete }: TopicsTableProps) => {
+  //  console.log('Topics data:', topics); // 🔍 Logs topics array to browser console
   const columns: GridColDef[] = [
     { field: 'id', headerName: 'ID', width: 70 },
     { field: 'topic_name', headerName: 'Topic Name', flex: 1 },
@@ -78,6 +79,7 @@ export const TopicsTable = ({ topics, onEdit, onDelete }: TopicsTableProps) => {
 
   return (
     <Paper sx={{ width: '100%', overflow: 'hidden' }}>
+
       <DataGrid
         rows={topics}
         columns={columns}

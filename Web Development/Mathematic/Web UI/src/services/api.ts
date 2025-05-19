@@ -1,8 +1,8 @@
 import axios from 'axios';
 import type { MathTopic } from '../types/MathTopic';
 
-const API_URL = 'http://localhost:8000';
-
+// const API_URL = 'http://localhost:8000';
+const API_URL: string = import.meta.env.VITE_API_URL ?? 'http://localhost:8000'
 interface ApiResponse {
     message: string;
 }
@@ -22,7 +22,8 @@ export const api = {
         try {
             const response = await axios.get<MathTopic>(`${API_URL}?id=${id}`);
             if ('message' in response.data) {
-                throw new Error(response.data.message);
+                throw new Error(response.data.message as string);
+                
             }
             return response.data;
         } catch (error) {

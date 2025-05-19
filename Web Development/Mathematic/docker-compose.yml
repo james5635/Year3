@@ -14,7 +14,15 @@ services:
       - PORT=${PORT}
       - USER=${USER}
       - PASS=${PASS}
-    
+  web-ui:
+    build:
+      context: "./Web UI/"
+    image: web-ui
+    container_name: web_ui
+    ports:
+      - 4173:4173
+    environment:
+      - VITE_API_HOST=http://app:8000
   db:
     image: mysql:8.0
     container_name: mysql-db
