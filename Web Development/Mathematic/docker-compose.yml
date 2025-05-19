@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+    image: my-php-app:latest
+    container_name: php-app
+    depends_on:
+      - db
+    environment:
+      - APP_ENV=${APP_ENV}
+      - HOST=${HOST}
+      - DB_NAME=${DB_NAME}
+      - USER=${USER}
+      - PASS=${PASS}
+    
+  db:
+    image: mysql:8.0
+    container_name: ${HOST}
+#    restart: always
+    environment:
+      MYSQL_USER: ${HOST}
+      MYSQL_ROOT_PASSWORD: ${PASS}
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./schema.sql:/docker-entrypoint-initdb.d/schema.sql:ro
+volumes:
+  db_data:
