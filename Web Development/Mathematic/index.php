@@ -23,7 +23,14 @@ switch ($method) {
         }
         break;
     case "POST":
-        // Handle POST request
+        $data = json_decode(file_get_contents('php://input'), true);
+        if (isset($data["name"]
+            
+        
+        
+        )){
+            
+        }
         break;
     case "PUT":
         // Handle PUT request

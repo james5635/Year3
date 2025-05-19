@@ -10,7 +10,6 @@ return [
     "app_env" => $_ENV["APP_ENV"] ,
     "host" => $_ENV["HOST"] ,
     "port" => $_ENV["PORT"] ,
-    "dbname" => $_ENV["DB_NAME"] ,
     "username" => $_ENV["USER"] ,
     "password" => $_ENV["PASS"] ,
 ];
