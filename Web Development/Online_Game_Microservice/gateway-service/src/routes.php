@@ -5,6 +5,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
+use Slim\Routing\RouteCollectorProxy; // Import the RouteCollectorProxy
 
 return function (App $app) {
 
@@ -65,11 +66,13 @@ return function (App $app) {
         }
     });
 
-    $app->group('/lobbies', function (App $app) {
+    // Corrected /lobbies group
+    $app->group('/lobbies', function (RouteCollectorProxy $group) { // Change type hint to RouteCollectorProxy
+        // Remove the 'echo "hi";' as it's not appropriate in a route definition
         $gameLobbyServiceUrl = $_ENV['GAME_LOBBY_SERVICE_URL'];
         $client = new Client();
 
-        $app->get('', function (Request $request, Response $response) use ($client, $gameLobbyServiceUrl) {
+        $group->get('', function (Request $request, Response $response) use ($client, $gameLobbyServiceUrl) {
             try {
                 $res = $client->get("$gameLobbyServiceUrl/lobbies");
                 $response->getBody()->write($res->getBody()->getContents());
@@ -82,7 +85,7 @@ return function (App $app) {
             }
         });
 
-        $app->post('', function (Request $request, Response $response) use ($client, $gameLobbyServiceUrl) {
+        $group->post('', function (Request $request, Response $response) use ($client, $gameLobbyServiceUrl) {
             $data = $request->getParsedBody();
             try {
                 $res = $client->post("$gameLobbyServiceUrl/lobbies", ['json' => $data]);
