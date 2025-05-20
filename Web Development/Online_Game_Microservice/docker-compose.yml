@@ -1,0 +1,123 @@
+
+
+services:
+  # MySQL Databases
+  user-db:
+    image: mysql:8.0
+    container_name: user_db
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: users_db
+    ports:
+      - "3306:3306"
+    volumes:
+      - user_db_data:/var/lib/mysql
+      - ./_docker/mysql/user_db_init.sql:/docker-entrypoint-initdb.d/init.sql # For initial schema
+    networks:
+      - game-network
+
+  game-lobby-db:
+    image: mysql:8.0
+    container_name: game_lobby_db
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: game_lobbies_db
+    ports:
+      - "3307:3306" # Different host port
+    volumes:
+      - game_lobby_db_data:/var/lib/mysql
+      - ./_docker/mysql/game_lobby_db_init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - game-network
+
+  inventory-db:
+    image: mysql:8.0
+    container_name: inventory_db
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: inventory_db
+    ports:
+      - "3308:3306" # Different host port
+    volumes:
+      - inventory_db_data:/var/lib/mysql
+      - ./_docker/mysql/inventory_db_init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - game-network
+
+  # PHP Slim Services
+  user-service:
+    build:
+      context: ./user-service
+      dockerfile: Dockerfile
+    container_name: user_service
+    ports:
+      - "8001:80"
+    volumes:
+      - ./user-service:/var/www/html
+    environment:
+      DB_HOST: user-db # Use service name as host
+    depends_on:
+      - user-db
+    networks:
+      - game-network
+
+  game-lobby-service:
+    build:
+      context: ./game-lobby-service
+      dockerfile: Dockerfile
+    container_name: game_lobby_service
+    ports:
+      - "8002:80"
+    volumes:
+      - ./game-lobby-service:/var/www/html
+    environment:
+      DB_HOST: game-lobby-db
+    depends_on:
+      - game-lobby-db
+    networks:
+      - game-network
+
+  inventory-service:
+    build:
+      context: ./inventory-service
+      dockerfile: Dockerfile
+    container_name: inventory_service
+    ports:
+      - "8003:80"
+    volumes:
+      - ./inventory-service:/var/www/html
+    environment:
+      DB_HOST: inventory-db
+    depends_on:
+      - inventory-db
+    networks:
+      - game-network
+
+  gateway-service:
+    build:
+      context: ./gateway-service
+      dockerfile: Dockerfile
+    container_name: gateway_service
+    ports:
+      - "80:80" # Default HTTP port
+    volumes:
+      - ./gateway-service:/var/www/html
+    environment:
+      USER_SERVICE_URL: http://user-service:80 # Use service name and internal port
+      GAME_LOBBY_SERVICE_URL: http://game-lobby-service:80
+      INVENTORY_SERVICE_URL: http://inventory-service:80
+    depends_on:
+      - user-service
+      - game-lobby-service
+      - inventory-service
+    networks:
+      - game-network
+
+volumes:
+  user_db_data:
+  game_lobby_db_data:
+  inventory_db_data:
+
+networks:
+  game-network:
+    driver: bridge
