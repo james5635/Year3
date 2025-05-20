@@ -5,7 +5,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
-use Slim\Routing\RouteCollectorProxy; // Import the RouteCollectorProxy
+use Slim\Routing\RouteCollectorProxy;
 
 return function (App $app) {
 
@@ -67,8 +67,7 @@ return function (App $app) {
     });
 
     // Corrected /lobbies group
-    $app->group('/lobbies', function (RouteCollectorProxy $group) { // Change type hint to RouteCollectorProxy
-        // Remove the 'echo "hi";' as it's not appropriate in a route definition
+    $app->group('/lobbies', function (RouteCollectorProxy $group) {
         $gameLobbyServiceUrl = $_ENV['GAME_LOBBY_SERVICE_URL'];
         $client = new Client();
 
@@ -100,6 +99,7 @@ return function (App $app) {
         });
     });
 
+    // Existing /inventory/{userId} route
     $app->get('/inventory/{userId}', function (Request $request, Response $response, array $args) {
         $client = new Client();
         $inventoryServiceUrl = $_ENV['INVENTORY_SERVICE_URL'];
@@ -107,6 +107,27 @@ return function (App $app) {
 
         try {
             $res = $client->get("$inventoryServiceUrl/inventory/$userId");
+            $response->getBody()->write($res->getBody()->getContents());
+            return $response->withStatus($res->getStatusCode())->withHeader('Content-Type', 'application/json');
+        } catch (RequestException $e) {
+            $statusCode = $e->hasResponse() ? $e->getResponse()->getStatusCode() : 500;
+            $errorBody = $e->hasResponse() ? $e->getResponse()->getBody()->getContents() : json_encode(['message' => 'Internal Server Error']);
+            $response->getBody()->write($errorBody);
+            return $response->withStatus($statusCode)->withHeader('Content-Type', 'application/json');
+        }
+    });
+
+    // NEW: Route to add an item to inventory
+    // Assuming the inventory service has a POST endpoint like /inventory/{userId}/add
+    $app->post('/inventory/{userId}/add', function (Request $request, Response $response, array $args) {
+        $client = new Client();
+        $inventoryServiceUrl = $_ENV['INVENTORY_SERVICE_URL'];
+        $userId = $args['userId'];
+        $data = $request->getParsedBody(); // Get item data from the request body
+
+        try {
+            // Forward the request (with data) to the inventory service
+            $res = $client->post("$inventoryServiceUrl/inventory/$userId/add", ['json' => $data]);
             $response->getBody()->write($res->getBody()->getContents());
             return $response->withStatus($res->getStatusCode())->withHeader('Content-Type', 'application/json');
         } catch (RequestException $e) {

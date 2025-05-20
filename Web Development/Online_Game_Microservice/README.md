@@ -28,9 +28,16 @@ curl -X GET \
 ```
 #### Create a lobby
 ```sh
-curl -X GET \
-  http://localhost/profile \
-  -H 'Authorization: Bearer YOUR_JWT_TOKEN'
+  curl -X POST \
+    http://localhost:8000/lobbies\
+    -H 'Content-Type: application/json' \
+    -d '{
+        "name": "mylobby",
+        "max_players": 10,
+        "current_players": 0,
+        "status": "waiting",
+        "created_by_user_id": 1
+        }'
 ```
 
 #### Get lobbies

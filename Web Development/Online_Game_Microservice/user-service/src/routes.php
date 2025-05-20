@@ -3,6 +3,7 @@
 use Slim\App;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
+use Psr\Http\Server\RequestHandlerInterface as RequestHandler; // <--- Add this use statement
 use Respect\Validation\Validator as v;
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
@@ -16,6 +17,48 @@ return function (App $app) {
     );
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+
+    // Middleware for JWT authentication
+    // CORRECTED SIGNATURE FOR SLIM 4 / PSR-15 MIDDLEWARE
+    $authMiddleware = function (Request $request, RequestHandler $handler): Response {
+
+        $authHeader = $request->getHeaderLine('Authorization');
+        if (empty($authHeader)) {
+            // Create a new response object to return the error
+            $response = new \Slim\Psr7\Response(); // Or use $handler->handle($request) and then modify its response
+            $response->getBody()->write(json_encode(['message' => 'Authorization header missing.']));
+            return $response->withStatus(401)->withHeader('Content-Type', 'application/json');
+        }
+
+        list($type, $token) = explode(' ', $authHeader, 2);
+        if (strtolower($type) !== 'bearer' || empty($token)) {
+            $response = new \Slim\Psr7\Response();
+            $response->getBody()->write(json_encode(['message' => 'Invalid token format.']));
+            return $response->withStatus(401)->withHeader('Content-Type', 'application/json');
+        }
+
+        try {
+            $secretKey = $_ENV['JWT_SECRET_KEY'];
+            $decoded = JWT::decode($token, new Key($secretKey, 'HS256'));
+            $request = $request->withAttribute('user', $decoded); // Add user info to request
+
+            // Call the next handler in the pipeline
+            return $handler->handle($request); // <--- Corrected call
+        } catch (Firebase\JWT\SignatureInvalidException $e) {
+            $response = new \Slim\Psr7\Response();
+            $response->getBody()->write(json_encode(['message' => 'Invalid token signature.']));
+            return $response->withStatus(401)->withHeader('Content-Type', 'application/json');
+        } catch (Firebase\JWT\ExpiredException $e) {
+            $response = new \Slim\Psr7\Response();
+            $response->getBody()->write(json_encode(['message' => 'Token has expired.']));
+            return $response->withStatus(401)->withHeader('Content-Type', 'application/json');
+        } catch (Exception $e) {
+            $response = new \Slim\Psr7\Response();
+            $response->getBody()->write(json_encode(['message' => 'Invalid token: ' . $e->getMessage()]));
+            return $response->withStatus(401)->withHeader('Content-Type', 'application/json');
+        }
+    };
+
 
     $app->post('/register', function (Request $request, Response $response) use ($pdo) {
         $data = $request->getParsedBody();
@@ -101,37 +144,6 @@ return function (App $app) {
             return $response->withStatus(500)->withHeader('Content-Type', 'application/json');
         }
     });
-
-    // Middleware for JWT authentication
-    $authMiddleware = function (Request $request, Response $response, callable $next) {
-        $authHeader = $request->getHeaderLine('Authorization');
-        if (empty($authHeader)) {
-            $response->getBody()->write(json_encode(['message' => 'Authorization header missing.']));
-            return $response->withStatus(401)->withHeader('Content-Type', 'application/json');
-        }
-
-        list($type, $token) = explode(' ', $authHeader, 2);
-        if (strtolower($type) !== 'bearer' || empty($token)) {
-            $response->getBody()->write(json_encode(['message' => 'Invalid token format.']));
-            return $response->withStatus(401)->withHeader('Content-Type', 'application/json');
-        }
-
-        try {
-            $secretKey = $_ENV['JWT_SECRET_KEY'];
-            $decoded = JWT::decode($token, new Key($secretKey, 'HS256'));
-            $request = $request->withAttribute('user', $decoded); // Add user info to request
-            return $next($request, $response);
-        } catch (Firebase\JWT\SignatureInvalidException $e) {
-            $response->getBody()->write(json_encode(['message' => 'Invalid token signature.']));
-            return $response->withStatus(401)->withHeader('Content-Type', 'application/json');
-        } catch (Firebase\JWT\ExpiredException $e) {
-            $response->getBody()->write(json_encode(['message' => 'Token has expired.']));
-            return $response->withStatus(401)->withHeader('Content-Type', 'application/json');
-        } catch (Exception $e) {
-            $response->getBody()->write(json_encode(['message' => 'Invalid token: ' . $e->getMessage()]));
-            return $response->withStatus(401)->withHeader('Content-Type', 'application/json');
-        }
-    };
 
 
     $app->get('/profile', function (Request $request, Response $response) use ($pdo) {

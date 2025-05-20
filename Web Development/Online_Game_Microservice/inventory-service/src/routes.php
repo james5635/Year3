@@ -100,9 +100,15 @@ return function (App $app) {
                 ON DUPLICATE KEY UPDATE quantity = quantity + VALUES(quantity)
             ");
             $stmt->execute([$userId, $itemId, $quantity]);
-
+            if ($stmt->rowCount() > 0){
             $response->getBody()->write(json_encode(['message' => 'Item(s) added to inventory.']));
             return $response->withStatus(200)->withHeader('Content-Type', 'application/json');
+            
+            }
+            else{
+                $response->getBody()->write(json_encode(['message' => 'Cannot add item(s) to inventory.']));
+                return $response->withStatus(500)->withHeader('Content-Type', 'application/json');
+            }
         } catch (PDOException $e) {
             $response->getBody()->write(json_encode(['message' => 'Database error: ' . $e->getMessage()]));
             return $response->withStatus(500)->withHeader('Content-Type', 'application/json');
