@@ -1,5 +1,3 @@
-
-
 services:
   # MySQL Databases
   user-db:
@@ -12,7 +10,7 @@ services:
       - "3306:3306"
     volumes:
       - user_db_data:/var/lib/mysql
-      - ./_docker/mysql/user_db_init.sql:/docker-entrypoint-initdb.d/init.sql # For initial schema
+      - ./user-service/user_db_init.sql:/docker-entrypoint-initdb.d/init.sql # For initial schema
     networks:
       - game-network
 
@@ -26,7 +24,7 @@ services:
       - "3307:3306" # Different host port
     volumes:
       - game_lobby_db_data:/var/lib/mysql
-      - ./_docker/mysql/game_lobby_db_init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./game-lobby-service/game_lobby_db_init.sql:/docker-entrypoint-initdb.d/init.sql
     networks:
       - game-network
 
@@ -40,7 +38,7 @@ services:
       - "3308:3306" # Different host port
     volumes:
       - inventory_db_data:/var/lib/mysql
-      - ./_docker/mysql/inventory_db_init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./inventory-service/inventory_db_init.sql:/docker-entrypoint-initdb.d/init.sql
     networks:
       - game-network
 

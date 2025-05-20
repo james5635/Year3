@@ -18,9 +18,4 @@ RUN composer install --no-dev --optimize-autoloader
 # Enable Apache rewrite module
 RUN a2enmod rewrite
 
-# Configure Apache vhost (optional, for production use usually Nginx or specific vhost config)
-# For simplicity, we'll rely on .htaccess in public folder
-COPY .htaccess /var/www/html/public/
-RUN rm /var/www/html/index.html # Remove default apache index file if exists
-
 EXPOSE 80
