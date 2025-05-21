@@ -57,11 +57,6 @@ REM visit http://localhost:8080 for Web UI
 ## Run with docker
 
 ```sh
-export APP_ENV=<app_env>
-export HOST=db
-export PORT=<port>
-export USER=root
-export PASS=<password>
 docker compose up --build
 # visit http://localhost:8000 for API
 # visit http://localhost:4173 for Web UI

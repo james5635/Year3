@@ -9,11 +9,11 @@ services:
     depends_on:
       - db
     environment:
-      - APP_ENV=${APP_ENV}
-      - HOST=${HOST}
-      - PORT=${PORT}
-      - USER=${USER}
-      - PASS=${PASS}
+      - APP_ENV=production
+      - HOST=db
+      - PORT=3306
+      - USER=root
+      - PASS=password123
   web-ui:
     build:
       context: "./Web UI/"
@@ -28,8 +28,8 @@ services:
     container_name: mysql-db
 #    restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: ${PASS}
-      MYSQL_TCP_PORT: ${PORT}
+      MYSQL_ROOT_PASSWORD: password123
+      MYSQL_TCP_PORT: 3306
     volumes:
       - db_data:/var/lib/mysql
       - ./db.sql:/docker-entrypoint-initdb.d/db.sql:ro
