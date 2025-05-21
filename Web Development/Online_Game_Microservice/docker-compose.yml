@@ -50,10 +50,13 @@ services:
     container_name: user_service
     ports:
       - "8001:80"
-    volumes:
-      - ./user-service:/var/www/html
     environment:
-      DB_HOST: user-db # Use service name as host
+      APP_ENV: production
+      DB_HOST: user-db
+      DB_NAME: users_db
+      DB_USER: root
+      DB_PASS: rootpassword
+      JWT_SECRET_KEY: your_super_secret_jwt_key_that_is_at_least_32_characters
     depends_on:
       - user-db
     networks:
@@ -66,10 +69,12 @@ services:
     container_name: game_lobby_service
     ports:
       - "8002:80"
-    volumes:
-      - ./game-lobby-service:/var/www/html
     environment:
+      APP_ENV: production
       DB_HOST: game-lobby-db
+      DB_NAME: game_lobbies_db
+      DB_USER: root
+      DB_PASS: rootpassword
     depends_on:
       - game-lobby-db
     networks:
@@ -82,10 +87,12 @@ services:
     container_name: inventory_service
     ports:
       - "8003:80"
-    volumes:
-      - ./inventory-service:/var/www/html
     environment:
+      APP_ENV: production
       DB_HOST: inventory-db
+      DB_NAME: inventory_db
+      DB_USER: root
+      DB_PASS: rootpassword
     depends_on:
       - inventory-db
     networks:
@@ -98,9 +105,8 @@ services:
     container_name: gateway_service
     ports:
       - "80:80" # Default HTTP port
-    volumes:
-      - ./gateway-service:/var/www/html
     environment:
+      APP_ENV: production
       USER_SERVICE_URL: http://user-service:80 # Use service name and internal port
       GAME_LOBBY_SERVICE_URL: http://game-lobby-service:80
       INVENTORY_SERVICE_URL: http://inventory-service:80
