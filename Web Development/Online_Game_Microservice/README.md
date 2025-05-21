@@ -29,7 +29,7 @@ curl -X GET \
 #### Create a lobby
 ```sh
   curl -X POST \
-    http://localhost:8000/lobbies\
+    http://localhost/lobbies \
     -H 'Content-Type: application/json' \
     -d '{
         "name": "mylobby",
