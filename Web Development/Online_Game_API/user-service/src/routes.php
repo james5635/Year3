@@ -1,4 +1,11 @@
 <?php
+/**
+ * User Service - Routes
+ *
+ * This file defines all the routes and handlers for the User Service.
+ * It includes endpoints for user registration, authentication, and profile management.
+ * JWT authentication is implemented for protected routes.
+ */
 
 use Slim\App;
 use Psr\Http\Message\ResponseInterface as Response;

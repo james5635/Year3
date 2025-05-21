@@ -1,4 +1,11 @@
 <?php
+/**
+ * Gateway Service - Routes
+ *
+ * This file defines all the routes and handlers for the Gateway Service.
+ * It includes endpoints for proxying requests to the appropriate microservices,
+ * such as user authentication, game lobbies, and inventory management.
+ */
 
 use Slim\App;
 use Psr\Http\Message\ResponseInterface as Response;

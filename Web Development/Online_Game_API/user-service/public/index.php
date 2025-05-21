@@ -1,4 +1,11 @@
 <?php
+/**
+ * User Service - Main Entry Point
+ *
+ * This file serves as the entry point for the User Service in the Online Game API.
+ * It initializes the Slim application, loads environment variables, and registers routes.
+ * The User Service handles user authentication, registration, and profile management.
+ */
 
 use Slim\Factory\AppFactory;
 use Psr\Http\Message\ResponseInterface as Response;

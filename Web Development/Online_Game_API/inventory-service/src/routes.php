@@ -1,4 +1,11 @@
 <?php
+/**
+ * Inventory Service - Routes
+ *
+ * This file defines all the routes and handlers for the Inventory Service.
+ * It includes endpoints for managing user inventory items, adding and removing
+ * items, and retrieving item definitions.
+ */
 
 use Slim\App;
 use Psr\Http\Message\ResponseInterface as Response;

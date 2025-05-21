@@ -1,4 +1,10 @@
 <?php
+/**
+ * Inventory Service - Main Entry Point
+ *
+ * This file serves as the entry point for the Inventory Service in the Online Game API.
+ * It initializes the Slim application, loads environment variables, and registers routes.
+ */
 
 use Slim\Factory\AppFactory;
 use Psr\Http\Message\ResponseInterface as Response;

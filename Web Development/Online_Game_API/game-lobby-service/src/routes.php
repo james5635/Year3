@@ -1,4 +1,10 @@
 <?php
+/**
+ * Game Lobby Service - Routes
+ *
+ * This file defines all the routes and handlers for the Game Lobby Service.
+ * It includes endpoints for creating, joining, and listing game lobbies.
+ */
 
 use Slim\App;
 use Psr\Http\Message\ResponseInterface as Response;

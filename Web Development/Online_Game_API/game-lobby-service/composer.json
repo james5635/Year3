@@ -1,4 +1,14 @@
 {
+    "name": "online-game/game-lobby-service",
+    "description": "Game Lobby Service for Online Game API",
+    "version": "0.0.1",
+    "license": "GPL-3.0-only",
+    "authors": [
+        {
+            "name": "sou chanrojame",
+            "email": "brorojame2030@gmail.com"
+        }
+    ],
     "require": {
         "php": ">=7.4",
         "slim/slim": "^4.0",

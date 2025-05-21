@@ -1,4 +1,11 @@
 <?php
+/**
+ * Gateway Service - Main Entry Point
+ *
+ * This file serves as the entry point for the Gateway Service in the Online Game API.
+ * It initializes the Slim application, loads environment variables, and registers routes.
+ * The Gateway Service acts as an API gateway to route requests to appropriate microservices.
+ */
 
 use Slim\Factory\AppFactory;
 use Psr\Http\Message\ResponseInterface as Response;
