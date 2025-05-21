@@ -1,3 +1,10 @@
+/**
+ * Math Topic Type Definitions
+ * 
+ * This file defines TypeScript types and interfaces for mathematics topics
+ * used throughout the application.
+ */
+
 export type DifficultyLevel = 'Beginner' | 'Intermediate' | 'Advanced';
 
 export interface MathTopic {

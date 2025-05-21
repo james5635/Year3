@@ -1,4 +1,12 @@
 <?php
+/**
+ * Mathematics Topics API
+ * 
+ * This file serves as the main entry point for the RESTful API that manages
+ * mathematics topics. It handles GET, POST, PUT, and DELETE requests for
+ * retrieving, creating, updating, and deleting math topics from the database.
+ */
+
 header("Content-Type: application/json");
 header("Access-Control-Allow-Origin: *");
 // header("Access-Control-Allow-Origin: http://localhost:5173");

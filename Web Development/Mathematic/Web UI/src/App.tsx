@@ -1,3 +1,10 @@
+/**
+ * Main Application Component
+ * 
+ * This is the main component for the Mathematics Topics application.
+ * It handles state management for topics data and provides functionality
+ * for creating, reading, updating, and deleting math topics.
+ */
 import { useState, useEffect } from 'react';
 import { ThemeProvider, CssBaseline, Container, Box, Typography, Button, Snackbar, Alert } from '@mui/material';
 import { Add as AddIcon } from '@mui/icons-material';

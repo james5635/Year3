@@ -1,4 +1,15 @@
 {
+    "name": "souchanrojame/mathematic",
+    "description": "A mathematics topic management application",
+    "version": "1.0.0",
+    "type": "project",
+    "license": "GPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "Sou Chanrojame",
+            "email": "brorojame2030@gmail.com"
+        }
+    ],
     "require": {
         "vlucas/phpdotenv": "^5.6"
     }

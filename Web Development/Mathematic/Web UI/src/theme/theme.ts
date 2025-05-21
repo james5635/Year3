@@ -1,3 +1,9 @@
+/**
+ * Material UI Theme Configuration
+ * 
+ * This file defines the custom theme for the application including 
+ * colors, typography, and component styling overrides.
+ */
 import { createTheme } from '@mui/material';
 
 export const theme = createTheme({

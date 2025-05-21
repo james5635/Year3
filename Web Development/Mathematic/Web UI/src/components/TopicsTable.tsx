@@ -1,3 +1,9 @@
+/**
+ * Topics Table Component
+ * 
+ * This component displays mathematics topics in a data grid table format.
+ * It includes functionality for viewing, editing and deleting topics.
+ */
 import { Paper, IconButton } from '@mui/material';
 import { DataGrid } from '@mui/x-data-grid';
 import type { GridColDef, GridRenderCellParams } from '@mui/x-data-grid';

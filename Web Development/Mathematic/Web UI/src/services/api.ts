@@ -1,3 +1,9 @@
+/**
+ * API Service
+ * 
+ * This service handles communication with the backend API for mathematics topics.
+ * It provides functions for CRUD operations on math topics data.
+ */
 import axios from 'axios';
 import type { MathTopic } from '../types/MathTopic';
 

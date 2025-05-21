@@ -1,4 +1,11 @@
 <?php
+/**
+ * Configuration File
+ * 
+ * This file loads environment variables from .env file using phpdotenv
+ * and returns database configuration parameters for the application.
+ */
+
 require_once __DIR__ . "/vendor/autoload.php";
 
 if (file_exists(__DIR__ . "/.env")) {

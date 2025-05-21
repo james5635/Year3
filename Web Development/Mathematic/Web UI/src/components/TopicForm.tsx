@@ -1,3 +1,9 @@
+/**
+ * Topic Form Component
+ * 
+ * This component provides a form for creating and editing math topics.
+ * It renders a dialog with input fields for topic properties and handles form submission.
+ */
 import { useState, useEffect } from 'react';
 import { TextField, Button, Dialog, DialogTitle, DialogContent, DialogActions, MenuItem, Box } from '@mui/material';
 import type { MathTopic, DifficultyLevel } from '../types/MathTopic';
