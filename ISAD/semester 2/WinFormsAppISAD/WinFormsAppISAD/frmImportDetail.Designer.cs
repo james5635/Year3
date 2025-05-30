@@ -201,6 +201,7 @@
             txtProCode.Name = "txtProCode";
             txtProCode.Size = new Size(144, 23);
             txtProCode.TabIndex = 93;
+            txtProCode.TextChanged += txtProCode_TextChanged;
             // 
             // lblProCode
             // 

@@ -44,5 +44,28 @@ namespace WinFormsAppISAD
             txtSupID.Text = cboSup?.SelectedValue?.ToString();
 
         }
+
+        private void txtProCode_TextChanged(object sender, EventArgs e)
+        {
+            if (int.TryParse(txtProCode.Text, out _) == false)
+            {
+                txtProName.Text = string.Empty;
+                return;
+            }
+
+            using SqlConnection conn = new SqlConnection(connStr);
+            conn.Open();
+
+            using SqlCommand cmd = new SqlCommand($"SELECT ProCode, ProName FROM fnGetAllProduct() WHERE ProCode={txtProCode.Text}", conn);
+            using SqlDataReader dr = cmd.ExecuteReader();
+            if (dr.Read())
+            {
+                txtProName.Text = dr["ProName"].ToString();
+            }
+            else
+            {
+                txtProName.Text = string.Empty;
+            }
+        }
     }
 }
