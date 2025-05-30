@@ -32,6 +32,7 @@
             btnSupplierM = new Button();
             btnCustomerM = new Button();
             btnProductM = new Button();
+            btnImportDetailInformation = new Button();
             SuspendLayout();
             // 
             // btnStaffM
@@ -102,11 +103,29 @@
             btnProductM.UseVisualStyleBackColor = false;
             btnProductM.Click += btnProductM_Click;
             // 
+            // btnImportDetailInformation
+            // 
+            btnImportDetailInformation.BackColor = Color.Olive;
+            btnImportDetailInformation.Cursor = Cursors.Hand;
+            btnImportDetailInformation.FlatAppearance.BorderSize = 0;
+            btnImportDetailInformation.FlatStyle = FlatStyle.Flat;
+            btnImportDetailInformation.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnImportDetailInformation.ForeColor = Color.White;
+            btnImportDetailInformation.ImageAlign = ContentAlignment.MiddleLeft;
+            btnImportDetailInformation.Location = new Point(12, 248);
+            btnImportDetailInformation.Name = "btnImportDetailInformation";
+            btnImportDetailInformation.Size = new Size(260, 35);
+            btnImportDetailInformation.TabIndex = 47;
+            btnImportDetailInformation.Text = "📋 ImportDetail's Information";
+            btnImportDetailInformation.UseVisualStyleBackColor = false;
+            btnImportDetailInformation.Click += btnImportDetailInformation_Click;
+            // 
             // frmStart
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(290, 247);
+            ClientSize = new Size(290, 339);
+            Controls.Add(btnImportDetailInformation);
             Controls.Add(btnProductM);
             Controls.Add(btnCustomerM);
             Controls.Add(btnSupplierM);
@@ -122,5 +141,6 @@
         private Button btnSupplierM;
         private Button btnCustomerM;
         private Button btnProductM;
+        private Button btnImportDetailInformation;
     }
 }

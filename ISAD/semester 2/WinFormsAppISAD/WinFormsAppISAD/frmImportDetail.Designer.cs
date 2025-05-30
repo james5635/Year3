@@ -28,213 +28,358 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label6 = new Label();
-            textBox6 = new TextBox();
-            label5 = new Label();
-            textBox5 = new TextBox();
-            button2 = new Button();
-            button1 = new Button();
-            dataGridView1 = new DataGridView();
-            label3 = new Label();
-            textBox3 = new TextBox();
-            label4 = new Label();
-            textBox4 = new TextBox();
-            label8 = new Label();
-            label2 = new Label();
-            label1 = new Label();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            lblImportDate = new Label();
+            dtpImportDate = new DateTimePicker();
+            lblStaffID = new Label();
+            lblImportDetail = new Label();
+            lblStaffName = new Label();
+            cboStaffID = new ComboBox();
+            txtStaffName = new TextBox();
+            txtSupID = new TextBox();
+            lblSup = new Label();
+            lblSupID = new Label();
+            cboSup = new ComboBox();
+            txtTotal = new TextBox();
+            lblTotal = new Label();
+            lview = new ListView();
+            txtProCode = new TextBox();
+            lblProCode = new Label();
+            txtProName = new TextBox();
+            lblProName = new Label();
+            txtQty = new TextBox();
+            lblQty = new Label();
+            txtUnitPrice = new TextBox();
+            lblUnitPrice = new Label();
+            btnAdd = new Button();
+            btnDelete = new Button();
+            btnSave = new Button();
             SuspendLayout();
             // 
-            // label6
+            // lblImportDate
             // 
-            label6.AutoSize = true;
-            label6.Location = new Point(22, 278);
-            label6.Name = "label6";
-            label6.RightToLeft = RightToLeft.Yes;
-            label6.Size = new Size(51, 15);
-            label6.TabIndex = 76;
-            label6.Text = "Amount";
+            lblImportDate.AutoSize = true;
+            lblImportDate.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblImportDate.ForeColor = Color.FromArgb(33, 33, 33);
+            lblImportDate.Location = new Point(17, 80);
+            lblImportDate.Name = "lblImportDate";
+            lblImportDate.Size = new Size(118, 19);
+            lblImportDate.TabIndex = 75;
+            lblImportDate.Text = "📅 Import Date:";
             // 
-            // textBox6
+            // dtpImportDate
             // 
-            textBox6.Location = new Point(106, 275);
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(140, 23);
-            textBox6.TabIndex = 75;
+            dtpImportDate.CalendarMonthBackground = Color.FromArgb(245, 245, 245);
+            dtpImportDate.Format = DateTimePickerFormat.Short;
+            dtpImportDate.Location = new Point(145, 80);
+            dtpImportDate.Name = "dtpImportDate";
+            dtpImportDate.Size = new Size(250, 23);
+            dtpImportDate.TabIndex = 76;
             // 
-            // label5
+            // lblStaffID
             // 
-            label5.AutoSize = true;
-            label5.Location = new Point(22, 239);
-            label5.Name = "label5";
-            label5.RightToLeft = RightToLeft.Yes;
-            label5.Size = new Size(33, 15);
-            label5.TabIndex = 74;
-            label5.Text = "Price";
+            lblStaffID.AutoSize = true;
+            lblStaffID.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblStaffID.ForeColor = Color.FromArgb(33, 33, 33);
+            lblStaffID.Location = new Point(17, 132);
+            lblStaffID.Name = "lblStaffID";
+            lblStaffID.Size = new Size(95, 19);
+            lblStaffID.TabIndex = 77;
+            lblStaffID.Text = "\U0001f9d1‍💼 Staff's ID:";
             // 
-            // textBox5
+            // lblImportDetail
             // 
-            textBox5.Location = new Point(106, 236);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(140, 23);
-            textBox5.TabIndex = 73;
+            lblImportDetail.AutoSize = true;
+            lblImportDetail.Font = new Font("Segoe UI", 24F, FontStyle.Bold);
+            lblImportDetail.ForeColor = Color.FromArgb(0, 150, 136);
+            lblImportDetail.Location = new Point(66, 9);
+            lblImportDetail.Name = "lblImportDetail";
+            lblImportDetail.Size = new Size(477, 45);
+            lblImportDetail.TabIndex = 79;
+            lblImportDetail.Text = "📋 ImportDetail's Information";
+            lblImportDetail.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // button2
+            // lblStaffName
             // 
-            button2.Image = Properties.Resources.Add;
-            button2.ImageAlign = ContentAlignment.MiddleLeft;
-            button2.Location = new Point(709, 199);
-            button2.Name = "button2";
-            button2.Size = new Size(75, 23);
-            button2.TabIndex = 72;
-            button2.Text = "Add";
-            button2.TextAlign = ContentAlignment.MiddleRight;
-            button2.UseVisualStyleBackColor = true;
+            lblStaffName.AutoSize = true;
+            lblStaffName.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblStaffName.ForeColor = Color.FromArgb(33, 33, 33);
+            lblStaffName.Location = new Point(262, 132);
+            lblStaffName.Name = "lblStaffName";
+            lblStaffName.Size = new Size(121, 19);
+            lblStaffName.TabIndex = 80;
+            lblStaffName.Text = "👤 Staff's Name:";
             // 
-            // button1
+            // cboStaffID
             // 
-            button1.Image = Properties.Resources.Edit;
-            button1.ImageAlign = ContentAlignment.MiddleLeft;
-            button1.Location = new Point(709, 116);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 71;
-            button1.Text = "Edit";
-            button1.TextAlign = ContentAlignment.MiddleRight;
-            button1.UseVisualStyleBackColor = true;
+            cboStaffID.FormattingEnabled = true;
+            cboStaffID.Location = new Point(117, 132);
+            cboStaffID.Name = "cboStaffID";
+            cboStaffID.Size = new Size(121, 23);
+            cboStaffID.TabIndex = 82;
+            cboStaffID.SelectionChangeCommitted += cboStaffID_SelectionChangeCommitted;
             // 
-            // dataGridView1
+            // txtStaffName
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(17, 319);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(767, 250);
-            dataGridView1.TabIndex = 70;
+            txtStaffName.BorderStyle = BorderStyle.FixedSingle;
+            txtStaffName.Location = new Point(389, 133);
+            txtStaffName.Name = "txtStaffName";
+            txtStaffName.ReadOnly = true;
+            txtStaffName.Size = new Size(214, 23);
+            txtStaffName.TabIndex = 83;
             // 
-            // label3
+            // txtSupID
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(22, 199);
-            label3.Name = "label3";
-            label3.RightToLeft = RightToLeft.Yes;
-            label3.Size = new Size(26, 15);
-            label3.TabIndex = 69;
-            label3.Text = "Qty";
+            txtSupID.BorderStyle = BorderStyle.FixedSingle;
+            txtSupID.Location = new Point(132, 186);
+            txtSupID.Name = "txtSupID";
+            txtSupID.ReadOnly = true;
+            txtSupID.Size = new Size(131, 23);
+            txtSupID.TabIndex = 87;
             // 
-            // textBox3
+            // lblSup
             // 
-            textBox3.Location = new Point(106, 196);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(140, 23);
-            textBox3.TabIndex = 68;
+            lblSup.AutoSize = true;
+            lblSup.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblSup.ForeColor = Color.FromArgb(33, 33, 33);
+            lblSup.Location = new Point(281, 186);
+            lblSup.Name = "lblSup";
+            lblSup.Size = new Size(94, 19);
+            lblSup.TabIndex = 85;
+            lblSup.Text = "📦 Supplier:";
             // 
-            // label4
+            // lblSupID
             // 
-            label4.AutoSize = true;
-            label4.Location = new Point(22, 157);
-            label4.Name = "label4";
-            label4.Size = new Size(57, 15);
-            label4.TabIndex = 67;
-            label4.Text = "ProName";
+            lblSupID.AutoSize = true;
+            lblSupID.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblSupID.ForeColor = Color.FromArgb(33, 33, 33);
+            lblSupID.Location = new Point(17, 186);
+            lblSupID.Name = "lblSupID";
+            lblSupID.Size = new Size(111, 19);
+            lblSupID.TabIndex = 84;
+            lblSupID.Text = "🏢 Supplier ID:";
             // 
-            // textBox4
+            // cboSup
             // 
-            textBox4.Location = new Point(106, 154);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(242, 23);
-            textBox4.TabIndex = 66;
+            cboSup.FormattingEnabled = true;
+            cboSup.Location = new Point(379, 186);
+            cboSup.Name = "cboSup";
+            cboSup.Size = new Size(214, 23);
+            cboSup.TabIndex = 88;
+            cboSup.SelectionChangeCommitted += cboSup_SelectionChangeCommitted;
             // 
-            // label8
+            // txtTotal
             // 
-            label8.AutoSize = true;
-            label8.Font = new Font("Ink Free", 21.7499962F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label8.ForeColor = Color.Blue;
-            label8.Location = new Point(255, 9);
-            label8.Name = "label8";
-            label8.Size = new Size(385, 36);
-            label8.TabIndex = 65;
-            label8.Text = "ImportDetail's Information";
-            label8.Click += label8_Click;
+            txtTotal.BorderStyle = BorderStyle.FixedSingle;
+            txtTotal.Location = new Point(645, 579);
+            txtTotal.Name = "txtTotal";
+            txtTotal.Size = new Size(131, 23);
+            txtTotal.TabIndex = 90;
             // 
-            // label2
+            // lblTotal
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(22, 116);
-            label2.Name = "label2";
-            label2.RightToLeft = RightToLeft.Yes;
-            label2.Size = new Size(53, 15);
-            label2.TabIndex = 64;
-            label2.Text = "ProCode";
+            lblTotal.AutoSize = true;
+            lblTotal.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblTotal.ForeColor = Color.FromArgb(33, 33, 33);
+            lblTotal.Location = new Point(568, 581);
+            lblTotal.Name = "lblTotal";
+            lblTotal.Size = new Size(70, 19);
+            lblTotal.TabIndex = 89;
+            lblTotal.Text = "\U0001f9ee Total:";
             // 
-            // label1
+            // lview
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(22, 74);
-            label1.Name = "label1";
-            label1.Size = new Size(56, 15);
-            label1.TabIndex = 63;
-            label1.Text = "ImpCode";
+            lview.Location = new Point(17, 321);
+            lview.Name = "lview";
+            lview.Size = new Size(759, 246);
+            lview.TabIndex = 91;
+            lview.UseCompatibleStateImageBehavior = false;
             // 
-            // textBox1
+            // txtProCode
             // 
-            textBox1.Location = new Point(106, 71);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(101, 23);
-            textBox1.TabIndex = 62;
+            txtProCode.BorderStyle = BorderStyle.FixedSingle;
+            txtProCode.Location = new Point(17, 283);
+            txtProCode.Name = "txtProCode";
+            txtProCode.Size = new Size(144, 23);
+            txtProCode.TabIndex = 93;
             // 
-            // textBox2
+            // lblProCode
             // 
-            textBox2.Location = new Point(106, 113);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(101, 23);
-            textBox2.TabIndex = 77;
+            lblProCode.AutoSize = true;
+            lblProCode.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblProCode.ForeColor = Color.FromArgb(33, 33, 33);
+            lblProCode.Location = new Point(19, 255);
+            lblProCode.Name = "lblProCode";
+            lblProCode.Size = new Size(134, 19);
+            lblProCode.TabIndex = 92;
+            lblProCode.Text = "🔢 Product's Code";
+            // 
+            // txtProName
+            // 
+            txtProName.BorderStyle = BorderStyle.FixedSingle;
+            txtProName.Location = new Point(187, 283);
+            txtProName.Name = "txtProName";
+            txtProName.Size = new Size(258, 23);
+            txtProName.TabIndex = 95;
+            // 
+            // lblProName
+            // 
+            lblProName.AutoSize = true;
+            lblProName.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblProName.ForeColor = Color.FromArgb(33, 33, 33);
+            lblProName.Location = new Point(258, 255);
+            lblProName.Name = "lblProName";
+            lblProName.Size = new Size(139, 19);
+            lblProName.TabIndex = 94;
+            lblProName.Text = "🛍️ Product's Name";
+            // 
+            // txtQty
+            // 
+            txtQty.BorderStyle = BorderStyle.FixedSingle;
+            txtQty.Location = new Point(461, 283);
+            txtQty.Name = "txtQty";
+            txtQty.Size = new Size(138, 23);
+            txtQty.TabIndex = 97;
+            // 
+            // lblQty
+            // 
+            lblQty.AutoSize = true;
+            lblQty.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblQty.ForeColor = Color.FromArgb(33, 33, 33);
+            lblQty.Location = new Point(487, 255);
+            lblQty.Name = "lblQty";
+            lblQty.Size = new Size(90, 19);
+            lblQty.TabIndex = 96;
+            lblQty.Text = "🔢 Quantity";
+            // 
+            // txtUnitPrice
+            // 
+            txtUnitPrice.BorderStyle = BorderStyle.FixedSingle;
+            txtUnitPrice.Location = new Point(616, 283);
+            txtUnitPrice.Name = "txtUnitPrice";
+            txtUnitPrice.Size = new Size(160, 23);
+            txtUnitPrice.TabIndex = 99;
+            // 
+            // lblUnitPrice
+            // 
+            lblUnitPrice.AutoSize = true;
+            lblUnitPrice.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblUnitPrice.ForeColor = Color.FromArgb(33, 33, 33);
+            lblUnitPrice.Location = new Point(651, 255);
+            lblUnitPrice.Name = "lblUnitPrice";
+            lblUnitPrice.Size = new Size(98, 19);
+            lblUnitPrice.TabIndex = 98;
+            lblUnitPrice.Text = "💲 Unit Price";
+            // 
+            // btnAdd
+            // 
+            btnAdd.BackColor = Color.FromArgb(76, 175, 80);
+            btnAdd.Cursor = Cursors.Hand;
+            btnAdd.FlatAppearance.BorderSize = 0;
+            btnAdd.FlatStyle = FlatStyle.Flat;
+            btnAdd.ForeColor = Color.White;
+            btnAdd.ImageAlign = ContentAlignment.MiddleLeft;
+            btnAdd.Location = new Point(676, 42);
+            btnAdd.Name = "btnAdd";
+            btnAdd.Size = new Size(100, 35);
+            btnAdd.TabIndex = 100;
+            btnAdd.Text = "➕ Add";
+            btnAdd.UseVisualStyleBackColor = false;
+            // 
+            // btnDelete
+            // 
+            btnDelete.BackColor = Color.FromArgb(244, 67, 54);
+            btnDelete.Cursor = Cursors.Hand;
+            btnDelete.Enabled = false;
+            btnDelete.FlatAppearance.BorderSize = 0;
+            btnDelete.FlatStyle = FlatStyle.Flat;
+            btnDelete.ForeColor = Color.White;
+            btnDelete.ImageAlign = ContentAlignment.MiddleLeft;
+            btnDelete.Location = new Point(676, 104);
+            btnDelete.Name = "btnDelete";
+            btnDelete.Size = new Size(100, 35);
+            btnDelete.TabIndex = 101;
+            btnDelete.Text = "❌ Delete";
+            btnDelete.UseVisualStyleBackColor = false;
+            // 
+            // btnSave
+            // 
+            btnSave.BackColor = Color.FromArgb(0, 150, 136);
+            btnSave.Cursor = Cursors.Hand;
+            btnSave.Enabled = false;
+            btnSave.FlatAppearance.BorderSize = 0;
+            btnSave.FlatStyle = FlatStyle.Flat;
+            btnSave.ForeColor = Color.White;
+            btnSave.ImageAlign = ContentAlignment.MiddleLeft;
+            btnSave.Location = new Point(676, 170);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new Size(100, 35);
+            btnSave.TabIndex = 102;
+            btnSave.Text = "💾 Save";
+            btnSave.UseVisualStyleBackColor = false;
             // 
             // frmImportDetail
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 579);
-            Controls.Add(textBox2);
-            Controls.Add(label6);
-            Controls.Add(textBox6);
-            Controls.Add(label5);
-            Controls.Add(textBox5);
-            Controls.Add(button2);
-            Controls.Add(button1);
-            Controls.Add(dataGridView1);
-            Controls.Add(label3);
-            Controls.Add(textBox3);
-            Controls.Add(label4);
-            Controls.Add(textBox4);
-            Controls.Add(label8);
-            Controls.Add(label2);
-            Controls.Add(label1);
-            Controls.Add(textBox1);
+            ClientSize = new Size(793, 611);
+            Controls.Add(btnSave);
+            Controls.Add(btnDelete);
+            Controls.Add(btnAdd);
+            Controls.Add(txtUnitPrice);
+            Controls.Add(lblUnitPrice);
+            Controls.Add(txtQty);
+            Controls.Add(lblQty);
+            Controls.Add(txtProName);
+            Controls.Add(lblProName);
+            Controls.Add(txtProCode);
+            Controls.Add(lblProCode);
+            Controls.Add(lview);
+            Controls.Add(txtTotal);
+            Controls.Add(lblTotal);
+            Controls.Add(cboSup);
+            Controls.Add(txtSupID);
+            Controls.Add(lblSup);
+            Controls.Add(lblSupID);
+            Controls.Add(txtStaffName);
+            Controls.Add(cboStaffID);
+            Controls.Add(lblStaffName);
+            Controls.Add(lblImportDetail);
+            Controls.Add(lblStaffID);
+            Controls.Add(lblImportDate);
+            Controls.Add(dtpImportDate);
             Name = "frmImportDetail";
-            Text = "frmImportDetail";
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            Text = "📋 ImportDetail's Information";
+            Load += frmImportDetail_Load;
             ResumeLayout(false);
             PerformLayout();
         }
 
+
         #endregion
-        private Label label6;
-        private TextBox textBox6;
-        private Label label5;
-        private TextBox textBox5;
-        private Button button2;
-        private Button button1;
-        private DataGridView dataGridView1;
-        private Label label3;
-        private TextBox textBox3;
-        private Label label4;
-        private TextBox textBox4;
-        private Label label8;
-        private Label label2;
-        private Label label1;
-        private TextBox textBox1;
-        private TextBox textBox2;
+        private Label lblImportDate;
+        private DateTimePicker dtpImportDate;
+        private Label lblStaffID;
+        private Label lblImportDetail;
+        private Label lblStaffName;
+        private ComboBox cboStaffID;
+        private TextBox txtStaffName;
+        private TextBox txtSupID;
+        private Label lblSup;
+        private Label lblSupID;
+        private ComboBox cboSup;
+        private TextBox txtTotal;
+        private Label lblTotal;
+        private ListView lview;
+        private TextBox txtProCode;
+        private Label lblProCode;
+        private TextBox txtProName;
+        private Label lblProName;
+        private TextBox txtQty;
+        private Label lblQty;
+        private TextBox txtUnitPrice;
+        private Label lblUnitPrice;
+        private Button btnAdd;
+        private Button btnDelete;
+        private Button btnSave;
     }
 }

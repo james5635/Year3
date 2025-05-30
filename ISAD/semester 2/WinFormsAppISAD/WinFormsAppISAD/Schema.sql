@@ -1542,3 +1542,22 @@ AS
 GO
 PRINT 'procedure for delete created successfully.';
 GO
+
+-- function for select
+PRINT 'creating function for select ';
+GO
+CREATE FUNCTION fnGetAllStaff() RETURNS TABLE
+AS 
+    RETURN (SELECT staffID, FullName FROM [dbo].[tbStaffs] )
+GO
+CREATE FUNCTION fnGetAllSupplier() RETURNS TABLE
+AS 
+    RETURN (SELECT supID, Supplier FROM [dbo].[tbSuppliers] )
+GO
+CREATE FUNCTION fnGetAllProduct() RETURNS TABLE
+AS 
+    RETURN (SELECT ProCode, ProName FROM [dbo].[tbProducts] )
+GO
+PRINT 'function for select created successfully.';
+GO
+

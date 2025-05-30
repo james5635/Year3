@@ -41,6 +41,11 @@ namespace WinFormsAppISAD
             //});
             new frmProducts().Show();
         }
+
+        private void btnImportDetailInformation_Click(object sender, EventArgs e)
+        {
+            new frmImportDetail().Show();
+        }
     }
 }
 
