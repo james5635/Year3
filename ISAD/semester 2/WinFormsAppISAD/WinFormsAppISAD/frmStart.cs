@@ -6,37 +6,40 @@ namespace WinFormsAppISAD
         {
             InitializeComponent();
         }
-
         private void btnStaffM_Click(object sender, EventArgs e)
         {
-            Task.Run(() =>
-            {
-                Application.Run(new frmStaffs());
-            });
+            //Task.Run(() =>
+            //{
+            //    Application.Run(new frmStaffs());
+            //});
+            new frmStaffs().Show();
         }
 
         private void btnSupplierM_Click(object sender, EventArgs e)
         {
-            Task.Run(() =>
-            {
-                Application.Run(new frmSuppliers());
-            });
+            //Task.Run(() =>
+            //{
+            //    Application.Run(new frmSuppliers());
+            //});
+            new frmSuppliers().Show();
         }
 
         private void btnCustomerM_Click(object sender, EventArgs e)
         {
-            Task.Run(() =>
-            {
-                Application.Run(new frmCustomers());
-            });
+            //Task.Run(() =>
+            //{
+            //    Application.Run(new frmCustomers());
+            //});
+            new frmCustomers().Show();
         }
 
         private void btnProductM_Click(object sender, EventArgs e)
         {
-            Task.Run(() =>
-            {
-                Application.Run(new frmProducts());
-            });
+            //Task.Run(() =>
+            //{
+            //    Application.Run(new frmProducts());
+            //});
+            new frmProducts().Show();
         }
     }
 }
