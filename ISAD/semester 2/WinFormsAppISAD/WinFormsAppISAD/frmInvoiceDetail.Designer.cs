@@ -42,14 +42,14 @@
             lview = new ListView();
             txtTotal = new TextBox();
             lblTotal = new Label();
-            cboSup = new ComboBox();
-            txtSupID = new TextBox();
-            lblSup = new Label();
-            lblSupID = new Label();
+            cboCusName = new ComboBox();
+            txtCusID = new TextBox();
+            lblCusName = new Label();
+            lblCusID = new Label();
             txtStaffName = new TextBox();
             cboStaffID = new ComboBox();
             lblStaffName = new Label();
-            lblImportDetail = new Label();
+            lblInvoiceDetail = new Label();
             lblStaffID = new Label();
             lblImportDate = new Label();
             dtpImportDate = new DateTimePicker();
@@ -117,9 +117,9 @@
             lblUnitPrice.ForeColor = Color.FromArgb(33, 33, 33);
             lblUnitPrice.Location = new Point(658, 264);
             lblUnitPrice.Name = "lblUnitPrice";
-            lblUnitPrice.Size = new Size(98, 19);
+            lblUnitPrice.Size = new Size(102, 19);
             lblUnitPrice.TabIndex = 123;
-            lblUnitPrice.Text = "💲 Unit Price";
+            lblUnitPrice.Text = "💲 Unit Price:";
             // 
             // txtQty
             // 
@@ -136,9 +136,9 @@
             lblQty.ForeColor = Color.FromArgb(33, 33, 33);
             lblQty.Location = new Point(494, 264);
             lblQty.Name = "lblQty";
-            lblQty.Size = new Size(90, 19);
+            lblQty.Size = new Size(94, 19);
             lblQty.TabIndex = 121;
-            lblQty.Text = "🔢 Quantity";
+            lblQty.Text = "🔢 Quantity:";
             // 
             // txtProName
             // 
@@ -155,9 +155,9 @@
             lblProName.ForeColor = Color.FromArgb(33, 33, 33);
             lblProName.Location = new Point(265, 264);
             lblProName.Name = "lblProName";
-            lblProName.Size = new Size(139, 19);
+            lblProName.Size = new Size(143, 19);
             lblProName.TabIndex = 119;
-            lblProName.Text = "🛍️ Product's Name";
+            lblProName.Text = "🛍️ Product's Name:";
             // 
             // txtProCode
             // 
@@ -174,9 +174,9 @@
             lblProCode.ForeColor = Color.FromArgb(33, 33, 33);
             lblProCode.Location = new Point(26, 264);
             lblProCode.Name = "lblProCode";
-            lblProCode.Size = new Size(134, 19);
+            lblProCode.Size = new Size(138, 19);
             lblProCode.TabIndex = 117;
-            lblProCode.Text = "🔢 Product's Code";
+            lblProCode.Text = "🔢 Product's Code:";
             // 
             // lview
             // 
@@ -205,44 +205,44 @@
             lblTotal.TabIndex = 114;
             lblTotal.Text = "\U0001f9ee Total:";
             // 
-            // cboSup
+            // cboCusName
             // 
-            cboSup.FormattingEnabled = true;
-            cboSup.Location = new Point(386, 195);
-            cboSup.Name = "cboSup";
-            cboSup.Size = new Size(214, 23);
-            cboSup.TabIndex = 113;
+            cboCusName.FormattingEnabled = true;
+            cboCusName.Location = new Point(429, 195);
+            cboCusName.Name = "cboCusName";
+            cboCusName.Size = new Size(214, 23);
+            cboCusName.TabIndex = 113;
             // 
-            // txtSupID
+            // txtCusID
             // 
-            txtSupID.BorderStyle = BorderStyle.FixedSingle;
-            txtSupID.Location = new Point(139, 195);
-            txtSupID.Name = "txtSupID";
-            txtSupID.ReadOnly = true;
-            txtSupID.Size = new Size(131, 23);
-            txtSupID.TabIndex = 112;
+            txtCusID.BorderStyle = BorderStyle.FixedSingle;
+            txtCusID.Location = new Point(150, 195);
+            txtCusID.Name = "txtCusID";
+            txtCusID.ReadOnly = true;
+            txtCusID.Size = new Size(118, 23);
+            txtCusID.TabIndex = 112;
             // 
-            // lblSup
+            // lblCusName
             // 
-            lblSup.AutoSize = true;
-            lblSup.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            lblSup.ForeColor = Color.FromArgb(33, 33, 33);
-            lblSup.Location = new Point(288, 195);
-            lblSup.Name = "lblSup";
-            lblSup.Size = new Size(94, 19);
-            lblSup.TabIndex = 111;
-            lblSup.Text = "📦 Supplier:";
+            lblCusName.AutoSize = true;
+            lblCusName.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblCusName.ForeColor = Color.FromArgb(33, 33, 33);
+            lblCusName.Location = new Point(279, 195);
+            lblCusName.Name = "lblCusName";
+            lblCusName.Size = new Size(145, 19);
+            lblCusName.TabIndex = 111;
+            lblCusName.Text = "\U0001f9fe Customer Name:";
             // 
-            // lblSupID
+            // lblCusID
             // 
-            lblSupID.AutoSize = true;
-            lblSupID.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            lblSupID.ForeColor = Color.FromArgb(33, 33, 33);
-            lblSupID.Location = new Point(24, 195);
-            lblSupID.Name = "lblSupID";
-            lblSupID.Size = new Size(111, 19);
-            lblSupID.TabIndex = 110;
-            lblSupID.Text = "🏢 Supplier ID:";
+            lblCusID.AutoSize = true;
+            lblCusID.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblCusID.ForeColor = Color.FromArgb(33, 33, 33);
+            lblCusID.Location = new Point(24, 195);
+            lblCusID.Name = "lblCusID";
+            lblCusID.Size = new Size(119, 19);
+            lblCusID.TabIndex = 110;
+            lblCusID.Text = "🆔 Customer ID:";
             // 
             // txtStaffName
             // 
@@ -272,17 +272,17 @@
             lblStaffName.TabIndex = 107;
             lblStaffName.Text = "👤 Staff's Name:";
             // 
-            // lblImportDetail
+            // lblInvoiceDetail
             // 
-            lblImportDetail.AutoSize = true;
-            lblImportDetail.Font = new Font("Segoe UI", 24F, FontStyle.Bold);
-            lblImportDetail.ForeColor = Color.FromArgb(0, 150, 136);
-            lblImportDetail.Location = new Point(73, 18);
-            lblImportDetail.Name = "lblImportDetail";
-            lblImportDetail.Size = new Size(477, 45);
-            lblImportDetail.TabIndex = 106;
-            lblImportDetail.Text = "📋 ImportDetail's Information";
-            lblImportDetail.TextAlign = ContentAlignment.MiddleCenter;
+            lblInvoiceDetail.AutoSize = true;
+            lblInvoiceDetail.Font = new Font("Segoe UI", 24F, FontStyle.Bold);
+            lblInvoiceDetail.ForeColor = Color.FromArgb(0, 150, 136);
+            lblInvoiceDetail.Location = new Point(78, 18);
+            lblInvoiceDetail.Name = "lblInvoiceDetail";
+            lblInvoiceDetail.Size = new Size(479, 45);
+            lblInvoiceDetail.TabIndex = 106;
+            lblInvoiceDetail.Text = "📄 InvoiceDetail's Information";
+            lblInvoiceDetail.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // lblStaffID
             // 
@@ -302,9 +302,9 @@
             lblImportDate.ForeColor = Color.FromArgb(33, 33, 33);
             lblImportDate.Location = new Point(24, 89);
             lblImportDate.Name = "lblImportDate";
-            lblImportDate.Size = new Size(118, 19);
+            lblImportDate.Size = new Size(120, 19);
             lblImportDate.TabIndex = 103;
-            lblImportDate.Text = "📅 Import Date:";
+            lblImportDate.Text = "📅 Invoice Date:";
             // 
             // dtpImportDate
             // 
@@ -334,19 +334,19 @@
             Controls.Add(lview);
             Controls.Add(txtTotal);
             Controls.Add(lblTotal);
-            Controls.Add(cboSup);
-            Controls.Add(txtSupID);
-            Controls.Add(lblSup);
-            Controls.Add(lblSupID);
+            Controls.Add(cboCusName);
+            Controls.Add(txtCusID);
+            Controls.Add(lblCusName);
+            Controls.Add(lblCusID);
             Controls.Add(txtStaffName);
             Controls.Add(cboStaffID);
             Controls.Add(lblStaffName);
-            Controls.Add(lblImportDetail);
+            Controls.Add(lblInvoiceDetail);
             Controls.Add(lblStaffID);
             Controls.Add(lblImportDate);
             Controls.Add(dtpImportDate);
             Name = "frmInvoiceDetail";
-            Text = "frmInvoiceDetail";
+            Text = "📄 InvoiceDetail's Information";
             Load += frmInvoiceDetail_Load;
             ResumeLayout(false);
             PerformLayout();
@@ -368,14 +368,14 @@
         private ListView lview;
         private TextBox txtTotal;
         private Label lblTotal;
-        private ComboBox cboSup;
-        private TextBox txtSupID;
-        private Label lblSup;
-        private Label lblSupID;
+        private ComboBox cboCusName;
+        private TextBox txtCusID;
+        private Label lblCusName;
+        private Label lblCusID;
         private TextBox txtStaffName;
         private ComboBox cboStaffID;
         private Label lblStaffName;
-        private Label lblImportDetail;
+        private Label lblInvoiceDetail;
         private Label lblStaffID;
         private Label lblImportDate;
         private DateTimePicker dtpImportDate;
