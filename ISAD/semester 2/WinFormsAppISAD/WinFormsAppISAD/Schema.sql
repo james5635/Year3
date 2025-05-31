@@ -1558,6 +1558,11 @@ CREATE FUNCTION fnGetAllProduct() RETURNS TABLE
 AS 
     RETURN (SELECT ProCode, ProName FROM [dbo].[tbProducts] )
 GO
+
+CREATE FUNCTION fnGetAllCustomer() RETURNS TABLE
+AS 
+    RETURN (SELECT cusID, CusName FROM [dbo].[tbCustomers] )
+GO
 PRINT 'function for select created successfully.';
 GO
 

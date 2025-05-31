@@ -166,6 +166,7 @@
             txtProCode.Name = "txtProCode";
             txtProCode.Size = new Size(144, 23);
             txtProCode.TabIndex = 118;
+            txtProCode.TextChanged += txtProCode_TextChanged;
             // 
             // lblProCode
             // 
@@ -212,6 +213,7 @@
             cboCusName.Name = "cboCusName";
             cboCusName.Size = new Size(214, 23);
             cboCusName.TabIndex = 113;
+            cboCusName.SelectionChangeCommitted += cboCusName_SelectionChangeCommitted;
             // 
             // txtCusID
             // 
@@ -260,6 +262,7 @@
             cboStaffID.Name = "cboStaffID";
             cboStaffID.Size = new Size(121, 23);
             cboStaffID.TabIndex = 108;
+            cboStaffID.SelectionChangeCommitted += cboStaffID_SelectionChangeCommitted;
             // 
             // lblStaffName
             // 

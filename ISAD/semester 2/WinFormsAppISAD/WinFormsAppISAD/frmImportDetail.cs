@@ -16,7 +16,7 @@ namespace WinFormsAppISAD
             using SqlConnection conn = new SqlConnection(connStr);
             conn.Open();
 
-            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM fnGetALLStaff()", conn);
+            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM fnGetAllStaff()", conn);
             DataTable dt = new DataTable();
             da.Fill(dt);
             cboStaffID.DataSource = dt;
@@ -24,7 +24,7 @@ namespace WinFormsAppISAD
             cboStaffID.ValueMember = "FullName";
             cboStaffID.Text = null;
 
-            da = new SqlDataAdapter("SELECT * FROM fnGetALLSupplier()", conn);
+            da = new SqlDataAdapter("SELECT * FROM fnGetAllSupplier()", conn);
             dt = new DataTable();
             da.Fill(dt);
             cboSup.DataSource = dt;
