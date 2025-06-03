@@ -45,7 +45,7 @@
             lblSalary = new Label();
             txtSalary = new TextBox();
             lblStatus = new Label();
-            txtStatus = new CheckBox();
+            chkStatus = new CheckBox();
             pBox = new PictureBox();
             lblSM = new Label();
             btnAdd = new Button();
@@ -221,12 +221,12 @@
             // 
             // txtStatus
             // 
-            txtStatus.ForeColor = Color.FromArgb(33, 33, 33);
-            txtStatus.Location = new Point(120, 337);
-            txtStatus.Name = "txtStatus";
-            txtStatus.Size = new Size(100, 20);
-            txtStatus.TabIndex = 14;
-            txtStatus.Text = "Inactive";
+            chkStatus.ForeColor = Color.FromArgb(33, 33, 33);
+            chkStatus.Location = new Point(120, 337);
+            chkStatus.Name = "txtStatus";
+            chkStatus.Size = new Size(100, 20);
+            chkStatus.TabIndex = 14;
+            chkStatus.Text = "Inactive";
             // 
             // pBox
             // 
@@ -396,7 +396,7 @@
             Controls.Add(lblSalary);
             Controls.Add(txtSalary);
             Controls.Add(lblStatus);
-            Controls.Add(txtStatus);
+            Controls.Add(chkStatus);
             Controls.Add(photoLabel);
             Controls.Add(pBox);
             Controls.Add(btnUpdate);
@@ -434,7 +434,7 @@
         private Label lblSalary;
         private TextBox txtSalary;
         private Label lblStatus;
-        private CheckBox txtStatus;
+        private CheckBox chkStatus;
         private PictureBox pBox;
         private Label lblSM;
         private Button btnAdd;

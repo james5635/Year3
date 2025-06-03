@@ -12,21 +12,8 @@ namespace WinFormsAppISAD
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
 
-            //Task.Run(() =>
-            //{
-            //    Application.Run(new frmStaffs());
-            //});
-            //Task.Run(() =>
-            //{
-            //    Application.Run(new frmSuppliers());
-            //});
-            //while (true) { }
-            // Application.Run(new frmStaffs());
-            //Application.Run(new frmSuppliers());
-            //Application.Run(new frmCustomers());
-            //Application.Run(new frmProducts());
             Application.Run(new frmStart());
-
         }
+      
     }
 }

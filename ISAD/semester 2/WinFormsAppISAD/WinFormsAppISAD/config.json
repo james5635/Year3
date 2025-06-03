@@ -1,0 +1,3 @@
+{
+  "ConnectionString": "Server=.;Database=WinFormsAppISAD; User=sa; Password=james@2025; TrustServerCertificate=True;"
+}

@@ -1,20 +1,20 @@
 ﻿using Microsoft.Data.SqlClient;
 using System.Data;
-
+using WinFormsAppISAD.Configuration;
 namespace WinFormsAppISAD
 {
     public partial class frmSuppliers : Form
     {
-        const string connStr = "Server=.;Database=WinFormsAppISAD; User=sa; Password=james@2025; TrustServerCertificate=True;";
-        private bool isEditing = false;
-        private TextBox txtSearch = null!;
+        private readonly string _connStr = Config.GetConfig().ConnectionString;
+        private bool _isEditing = false;
+        private TextBox _txtSearch = null!;
 
         public frmSuppliers()
         {
             InitializeComponent();
             InitializeSearchBox();
             ConfigureDataGridView();
-            SqlDependency.Start(connStr);
+            SqlDependency.Start(_connStr);
             loadData();
             ClearForm();
 
@@ -30,12 +30,12 @@ namespace WinFormsAppISAD
 
         private void InitializeSearchBox()
         {
-            txtSearch = new TextBox();
-            txtSearch.Location = new Point(dgv.Location.X, dgv.Location.Y - 30);
-            txtSearch.Size = new Size(200, 23);
-            txtSearch.PlaceholderText = "Search suppliers...";
-            txtSearch.TextChanged += TxtSearch_TextChanged!;
-            this.Controls.Add(txtSearch);
+            _txtSearch = new TextBox();
+            _txtSearch.Location = new Point(dgv.Location.X, dgv.Location.Y - 30);
+            _txtSearch.Size = new Size(200, 23);
+            _txtSearch.PlaceholderText = "Search suppliers...";
+            _txtSearch.TextChanged += TxtSearch_TextChanged!;
+            this.Controls.Add(_txtSearch);
         }
 
         private void ConfigureDataGridView()
@@ -57,7 +57,7 @@ namespace WinFormsAppISAD
             if (dgv.DataSource is DataTable dt)
             {
                 string searchStr = string.Format("Supplier LIKE '%{0}%' OR [Supplier Address] LIKE '%{0}%' OR Phone LIKE '%{0}%'",
-                    txtSearch.Text.Replace("'", "''"));
+                    _txtSearch.Text.Replace("'", "''"));
                 dt.DefaultView.RowFilter = searchStr;
             }
         }
@@ -84,7 +84,7 @@ namespace WinFormsAppISAD
 
         private void loadData()
         {
-            using (SqlConnection conn = new SqlConnection(connStr))
+            using (SqlConnection conn = new SqlConnection(_connStr))
             {
                 conn.Open();
 
@@ -115,7 +115,7 @@ namespace WinFormsAppISAD
 
         private void ClearForm()
         {
-            isEditing = false;
+            _isEditing = false;
             txtSupID.Clear(); // ID
             txtSupName.Clear(); // Supplier Name
             txtCont.Clear(); // Contact
@@ -142,13 +142,13 @@ namespace WinFormsAppISAD
             {
                 ValidateInput();
 
-                using SqlConnection conn = new(connStr);
-                string query = isEditing ? "spUpdateSupplier" : "spInsertSupplier";
+                using SqlConnection conn = new(_connStr);
+                string query = _isEditing ? "spUpdateSupplier" : "spInsertSupplier";
 
                 using SqlCommand cmd = new(query, conn);
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                if (isEditing)
+                if (_isEditing)
                 {
                     cmd.Parameters.AddWithValue("@id", txtSupID.Text.Trim());
                 }
@@ -162,7 +162,7 @@ namespace WinFormsAppISAD
                 if (result > 0)
                 {
                     MessageBox.Show(
-                        isEditing ? "Supplier updated successfully! 🎉" : "Supplier added successfully! 🎉",
+                        _isEditing ? "Supplier updated successfully! 🎉" : "Supplier added successfully! 🎉",
                         "Success",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Information);
@@ -192,7 +192,7 @@ namespace WinFormsAppISAD
                 txtCont.Text = row.Cells["Phone"].Value?.ToString() ?? "";
                 txtAddr.Text = row.Cells["Supplier Address"].Value?.ToString() ?? "";
 
-                isEditing = true;
+                _isEditing = true;
                 txtSupID.Enabled = false;
                 btnUpdate.Enabled = true;
                 btnEdit.Enabled = false;
@@ -208,7 +208,7 @@ namespace WinFormsAppISAD
 
         private void frmSuppliers_Load(object sender, EventArgs e)
         {
-            SqlDependency.Start(connStr);
+            SqlDependency.Start(_connStr);
             loadData();
         }
 

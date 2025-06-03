@@ -1,20 +1,20 @@
 ﻿using System.Data;
 using Microsoft.Data.SqlClient;
-
+using WinFormsAppISAD.Configuration;
 namespace WinFormsAppISAD
 {
     public partial class frmProducts : Form
     {
-        const string connStr = "Server=.;Database=WinFormsAppISAD; User=sa; Password=james@2025; TrustServerCertificate=True;";
-        private bool isEditing = false;
-        private TextBox txtSearch = null!;
+        private readonly string _connStr = Config.GetConfig().ConnectionString;
+        private bool _isEditing = false;
+        private TextBox _txtSearch = null!;
 
         public frmProducts()
         {
             InitializeComponent();
             InitializeSearchBox();
             ConfigureDataGridView();
-            SqlDependency.Start(connStr);
+            SqlDependency.Start(_connStr);
             loadData();
             ClearForm();
 
@@ -31,12 +31,12 @@ namespace WinFormsAppISAD
 
         private void InitializeSearchBox()
         {
-            txtSearch = new TextBox();
-            txtSearch.Location = new Point(dgv.Location.X, dgv.Location.Y - 30);
-            txtSearch.Size = new Size(200, 23);
-            txtSearch.PlaceholderText = "Search products...";
-            txtSearch.TextChanged += TxtSearch_TextChanged!;
-            this.Controls.Add(txtSearch);
+            _txtSearch = new TextBox();
+            _txtSearch.Location = new Point(dgv.Location.X, dgv.Location.Y - 30);
+            _txtSearch.Size = new Size(200, 23);
+            _txtSearch.PlaceholderText = "Search products...";
+            _txtSearch.TextChanged += TxtSearch_TextChanged!;
+            this.Controls.Add(_txtSearch);
         }
 
         private void ConfigureDataGridView()
@@ -58,7 +58,7 @@ namespace WinFormsAppISAD
             if (dgv.DataSource is DataTable dt)
             {
                 string searchStr = string.Format("Name LIKE '%{0}%'",
-                    txtSearch.Text.Replace("'", "''"));
+                    _txtSearch.Text.Replace("'", "''"));
                 dt.DefaultView.RowFilter = searchStr;
             }
         }
@@ -85,7 +85,7 @@ namespace WinFormsAppISAD
 
         private void loadData()
         {
-            using (SqlConnection conn = new SqlConnection(connStr))
+            using (SqlConnection conn = new SqlConnection(_connStr))
             {
                 conn.Open();
 
@@ -121,7 +121,7 @@ namespace WinFormsAppISAD
 
         private void ClearForm()
         {
-            isEditing = false;
+            _isEditing = false;
             txtCode.Clear(); // Product Code
             txtName.Clear(); // Name
             txtUPIS.Clear(); // Quantity
@@ -152,12 +152,12 @@ namespace WinFormsAppISAD
             {
                 ValidateInput();
 
-                using SqlConnection conn = new(connStr);
-                string query = isEditing ? "spUpdateProduct" : "spInsertProduct";
+                using SqlConnection conn = new(_connStr);
+                string query = _isEditing ? "spUpdateProduct" : "spInsertProduct";
 
                 using SqlCommand cmd = new(query, conn);
                 cmd.CommandType = CommandType.StoredProcedure;
-                if (isEditing)
+                if (_isEditing)
                     cmd.Parameters.AddWithValue("@code", int.Parse(txtCode.Text));
                 cmd.Parameters.AddWithValue("@name", txtName.Text.Trim());
                 cmd.Parameters.AddWithValue("@qty", short.Parse(txtQty.Text));
@@ -170,7 +170,7 @@ namespace WinFormsAppISAD
                 if (result > 0)
                 {
                     MessageBox.Show(
-                        isEditing ? "Product updated successfully! 🎉" : "Product added successfully! 🎉",
+                        _isEditing ? "Product updated successfully! 🎉" : "Product added successfully! 🎉",
                         "Success",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Information);
@@ -201,7 +201,7 @@ namespace WinFormsAppISAD
                 txtUPIS.Text = row.Cells["Unit price in stock"].Value is decimal UPIS ? $"{UPIS:F2}" : "";
                 txtSUP.Text = row.Cells["Sale unit price"].Value is decimal SUP ? $"{SUP:F2}" : "";
 
-                isEditing = true;
+                _isEditing = true;
                 btnAdd.Enabled = false;
                 btnEdit.Enabled = false;
                 btnUpdate.Enabled = true;

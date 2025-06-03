@@ -5,24 +5,22 @@ using System.Globalization;
 using System.IO;
 using System.Windows.Forms;
 using System.Globalization;
-
+using WinFormsAppISAD.Configuration;
 namespace WinFormsAppISAD
 {
     public partial class frmStaffs : Form
     {
-        const string connStr = "Server=.;Database=WinFormsAppISAD; User=sa; Password=james@2025; TrustServerCertificate=True;";
-        private ToolTip toolTip = null!;
-        private TextBox txtSearch = null!;
-        private bool isEditing = false;
-
-        public int? x { get; set; } = null;
+        private readonly string _connStr = Config.GetConfig().ConnectionString;
+        private ToolTip _toolTip = null!;
+        private TextBox _txtSearch = null!;
+        private bool _isEditing = false;
         public frmStaffs()
         {
             InitializeComponent();
             InitializeToolTips();
             InitializeSearchBox();
             ConfigureDataGridView();
-            SqlDependency.Start(connStr);
+            SqlDependency.Start(_connStr);
             loadData();
             ClearForm();
 
@@ -42,17 +40,17 @@ namespace WinFormsAppISAD
 
         private void UpdateButtonStates(bool rowSelected = false)
         {
-            btnUpdate.Enabled = isEditing; // Update button
-            btnAdd.Enabled = !isEditing; // Add button
-            btnEdit.Enabled = rowSelected && !isEditing; // Edit button
-            btnDelete.Enabled = rowSelected && !isEditing; // Delete button
-            txtId.Enabled = !isEditing; // ID field
+            btnUpdate.Enabled = _isEditing; // Update button
+            btnAdd.Enabled = !_isEditing; // Add button
+            btnEdit.Enabled = rowSelected && !_isEditing; // Edit button
+            btnDelete.Enabled = rowSelected && !_isEditing; // Delete button
+            txtId.Enabled = !_isEditing; // ID field
             btnView.Enabled = rowSelected; // View button
         }
 
         private void ClearForm()
         {
-            isEditing = false;
+            _isEditing = false;
             txtId.Clear();
             txtFName.Clear();
             txtPos.Clear();
@@ -60,7 +58,7 @@ namespace WinFormsAppISAD
             rdoF.Checked = false;
             rdoM.Checked = false;
             dtpDOB.Value = DateTime.Today;
-            txtStatus.Checked = false;
+            chkStatus.Checked = false;
             if (pBox.Image != null)
             {
                 pBox.Image.Dispose();
@@ -71,30 +69,30 @@ namespace WinFormsAppISAD
 
         private void InitializeToolTips()
         {
-            toolTip = new ToolTip();
-            toolTip.SetToolTip(txtId, "Unique identifier for the staff member");
-            toolTip.SetToolTip(txtFName, "Full name of the staff member");
-            toolTip.SetToolTip(rdoF, "Select if staff member is female");
-            toolTip.SetToolTip(rdoM, "Select if staff member is male");
-            toolTip.SetToolTip(dtpDOB, "Staff member's date of birth");
-            toolTip.SetToolTip(txtPos, "Current position in the company");
-            toolTip.SetToolTip(txtSalary, "Current salary");
-            toolTip.SetToolTip(txtStatus, "Check if staff member has stopped working");
-            toolTip.SetToolTip(btnUpdate, "Update staff member details (Ctrl+U)");
-            toolTip.SetToolTip(btnAdd, "Add new staff member (Ctrl+A)");
-            toolTip.SetToolTip(btnEdit, "Edit selected staff member (Ctrl+E)");
-            toolTip.SetToolTip(btnDelete, "Delete selected staff member (Del)");
-            toolTip.SetToolTip(pBox, "Click to upload staff photo");
+            _toolTip = new ToolTip();
+            _toolTip.SetToolTip(txtId, "Unique identifier for the staff member");
+            _toolTip.SetToolTip(txtFName, "Full name of the staff member");
+            _toolTip.SetToolTip(rdoF, "Select if staff member is female");
+            _toolTip.SetToolTip(rdoM, "Select if staff member is male");
+            _toolTip.SetToolTip(dtpDOB, "Staff member's date of birth");
+            _toolTip.SetToolTip(txtPos, "Current position in the company");
+            _toolTip.SetToolTip(txtSalary, "Current salary");
+            _toolTip.SetToolTip(chkStatus, "Check if staff member has stopped working");
+            _toolTip.SetToolTip(btnUpdate, "Update staff member details (Ctrl+U)");
+            _toolTip.SetToolTip(btnAdd, "Add new staff member (Ctrl+A)");
+            _toolTip.SetToolTip(btnEdit, "Edit selected staff member (Ctrl+E)");
+            _toolTip.SetToolTip(btnDelete, "Delete selected staff member (Del)");
+            _toolTip.SetToolTip(pBox, "Click to upload staff photo");
         }
 
         private void InitializeSearchBox()
         {
-            txtSearch = new TextBox();
-            txtSearch.Location = new Point(dgv.Location.X, dgv.Location.Y - 30);
-            txtSearch.Size = new Size(200, 23);
-            txtSearch.PlaceholderText = "Search staff...";
-            txtSearch.TextChanged += TxtSearch_TextChanged!;
-            this.Controls.Add(txtSearch);
+            _txtSearch = new TextBox();
+            _txtSearch.Location = new Point(dgv.Location.X, dgv.Location.Y - 30);
+            _txtSearch.Size = new Size(200, 23);
+            _txtSearch.PlaceholderText = "Search staff...";
+            _txtSearch.TextChanged += TxtSearch_TextChanged!;
+            this.Controls.Add(_txtSearch);
         }
 
         private void ConfigureDataGridView()
@@ -116,7 +114,7 @@ namespace WinFormsAppISAD
             {
                 // make sure ' is handled properly (example: O'Reilly => 'O''Reilly')
                 string searchStr = string.Format("Name LIKE '%{0}%' OR Position LIKE '%{0}%'",
-                    txtSearch.Text.Replace("'", "''"));
+                    _txtSearch.Text.Replace("'", "''"));
                 dt.DefaultView.RowFilter = searchStr;
             }
         }
@@ -176,7 +174,7 @@ namespace WinFormsAppISAD
 
         void loadData()
         {
-            using SqlConnection conn = new(connStr);
+            using SqlConnection conn = new(_connStr);
             conn.Open();
 
             using SqlCommand com = new("spGetAllStaff", conn)
@@ -241,7 +239,7 @@ namespace WinFormsAppISAD
 
             try
             {
-                using SqlConnection conn = new(connStr);
+                using SqlConnection conn = new(_connStr);
                 string query = @"spUpdateStaff";
 
                 using SqlCommand cmd = new(query, conn);
@@ -252,7 +250,7 @@ namespace WinFormsAppISAD
                 cmd.Parameters.AddWithValue("@dob", dtpDOB.Value);
                 cmd.Parameters.AddWithValue("@position", txtPos.Text.Trim());
                 cmd.Parameters.AddWithValue("@salary", decimal.Parse(txtSalary.Text));
-                cmd.Parameters.AddWithValue("@stopwork", txtStatus.Checked);
+                cmd.Parameters.AddWithValue("@stopwork", chkStatus.Checked);
                 cmd.Parameters.Add("@photo", SqlDbType.VarBinary).Value = pBox.Image is Image img ? new Func<byte[]>(() => { var ms = new MemoryStream(); img.Save(ms, pBox.Image.RawFormat); return ms.ToArray(); })() : DBNull.Value;
 
 
@@ -281,7 +279,7 @@ namespace WinFormsAppISAD
                 ValidateInput();
 
                 // Check if ID already exists
-                using (SqlConnection conn = new(connStr))
+                using (SqlConnection conn = new(_connStr))
                 {
                     conn.Open();
                     // using SqlCommand checkCmd = new("SELECT COUNT(*) FROM tbStaffs WHERE staffID = @id", conn);
@@ -314,7 +312,7 @@ namespace WinFormsAppISAD
                     cmd.Parameters.AddWithValue("@dob", dtpDOB.Value);
                     cmd.Parameters.AddWithValue("@position", txtPos.Text.Trim());
                     cmd.Parameters.AddWithValue("@salary", decimal.Parse(txtSalary.Text));
-                    cmd.Parameters.AddWithValue("@stopwork", txtStatus.Checked);
+                    cmd.Parameters.AddWithValue("@stopwork", chkStatus.Checked);
                     cmd.Parameters.Add("@photo", SqlDbType.VarBinary).Value = pBox.Image is Image img ? new Func<byte[]>(() => { var ms = new MemoryStream(); img.Save(ms, pBox.Image.RawFormat); return ms.ToArray(); })() : DBNull.Value;
 
                     // cmd.Parameters.AddWithValue("@photo", new Func<byte[]>(() =>
@@ -374,7 +372,7 @@ namespace WinFormsAppISAD
 
                 if (row.Cells["Stopwork"].Value is bool stopwork)
                 {
-                    txtStatus.Checked = stopwork;
+                    chkStatus.Checked = stopwork;
                 }
                 if (row.Cells["Photo"].Value is byte[] p)
                 {
@@ -386,7 +384,7 @@ namespace WinFormsAppISAD
                     pBox.Image = null;
                 }
 
-                isEditing = true;
+                _isEditing = true;
                 UpdateButtonStates(true);
             }
             catch (Exception ex)
@@ -418,7 +416,7 @@ namespace WinFormsAppISAD
             {
                 try
                 {
-                    using SqlConnection conn = new(connStr);
+                    using SqlConnection conn = new(_connStr);
                     string query = "spDeleteStaff";
 
                     using SqlCommand cmd = new(query, conn);

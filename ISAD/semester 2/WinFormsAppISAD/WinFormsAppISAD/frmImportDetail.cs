@@ -1,11 +1,11 @@
 ﻿using Microsoft.Data.SqlClient;
 using System.Data;
-
+using WinFormsAppISAD.Configuration;
 namespace WinFormsAppISAD
 {
     public partial class frmImportDetail : Form
     {
-        const string connStr = "Server=.;Database=WinFormsAppISAD; User=sa; Password=james@2025; TrustServerCertificate=True;";
+        private readonly string _connStr = Config.GetConfig().ConnectionString;
 
         public frmImportDetail()
         {
@@ -13,7 +13,7 @@ namespace WinFormsAppISAD
         }
         private void frmImportDetail_Load(object sender, EventArgs e)
         {
-            using SqlConnection conn = new SqlConnection(connStr);
+            using SqlConnection conn = new SqlConnection(_connStr);
             conn.Open();
 
             SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM fnGetAllStaff()", conn);
@@ -53,7 +53,7 @@ namespace WinFormsAppISAD
                 return;
             }
 
-            using SqlConnection conn = new SqlConnection(connStr);
+            using SqlConnection conn = new SqlConnection(_connStr);
             conn.Open();
 
             using SqlCommand cmd = new SqlCommand($"SELECT ProCode, ProName FROM fnGetAllProduct() WHERE ProCode={txtProCode.Text}", conn);
