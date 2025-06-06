@@ -172,6 +172,7 @@
             txtTotal.BorderStyle = BorderStyle.FixedSingle;
             txtTotal.Location = new Point(645, 579);
             txtTotal.Name = "txtTotal";
+            txtTotal.ReadOnly = true;
             txtTotal.Size = new Size(131, 23);
             txtTotal.TabIndex = 90;
             // 
@@ -188,11 +189,14 @@
             // 
             // lview
             // 
+            lview.FullRowSelect = true;
+            lview.HeaderStyle = ColumnHeaderStyle.Nonclickable;
             lview.Location = new Point(17, 321);
             lview.Name = "lview";
             lview.Size = new Size(759, 246);
             lview.TabIndex = 91;
             lview.UseCompatibleStateImageBehavior = false;
+            lview.SelectedIndexChanged += lview_SelectedIndexChanged;
             // 
             // txtProCode
             // 
@@ -201,7 +205,7 @@
             txtProCode.Name = "txtProCode";
             txtProCode.Size = new Size(144, 23);
             txtProCode.TabIndex = 93;
-            txtProCode.TextChanged += txtProCode_TextChanged;
+            txtProCode.Leave += txtProCode_Leave;
             // 
             // lblProCode
             // 
@@ -285,6 +289,7 @@
             btnAdd.TabIndex = 100;
             btnAdd.Text = "➕ Add";
             btnAdd.UseVisualStyleBackColor = false;
+            btnAdd.Click += btnAdd_Click;
             // 
             // btnDelete
             // 
@@ -301,6 +306,7 @@
             btnDelete.TabIndex = 101;
             btnDelete.Text = "❌ Delete";
             btnDelete.UseVisualStyleBackColor = false;
+            btnDelete.Click += btnDelete_Click;
             // 
             // btnSave
             // 
@@ -317,6 +323,7 @@
             btnSave.TabIndex = 102;
             btnSave.Text = "💾 Save";
             btnSave.UseVisualStyleBackColor = false;
+            btnSave.Click += btnSave_Click;
             // 
             // frmImportDetail
             // 

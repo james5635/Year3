@@ -70,6 +70,7 @@ CREATE TABLE tbProducts
 (
     ProCode INT IDENTITY(1,1) PRIMARY KEY,
     ProName VARCHAR(100) NOT NULL UNIQUE,
+    -- Qty, UPIS, SUP should be redundency, it could break normalization
     -- Added UNIQUE constraint
     Qty SMALLINT NOT NULL CHECK (Qty >= 0),
     UPIS MONEY NOT NULL CHECK (UPIS >= 0),
@@ -1447,6 +1448,16 @@ From [dbo].[tbProducts];
 GO
 PRINT 'spGetAllProduct created successfully.';
 GO
+PRINT 'creating procedure spGetProduct ';
+GO
+CREATE PROCEDURE spGetProduct 
+    @pc INT 
+As
+    SELECT ProName FROM  [dbo].[tbProducts]
+    WHERE ProCode = @pc    
+GO
+PRINT 'spGetProduct created successfully.';
+GO
 PRINT 'procedure for select created successfully.';
 GO
 
@@ -1566,3 +1577,21 @@ GO
 PRINT 'function for select created successfully.';
 GO
 
+-- type
+CREATE TYPE ImportMaster AS TABLE (
+    ImpDate DATE ,
+    staffID TINYINT ,
+    FullName NVARCHAR(50) ,
+    supID INT ,
+    Supplier NVARCHAR(100) ,
+    Total MONEY 
+)
+GO
+
+-- procedure for importDetail
+CREATE PROCEDURE spSetImportDetail @IM AS ImportMaster READONLY 
+AS
+BEGIN
+    INSERT INTO [dbo].[tbImports] (ImpDate, staffID, FullName, supID, Supplier, Total)
+    SELECT ImpDate, staffID, FullName, supID, Supplier, Total FROM @IM
+END
