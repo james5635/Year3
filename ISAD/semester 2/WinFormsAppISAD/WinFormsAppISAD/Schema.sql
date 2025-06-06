@@ -121,7 +121,7 @@ CREATE TABLE tbPayments
     -- Match tbStaffs.FullName type
     InvCode INT NOT NULL,
     Amount MONEY NOT NULL CHECK (Amount >= 0),
-    FOREIGN KEY (staffID) REFERENCES tbStaffs(staffID) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (staffID) REFERENCES tbStaffs(staffID) ON DELETE NO ACTION ON UPDATE NO ACTION,
     FOREIGN KEY (InvCode) REFERENCES tbInvoices(InvCode) ON DELETE CASCADE ON UPDATE CASCADE
 );
 PRINT 'Table tbPayments created.';
