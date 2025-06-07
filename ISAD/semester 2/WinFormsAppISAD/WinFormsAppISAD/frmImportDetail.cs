@@ -38,12 +38,6 @@ namespace WinFormsAppISAD
             cboSup.Text = null;
 
             lview.View = View.Details;
-            //lview.Columns.Add("Product ID", 100, HorizontalAlignment.Left);
-            //lview.Columns.Add("Product Name", 200, HorizontalAlignment.Left);
-            //lview.Columns.Add("Quantity", 100, HorizontalAlignment.Left);
-            //lview.Columns.Add("Price", 150, HorizontalAlignment.Left);
-            //lview.Columns.Add("Amount", 120, HorizontalAlignment.Left);
-
             lview.Columns.Add("Product ID", 100);
             lview.Columns.Add("Product Name", 200);
             lview.Columns.Add("Quantity", 100);
@@ -229,7 +223,6 @@ namespace WinFormsAppISAD
                 cmd.CommandType = CommandType.StoredProcedure;
                 SqlParameter par = new SqlParameter("@IM", SqlDbType.Structured)
                 {
-                    //TypeName = "dbo.ImportDetailType",
                     Value = dtMaster
                 };
                 SqlParameter par2 = new SqlParameter("@ID", SqlDbType.Structured)
