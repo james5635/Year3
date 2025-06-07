@@ -70,6 +70,7 @@
             btnSave.TabIndex = 127;
             btnSave.Text = "💾 Save";
             btnSave.UseVisualStyleBackColor = false;
+            btnSave.Click += btnSave_Click;
             // 
             // btnDelete
             // 
@@ -86,6 +87,7 @@
             btnDelete.TabIndex = 126;
             btnDelete.Text = "❌ Delete";
             btnDelete.UseVisualStyleBackColor = false;
+            btnDelete.Click += btnDelete_Click;
             // 
             // btnAdd
             // 
@@ -101,6 +103,7 @@
             btnAdd.TabIndex = 125;
             btnAdd.Text = "➕ Add";
             btnAdd.UseVisualStyleBackColor = false;
+            btnAdd.Click += btnAdd_Click;
             // 
             // txtUnitPrice
             // 
@@ -145,8 +148,11 @@
             txtProName.BorderStyle = BorderStyle.FixedSingle;
             txtProName.Location = new Point(194, 292);
             txtProName.Name = "txtProName";
+            txtProName.ReadOnly = true;
             txtProName.Size = new Size(258, 23);
             txtProName.TabIndex = 120;
+            txtProName.Enter += txtProName_Enter;
+            txtProName.Leave += txtProName_Leave;
             // 
             // lblProName
             // 
@@ -166,7 +172,7 @@
             txtProCode.Name = "txtProCode";
             txtProCode.Size = new Size(144, 23);
             txtProCode.TabIndex = 118;
-            txtProCode.TextChanged += txtProCode_TextChanged;
+            txtProCode.Leave += txtProCode_Leave;
             // 
             // lblProCode
             // 
@@ -181,11 +187,14 @@
             // 
             // lview
             // 
+            lview.FullRowSelect = true;
+            lview.HeaderStyle = ColumnHeaderStyle.Nonclickable;
             lview.Location = new Point(24, 330);
             lview.Name = "lview";
             lview.Size = new Size(759, 246);
             lview.TabIndex = 116;
             lview.UseCompatibleStateImageBehavior = false;
+            lview.SelectedIndexChanged += lview_SelectedIndexChanged;
             // 
             // txtTotal
             // 

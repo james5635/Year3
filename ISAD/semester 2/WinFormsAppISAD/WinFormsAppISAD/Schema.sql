@@ -1595,6 +1595,23 @@ CREATE TYPE ImportDetail AS TABLE (
     Amount MONEY
 )
 GO
+CREATE TYPE InvoiceMaster AS TABLE (
+    InvDate DATE ,
+    staffID TINYINT ,
+    FullName NVARCHAR(50) ,
+    cusID INT ,
+    cusName NVARCHAR(100) ,
+    Total MONEY 
+)
+GO
+CREATE TYPE InvoiceDetail AS TABLE (
+    ProCode INT , 
+    ProName VARCHAR(100) ,
+    Qty SMALLINT ,
+    Price MONEY ,
+    Amount MONEY
+)
+GO
 
 -- procedure for importDetail
 CREATE PROCEDURE spSetImportDetail @IM AS ImportMaster READONLY, @ID AS ImportDetail READONLY
@@ -1647,3 +1664,57 @@ BEGIN
     CLOSE csDetail
     DEALLOCATE csDetail
 END
+GO
+
+-- procedure for invoiceDetail
+CREATE PROCEDURE spSetInvoiceDetail @INM AS InvoiceMaster READONLY, @IND AS InvoiceDetail READONLY
+AS
+BEGIN
+    INSERT INTO [dbo].[tbInvoices] (InvDate, staffID, FullName, cusID, cusName, Total)
+    SELECT InvDate, staffID, FullName, cusID, cusName, Total FROM @INM
+
+    DECLARE  @inc INT
+    SELECT   @inc = MAX(InvCode) FROM [dbo].[tbInvoices]
+    DECLARE  @pc INT 
+    DECLARE  @pn VARCHAR(100) 
+    DECLARE  @q SMALLINT 
+    DECLARE  @p MONEY 
+    DECLARE  @a MONEY
+
+    DECLARE csDetail CURSOR SCROLL DYNAMIC FOR SELECT * FROM @IND
+    
+    OPEN csDetail
+    FETCH FIRST FROM csDetail INTO @pc, @pn, @q, @p, @a
+    WHILE(@@FETCH_STATUS = 0)
+        BEGIN
+            IF(@pc = -1)
+                BEGIN
+                    IF ((SELECT COUNT(ProCode) FROM [dbo].[tbProducts] WHERE ProName = @pn) = 0)
+                        BEGIN
+                            INSERT INTO [dbo].[tbProducts] (ProName, Qty, UPIS, SUP)
+                            VALUES  (@pn, @q, @p, @p * 1.15)
+                            SET @pc = SCOPE_IDENTITY()
+                        END
+                    ELSE
+                        BEGIN
+                            UPDATE [dbo].[tbProducts]
+                            SET Qty = Qty + @q, UPIS = @p, SUP = @p * 1.15
+                            WHERE ProName = @pn
+                            SELECT @pc = ProCode FROM [dbo].[tbProducts] WHERE ProName = @pn
+                        END
+                END
+            ELSE 
+                BEGIN
+                    UPDATE [dbo].[tbProducts]
+                    SET Qty = Qty + @q, UPIS = @p, SUP = @p * 1.15
+                    WHERE ProCode = @pc
+                END
+            INSERT INTO tbInvoiceDetail (InvCode, ProCode, ProName, Qty, Price, Amount)
+            values (@inc, @pc, @pn, @q, @p, @a)
+
+            FETCH NEXT FROM csDetail INTO @pc, @pn, @q, @p, @a
+        END
+    CLOSE csDetail
+    DEALLOCATE csDetail
+END
+GO
