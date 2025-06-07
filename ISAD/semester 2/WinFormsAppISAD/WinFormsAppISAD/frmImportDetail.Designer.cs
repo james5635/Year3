@@ -223,8 +223,11 @@
             txtProName.BorderStyle = BorderStyle.FixedSingle;
             txtProName.Location = new Point(187, 283);
             txtProName.Name = "txtProName";
+            txtProName.ReadOnly = true;
             txtProName.Size = new Size(258, 23);
             txtProName.TabIndex = 95;
+            txtProName.Enter += txtProName_Enter;
+            txtProName.Leave += txtProName_Leave;
             // 
             // lblProName
             // 

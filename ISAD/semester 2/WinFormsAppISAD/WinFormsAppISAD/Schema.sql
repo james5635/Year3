@@ -1587,11 +1587,63 @@ CREATE TYPE ImportMaster AS TABLE (
     Total MONEY 
 )
 GO
+CREATE TYPE ImportDetail AS TABLE (
+    ProCode INT , 
+    ProName VARCHAR(100) ,
+    Qty SMALLINT ,
+    Price MONEY ,
+    Amount MONEY
+)
+GO
 
 -- procedure for importDetail
-CREATE PROCEDURE spSetImportDetail @IM AS ImportMaster READONLY 
+CREATE PROCEDURE spSetImportDetail @IM AS ImportMaster READONLY, @ID AS ImportDetail READONLY
 AS
 BEGIN
     INSERT INTO [dbo].[tbImports] (ImpDate, staffID, FullName, supID, Supplier, Total)
     SELECT ImpDate, staffID, FullName, supID, Supplier, Total FROM @IM
+
+    DECLARE  @ic INT
+    SELECT   @ic = MAX(ImpCode) FROM [dbo].[tbImports]
+    DECLARE  @pc INT 
+    DECLARE  @pn VARCHAR(100) 
+    DECLARE  @q SMALLINT 
+    DECLARE  @p MONEY 
+    DECLARE  @a MONEY
+
+    DECLARE csDetail CURSOR SCROLL DYNAMIC FOR SELECT * FROM @ID
+    
+    OPEN csDetail
+    FETCH FIRST FROM csDetail INTO @pc, @pn, @q, @p, @a
+    WHILE(@@FETCH_STATUS = 0)
+        BEGIN
+            IF(@pc = -1)
+                BEGIN
+                    IF ((SELECT COUNT(ProCode) FROM [dbo].[tbProducts] WHERE ProName = @pn) = 0)
+                        BEGIN
+                            INSERT INTO [dbo].[tbProducts] (ProName, Qty, UPIS, SUP)
+                            VALUES  (@pn, @q, @p, @p * 1.15)
+                            SET @pc = SCOPE_IDENTITY()
+                        END
+                    ELSE
+                        BEGIN
+                            UPDATE [dbo].[tbProducts]
+                            SET Qty = Qty + @q, UPIS = @p, SUP = @p * 1.15
+                            WHERE ProName = @pn
+                            SELECT @pc = ProCode FROM [dbo].[tbProducts] WHERE ProName = @pn
+                        END
+                END
+            ELSE 
+                BEGIN
+                    UPDATE [dbo].[tbProducts]
+                    SET Qty = Qty + @q, UPIS = @p, SUP = @p * 1.15
+                    WHERE ProCode = @pc
+                END
+            INSERT INTO tbImportdetail (ImpCode, ProCode, ProName, Qty, Price, Amount)
+            values (@ic, @pc, @pn, @q, @p, @a)
+
+            FETCH NEXT FROM csDetail INTO @pc, @pn, @q, @p, @a
+        END
+    CLOSE csDetail
+    DEALLOCATE csDetail
 END
