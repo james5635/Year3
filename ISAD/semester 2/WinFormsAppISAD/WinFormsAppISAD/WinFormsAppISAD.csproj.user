@@ -16,9 +16,6 @@
     <Compile Update="frmImportDetail.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="frmOrderDetail.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Update="frmPayments.cs">
       <SubType>Form</SubType>
     </Compile>

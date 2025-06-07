@@ -1,3 +1,6 @@
+-- Written By Sou Chanrojame
+-- Copyright (c) 2025, All rights reserved.
+
 SET ANSI_NULLS, QUOTED_IDENTIFIER ON;
 GO
 
@@ -6,9 +9,7 @@ GO
 
 -- Drop database if it exists
 IF EXISTS (
-    SELECT name
-FROM sys.databases
-WHERE name = N'WinFormsAppISAD'
+    SELECT name FROM sys.databases WHERE name = N'WinFormsAppISAD'
 )
 BEGIN
     -- Set database to single user mode to kill all connections
@@ -24,9 +25,9 @@ PRINT 'Database WinFormsAppISAD created.';
 GO
 ALTER DATABASE WinFormsAppISAD SET ENABLE_BROKER WITH ROLLBACK IMMEDIATE;
 GO
+
 USE [WinFormsAppISAD];
 GO
-
 
 -- ========================================================
 -- CREATE TABLES
