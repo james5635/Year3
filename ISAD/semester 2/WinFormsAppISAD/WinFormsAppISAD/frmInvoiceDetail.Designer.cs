@@ -42,8 +42,8 @@
             lview = new ListView();
             txtTotal = new TextBox();
             lblTotal = new Label();
-            cboCusName = new ComboBox();
-            txtCusID = new TextBox();
+            cboCusID = new ComboBox();
+            txtCusName = new TextBox();
             lblCusName = new Label();
             lblCusID = new Label();
             txtStaffName = new TextBox();
@@ -215,30 +215,31 @@
             lblTotal.TabIndex = 114;
             lblTotal.Text = "\U0001f9ee Total:";
             // 
-            // cboCusName
+            // cboCusID
             // 
-            cboCusName.FormattingEnabled = true;
-            cboCusName.Location = new Point(429, 195);
-            cboCusName.Name = "cboCusName";
-            cboCusName.Size = new Size(214, 23);
-            cboCusName.TabIndex = 113;
-            cboCusName.SelectionChangeCommitted += cboCusName_SelectionChangeCommitted;
+            cboCusID.FormattingEnabled = true;
+            cboCusID.Location = new Point(149, 196);
+            cboCusID.Name = "cboCusID";
+            cboCusID.Size = new Size(127, 23);
+            cboCusID.TabIndex = 113;
+            cboCusID.SelectionChangeCommitted += cboCusName_SelectionChangeCommitted;
+            cboCusID.MouseLeave += cboCusID_MouseLeave;
             // 
-            // txtCusID
+            // txtCusName
             // 
-            txtCusID.BorderStyle = BorderStyle.FixedSingle;
-            txtCusID.Location = new Point(150, 195);
-            txtCusID.Name = "txtCusID";
-            txtCusID.ReadOnly = true;
-            txtCusID.Size = new Size(118, 23);
-            txtCusID.TabIndex = 112;
+            txtCusName.BorderStyle = BorderStyle.FixedSingle;
+            txtCusName.Location = new Point(432, 195);
+            txtCusName.Name = "txtCusName";
+            txtCusName.ReadOnly = true;
+            txtCusName.Size = new Size(200, 23);
+            txtCusName.TabIndex = 112;
             // 
             // lblCusName
             // 
             lblCusName.AutoSize = true;
             lblCusName.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lblCusName.ForeColor = Color.FromArgb(33, 33, 33);
-            lblCusName.Location = new Point(279, 195);
+            lblCusName.Location = new Point(282, 195);
             lblCusName.Name = "lblCusName";
             lblCusName.Size = new Size(145, 19);
             lblCusName.TabIndex = 111;
@@ -346,8 +347,8 @@
             Controls.Add(lview);
             Controls.Add(txtTotal);
             Controls.Add(lblTotal);
-            Controls.Add(cboCusName);
-            Controls.Add(txtCusID);
+            Controls.Add(cboCusID);
+            Controls.Add(txtCusName);
             Controls.Add(lblCusName);
             Controls.Add(lblCusID);
             Controls.Add(txtStaffName);
@@ -380,8 +381,8 @@
         private ListView lview;
         private TextBox txtTotal;
         private Label lblTotal;
-        private ComboBox cboCusName;
-        private TextBox txtCusID;
+        private ComboBox cboCusID;
+        private TextBox txtCusName;
         private Label lblCusName;
         private Label lblCusID;
         private TextBox txtStaffName;

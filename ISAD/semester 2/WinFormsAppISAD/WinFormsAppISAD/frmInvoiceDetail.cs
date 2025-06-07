@@ -37,10 +37,10 @@ namespace WinFormsAppISAD
             da = new SqlDataAdapter("SELECT * FROM fnGetAllCustomer()", conn);
             dt = new DataTable();
             da.Fill(dt);
-            cboCusName.DataSource = dt;
-            cboCusName.DisplayMember = "cusName";
-            cboCusName.ValueMember = "cusID";
-            cboCusName.Text = null;
+            cboCusID.DataSource = dt;
+            cboCusID.DisplayMember = "cusID";
+            cboCusID.ValueMember = "CusName";
+            cboCusID.Text = null;
 
             lview.View = View.Details;
             lview.Columns.Add("Product ID", 100);
@@ -58,7 +58,7 @@ namespace WinFormsAppISAD
 
         private void cboCusName_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            txtCusID.Text = cboCusName?.SelectedValue?.ToString();
+            txtCusName.Text = cboCusID?.SelectedValue?.ToString();
 
         }
 
@@ -200,8 +200,8 @@ namespace WinFormsAppISAD
                     dtpImportDate.Value,
                     int.Parse(cboStaffID.Text),
                     txtStaffName.Text,
-                    int.Parse(txtCusID.Text),
-                    cboCusName.Text,
+                    int.Parse(cboCusID.Text),
+                    txtCusName.Text,
                     decimal.Parse(txtTotal.Text, NumberStyles.Currency)
                 );
 
@@ -260,6 +260,29 @@ namespace WinFormsAppISAD
             txtProName.ReadOnly = true;
         }
 
-      
+        private void cboCusID_MouseLeave(object sender, EventArgs e)
+        {
+            using SqlConnection conn = new SqlConnection(_connStr);
+            using SqlCommand da = new SqlCommand("SELECT * FROM fnGetAllCustomer()", conn);
+
+            try
+            {
+                conn.Open();
+                using SqlDataReader dr = da.ExecuteReader();
+                while (dr.Read())
+                {
+                    if (String.Equals(dr["cusID"].ToString(), cboCusID.Text.Trim()))
+                    {
+                        txtCusName.Text = dr["CusName"].ToString();
+                        return;
+                    }
+                }
+                txtCusName.Text = string.Empty;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }
