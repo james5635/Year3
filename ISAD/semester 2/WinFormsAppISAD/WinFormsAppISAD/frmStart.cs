@@ -51,6 +51,11 @@ namespace WinFormsAppISAD
         {
             new frmOrderDetail().Show();
         }
+
+        private void btnPaymentInformation_Click(object sender, EventArgs e)
+        {
+            new frmPayments().Show();
+        }
     }
 }
 

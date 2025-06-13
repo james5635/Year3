@@ -115,7 +115,6 @@
             dtpPaymentDate.Name = "dtpPaymentDate";
             dtpPaymentDate.Size = new Size(200, 23);
             dtpPaymentDate.TabIndex = 61;
-            dtpPaymentDate.ValueChanged += dtpPaymentDate_ValueChanged;
             // 
             // cboStaffID
             // 
@@ -124,6 +123,7 @@
             cboStaffID.Name = "cboStaffID";
             cboStaffID.Size = new Size(121, 23);
             cboStaffID.TabIndex = 62;
+            cboStaffID.SelectionChangeCommitted += cboStaffID_SelectionChangeCommitted;
             // 
             // cboOrderCode
             // 

@@ -34,6 +34,7 @@
             btnProductM = new Button();
             btnImportDetailInformation = new Button();
             btnOrderDetailInformation = new Button();
+            btnPaymentInformation = new Button();
             SuspendLayout();
             // 
             // btnStaffM
@@ -138,11 +139,29 @@
             btnOrderDetailInformation.UseVisualStyleBackColor = false;
             btnOrderDetailInformation.Click += btnOrderDetailInformation_Click;
             // 
+            // btnPaymentInformation
+            // 
+            btnPaymentInformation.BackColor = Color.SaddleBrown;
+            btnPaymentInformation.Cursor = Cursors.Hand;
+            btnPaymentInformation.FlatAppearance.BorderSize = 0;
+            btnPaymentInformation.FlatStyle = FlatStyle.Flat;
+            btnPaymentInformation.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnPaymentInformation.ForeColor = Color.White;
+            btnPaymentInformation.ImageAlign = ContentAlignment.MiddleLeft;
+            btnPaymentInformation.Location = new Point(12, 369);
+            btnPaymentInformation.Name = "btnPaymentInformation";
+            btnPaymentInformation.Size = new Size(260, 35);
+            btnPaymentInformation.TabIndex = 49;
+            btnPaymentInformation.Text = "💳 Payment's Information";
+            btnPaymentInformation.UseVisualStyleBackColor = false;
+            btnPaymentInformation.Click += btnPaymentInformation_Click;
+            // 
             // frmStart
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(290, 429);
+            ClientSize = new Size(290, 423);
+            Controls.Add(btnPaymentInformation);
             Controls.Add(btnOrderDetailInformation);
             Controls.Add(btnImportDetailInformation);
             Controls.Add(btnProductM);
@@ -162,5 +181,6 @@
         private Button btnProductM;
         private Button btnImportDetailInformation;
         private Button btnOrderDetailInformation;
+        private Button btnPaymentInformation;
     }
 }
