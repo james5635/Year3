@@ -12,12 +12,12 @@ using System.Windows.Forms;
 using WinFormsAppISAD.Configuration;
 namespace WinFormsAppISAD
 {
-    public partial class frmInvoiceDetail : Form
+    public partial class frmOrderDetail : Form
     {
 
         private readonly string _connStr = Config.GetConfig().ConnectionString;
 
-        public frmInvoiceDetail()
+        public frmOrderDetail()
         {
             InitializeComponent();
         }
@@ -80,6 +80,7 @@ namespace WinFormsAppISAD
             if (dr.Read())
             {
                 txtProName.Text = dr["ProName"].ToString();
+                txtUnitPrice.Text = dr["UPIS"].ToString();
             }
             else
             {
@@ -110,20 +111,17 @@ namespace WinFormsAppISAD
                 foundItem.SubItems[3].Text = $"{decimal.Parse(txtUnitPrice.Text.Trim()):C}";
                 foundItem.SubItems[4].Text = $"{amount:C}";
             };
+
+
             if (String.Equals(String.Empty, txtProCode.Text.Trim()))
             {
-                ListViewItem? foundItem = null;
-                foreach (ListViewItem item in lview.Items)
-                {
-                    if (String.Equals(item.SubItems[1].Text.Trim(), txtProName.Text.Trim(), StringComparison.OrdinalIgnoreCase))
-                    {
-                        foundItem = item;
-                        break;
-                    }
-                }
-                if (foundItem is null) addNewItem();
-                else
-                    updateItem(foundItem);
+                MessageBox.Show("Please enter a valid Product Code.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else if (String.Equals(String.Empty, txtQty.Text.Trim()))
+            {
+                MessageBox.Show("Please enter a valid Quantity.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
             else
             {
@@ -155,7 +153,6 @@ namespace WinFormsAppISAD
             txtUnitPrice.Clear();
             btnSave.Enabled = lview.Items.Count > 0;
         }
-
 
         private void lview_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -190,14 +187,14 @@ namespace WinFormsAppISAD
             try
             {
                 DataTable dtMaster = new DataTable();
-                dtMaster.Columns.Add("InvDate", typeof(DateTime));
+                dtMaster.Columns.Add("OrdDate", typeof(DateTime));
                 dtMaster.Columns.Add("staffID", typeof(int));
                 dtMaster.Columns.Add("FullName", typeof(string));
                 dtMaster.Columns.Add("cusID", typeof(int));
                 dtMaster.Columns.Add("cusName", typeof(string));
                 dtMaster.Columns.Add("Total", typeof(decimal));
                 dtMaster.Rows.Add(
-                    dtpImportDate.Value,
+                    dtpOrderDate.Value,
                     int.Parse(cboStaffID.Text),
                     txtStaffName.Text,
                     int.Parse(cboCusID.Text),
@@ -224,13 +221,13 @@ namespace WinFormsAppISAD
 
 
                 using SqlConnection conn = new SqlConnection(_connStr);
-                using SqlCommand cmd = new SqlCommand("spSetInvoiceDetail", conn);
+                using SqlCommand cmd = new SqlCommand("spSetOrderDetail", conn);
                 cmd.CommandType = CommandType.StoredProcedure;
-                SqlParameter par = new SqlParameter("@INM", SqlDbType.Structured)
+                SqlParameter par = new SqlParameter("@OM", SqlDbType.Structured)
                 {
                     Value = dtMaster
                 };
-                SqlParameter par2 = new SqlParameter("@IND", SqlDbType.Structured)
+                SqlParameter par2 = new SqlParameter("@OD", SqlDbType.Structured)
                 {
                     Value = dtDetail
                 };
@@ -245,19 +242,6 @@ namespace WinFormsAppISAD
             {
                 MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        private void txtProName_Enter(object sender, EventArgs e)
-        {
-            if (String.Equals(String.Empty, txtProCode.Text.Trim()))
-            {
-                txtProName.ReadOnly = false;
-            }
-        }
-
-        private void txtProName_Leave(object sender, EventArgs e)
-        {
-            txtProName.ReadOnly = true;
         }
 
         private void cboCusID_MouseLeave(object sender, EventArgs e)
@@ -284,5 +268,7 @@ namespace WinFormsAppISAD
                 MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+      
     }
 }

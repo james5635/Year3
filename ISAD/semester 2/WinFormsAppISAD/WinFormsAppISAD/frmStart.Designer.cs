@@ -33,7 +33,7 @@
             btnCustomerM = new Button();
             btnProductM = new Button();
             btnImportDetailInformation = new Button();
-            btnInvoiceDetailInformation = new Button();
+            btnOrderDetailInformation = new Button();
             SuspendLayout();
             // 
             // btnStaffM
@@ -121,29 +121,29 @@
             btnImportDetailInformation.UseVisualStyleBackColor = false;
             btnImportDetailInformation.Click += btnImportDetailInformation_Click;
             // 
-            // btnInvoiceDetailInformation
+            // btnOrderDetailInformation
             // 
-            btnInvoiceDetailInformation.BackColor = Color.Purple;
-            btnInvoiceDetailInformation.Cursor = Cursors.Hand;
-            btnInvoiceDetailInformation.FlatAppearance.BorderSize = 0;
-            btnInvoiceDetailInformation.FlatStyle = FlatStyle.Flat;
-            btnInvoiceDetailInformation.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            btnInvoiceDetailInformation.ForeColor = Color.White;
-            btnInvoiceDetailInformation.ImageAlign = ContentAlignment.MiddleLeft;
-            btnInvoiceDetailInformation.Location = new Point(12, 308);
-            btnInvoiceDetailInformation.Name = "btnInvoiceDetailInformation";
-            btnInvoiceDetailInformation.Size = new Size(260, 35);
-            btnInvoiceDetailInformation.TabIndex = 48;
-            btnInvoiceDetailInformation.Text = "📄 InvoiceDetail's Information";
-            btnInvoiceDetailInformation.UseVisualStyleBackColor = false;
-            btnInvoiceDetailInformation.Click += btnInvoiceDetailInformation_Click;
+            btnOrderDetailInformation.BackColor = Color.Purple;
+            btnOrderDetailInformation.Cursor = Cursors.Hand;
+            btnOrderDetailInformation.FlatAppearance.BorderSize = 0;
+            btnOrderDetailInformation.FlatStyle = FlatStyle.Flat;
+            btnOrderDetailInformation.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnOrderDetailInformation.ForeColor = Color.White;
+            btnOrderDetailInformation.ImageAlign = ContentAlignment.MiddleLeft;
+            btnOrderDetailInformation.Location = new Point(12, 308);
+            btnOrderDetailInformation.Name = "btnOrderDetailInformation";
+            btnOrderDetailInformation.Size = new Size(260, 35);
+            btnOrderDetailInformation.TabIndex = 48;
+            btnOrderDetailInformation.Text = "📦 OrderDetail's Information";
+            btnOrderDetailInformation.UseVisualStyleBackColor = false;
+            btnOrderDetailInformation.Click += btnOrderDetailInformation_Click;
             // 
             // frmStart
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(290, 429);
-            Controls.Add(btnInvoiceDetailInformation);
+            Controls.Add(btnOrderDetailInformation);
             Controls.Add(btnImportDetailInformation);
             Controls.Add(btnProductM);
             Controls.Add(btnCustomerM);
@@ -161,6 +161,6 @@
         private Button btnCustomerM;
         private Button btnProductM;
         private Button btnImportDetailInformation;
-        private Button btnInvoiceDetailInformation;
+        private Button btnOrderDetailInformation;
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace WinFormsAppISAD
 {
-    partial class frmInvoiceDetail
+    partial class frmOrderDetail
     {
         /// <summary>
         /// Required designer variable.
@@ -49,10 +49,10 @@
             txtStaffName = new TextBox();
             cboStaffID = new ComboBox();
             lblStaffName = new Label();
-            lblInvoiceDetail = new Label();
+            lblOrderDetail = new Label();
             lblStaffID = new Label();
-            lblImportDate = new Label();
-            dtpImportDate = new DateTimePicker();
+            lblOrderDate = new Label();
+            dtpOrderDate = new DateTimePicker();
             SuspendLayout();
             // 
             // btnSave
@@ -110,6 +110,7 @@
             txtUnitPrice.BorderStyle = BorderStyle.FixedSingle;
             txtUnitPrice.Location = new Point(623, 292);
             txtUnitPrice.Name = "txtUnitPrice";
+            txtUnitPrice.ReadOnly = true;
             txtUnitPrice.Size = new Size(160, 23);
             txtUnitPrice.TabIndex = 124;
             // 
@@ -151,8 +152,6 @@
             txtProName.ReadOnly = true;
             txtProName.Size = new Size(258, 23);
             txtProName.TabIndex = 120;
-            txtProName.Enter += txtProName_Enter;
-            txtProName.Leave += txtProName_Leave;
             // 
             // lblProName
             // 
@@ -201,6 +200,7 @@
             txtTotal.BorderStyle = BorderStyle.FixedSingle;
             txtTotal.Location = new Point(652, 588);
             txtTotal.Name = "txtTotal";
+            txtTotal.ReadOnly = true;
             txtTotal.Size = new Size(131, 23);
             txtTotal.TabIndex = 115;
             // 
@@ -285,17 +285,17 @@
             lblStaffName.TabIndex = 107;
             lblStaffName.Text = "👤 Staff's Name:";
             // 
-            // lblInvoiceDetail
+            // lblOrderDetail
             // 
-            lblInvoiceDetail.AutoSize = true;
-            lblInvoiceDetail.Font = new Font("Segoe UI", 24F, FontStyle.Bold);
-            lblInvoiceDetail.ForeColor = Color.FromArgb(0, 150, 136);
-            lblInvoiceDetail.Location = new Point(78, 18);
-            lblInvoiceDetail.Name = "lblInvoiceDetail";
-            lblInvoiceDetail.Size = new Size(479, 45);
-            lblInvoiceDetail.TabIndex = 106;
-            lblInvoiceDetail.Text = "📄 InvoiceDetail's Information";
-            lblInvoiceDetail.TextAlign = ContentAlignment.MiddleCenter;
+            lblOrderDetail.AutoSize = true;
+            lblOrderDetail.Font = new Font("Segoe UI", 24F, FontStyle.Bold);
+            lblOrderDetail.ForeColor = Color.FromArgb(0, 150, 136);
+            lblOrderDetail.Location = new Point(78, 18);
+            lblOrderDetail.Name = "lblOrderDetail";
+            lblOrderDetail.Size = new Size(459, 45);
+            lblOrderDetail.TabIndex = 106;
+            lblOrderDetail.Text = "📦 OrderDetail's Information";
+            lblOrderDetail.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // lblStaffID
             // 
@@ -308,27 +308,27 @@
             lblStaffID.TabIndex = 105;
             lblStaffID.Text = "\U0001f9d1‍💼 Staff's ID:";
             // 
-            // lblImportDate
+            // lblOrderDate
             // 
-            lblImportDate.AutoSize = true;
-            lblImportDate.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            lblImportDate.ForeColor = Color.FromArgb(33, 33, 33);
-            lblImportDate.Location = new Point(24, 89);
-            lblImportDate.Name = "lblImportDate";
-            lblImportDate.Size = new Size(120, 19);
-            lblImportDate.TabIndex = 103;
-            lblImportDate.Text = "📅 Invoice Date:";
+            lblOrderDate.AutoSize = true;
+            lblOrderDate.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblOrderDate.ForeColor = Color.FromArgb(33, 33, 33);
+            lblOrderDate.Location = new Point(24, 89);
+            lblOrderDate.Name = "lblOrderDate";
+            lblOrderDate.Size = new Size(112, 19);
+            lblOrderDate.TabIndex = 103;
+            lblOrderDate.Text = "📅 Order Date:";
             // 
-            // dtpImportDate
+            // dtpOrderDate
             // 
-            dtpImportDate.CalendarMonthBackground = Color.FromArgb(245, 245, 245);
-            dtpImportDate.Format = DateTimePickerFormat.Short;
-            dtpImportDate.Location = new Point(152, 89);
-            dtpImportDate.Name = "dtpImportDate";
-            dtpImportDate.Size = new Size(250, 23);
-            dtpImportDate.TabIndex = 104;
+            dtpOrderDate.CalendarMonthBackground = Color.FromArgb(245, 245, 245);
+            dtpOrderDate.Format = DateTimePickerFormat.Short;
+            dtpOrderDate.Location = new Point(152, 89);
+            dtpOrderDate.Name = "dtpOrderDate";
+            dtpOrderDate.Size = new Size(250, 23);
+            dtpOrderDate.TabIndex = 104;
             // 
-            // frmInvoiceDetail
+            // frmOrderDetail
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -354,12 +354,12 @@
             Controls.Add(txtStaffName);
             Controls.Add(cboStaffID);
             Controls.Add(lblStaffName);
-            Controls.Add(lblInvoiceDetail);
+            Controls.Add(lblOrderDetail);
             Controls.Add(lblStaffID);
-            Controls.Add(lblImportDate);
-            Controls.Add(dtpImportDate);
-            Name = "frmInvoiceDetail";
-            Text = "📄 InvoiceDetail's Information";
+            Controls.Add(lblOrderDate);
+            Controls.Add(dtpOrderDate);
+            Name = "frmOrderDetail";
+            Text = "📦 OrderDetail's Information";
             Load += frmInvoiceDetail_Load;
             ResumeLayout(false);
             PerformLayout();
@@ -388,9 +388,9 @@
         private TextBox txtStaffName;
         private ComboBox cboStaffID;
         private Label lblStaffName;
-        private Label lblInvoiceDetail;
+        private Label lblOrderDetail;
         private Label lblStaffID;
-        private Label lblImportDate;
-        private DateTimePicker dtpImportDate;
+        private Label lblOrderDate;
+        private DateTimePicker dtpOrderDate;
     }
 }
