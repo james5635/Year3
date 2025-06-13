@@ -6,5 +6,15 @@
         {
             InitializeComponent();
         }
+
+        private void frmPayments_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dtpPaymentDate_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
