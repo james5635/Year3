@@ -121,6 +121,7 @@ CREATE TABLE tbPayments
     FullName NVARCHAR(50) NOT NULL,
     -- Match tbStaffs.FullName type
     OrdCode INT NOT NULL,
+    Deposit MONEY DEFAULT NULL,
     Amount MONEY NOT NULL CHECK (Amount >= 0),
     FOREIGN KEY (staffID) REFERENCES tbStaffs(staffID) ON DELETE NO ACTION ON UPDATE NO ACTION,
     FOREIGN KEY (OrdCode) REFERENCES tbOrders(OrdCode) ON DELETE CASCADE ON UPDATE CASCADE
@@ -1668,33 +1669,64 @@ END
 GO
 
 -- procedure for orderDetail
-CREATE PROCEDURE spSetOrderDetail @OM AS OrderMaster READONLY, @OD AS OrderDetail READONLY
+CREATE PROCEDURE spSetOrderDetail 
+    @OM AS OrderMaster READONLY,
+    @OD AS OrderDetail READONLY
 AS
 BEGIN
-    INSERT INTO [dbo].[tbOrders] (OrdDate, staffID, FullName, cusID, cusName, Total)
-    SELECT OrdDate, staffID, FullName, cusID, cusName, Total FROM @OM
+    -- don't send  (N row(s) affected)
+    SET NOCOUNT ON;
 
-    DECLARE  @oc INT
-    SELECT   @oc = MAX(OrdCode) FROM [dbo].[tbOrders]
-    DECLARE  @pc INT 
-    DECLARE  @pn VARCHAR(100) 
-    DECLARE  @q SMALLINT 
-    DECLARE  @p MONEY 
-    DECLARE  @a MONEY
+    DECLARE @OrdDate DATE, @StaffID INT, @FullName NVARCHAR(50),
+            @CusID INT, @CusName NVARCHAR(100), @Total MONEY
 
-    DECLARE csDetail CURSOR SCROLL DYNAMIC FOR SELECT * FROM @OD
-    
-    OPEN csDetail
-    FETCH FIRST FROM csDetail INTO @pc, @pn, @q, @p, @a
-    WHILE(@@FETCH_STATUS = 0)
-        BEGIN
-            UPDATE [dbo].[tbProducts] SET Qty = Qty - @q WHERE ProCode = @pc
-            INSERT INTO tbOrderDetail (OrdCode, ProCode, ProName, Qty, Price, Amount)
-            values (@oc, @pc, @pn, @q, @p, @a)
+    -- Assuming @OM has only 1 row
+    SELECT TOP 1 
+        @OrdDate = OrdDate,
+        @StaffID = staffID,
+        @FullName = FullName,
+        @CusID = cusID,
+        @CusName = cusName,
+        @Total = Total
+    FROM @OM;
 
-            FETCH NEXT FROM csDetail INTO @pc, @pn, @q, @p, @a
-        END
-    CLOSE csDetail
-    DEALLOCATE csDetail
+    -- Insert into tbOrders
+    INSERT INTO tbOrders (OrdDate, staffID, FullName, cusID, cusName, Total)
+    VALUES (@OrdDate, @StaffID, @FullName, @CusID, @CusName, @Total);
+
+    -- Get the last inserted order ID safely
+    DECLARE @OrdCode INT = SCOPE_IDENTITY();
+
+    -- Insert into tbPayments
+    INSERT INTO tbPayments (PayDate, staffID, FullName, OrdCode, Deposit, Amount)
+    VALUES (@OrdDate, @StaffID, @FullName, @OrdCode, NULL, @Total);
+
+    -- Process each item in @OD
+    DECLARE @ProCode VARCHAR(13), @ProName VARCHAR(100),
+            @Qty SMALLINT, @Price MONEY, @Amount MONEY;
+
+    DECLARE csOrder CURSOR FOR 
+        SELECT ProCode, ProName, Qty, Price, Amount FROM @OD;
+
+    OPEN csOrder;
+
+    FETCH NEXT FROM csOrder INTO @ProCode, @ProName, @Qty, @Price, @Amount;
+
+    WHILE @@FETCH_STATUS = 0
+    BEGIN
+        -- Update product quantity
+        UPDATE tbProducts
+        SET Qty = Qty - @Qty
+        WHERE ProCode = @ProCode;
+
+        -- Insert into tbOrderDetail
+        INSERT INTO tbOrderDetail (OrdCode, ProCode, ProName, Qty, Price, Amount)
+        VALUES (@OrdCode, @ProCode, @ProName, @Qty, @Price, @Amount);
+
+        FETCH NEXT FROM csOrder INTO @ProCode, @ProName, @Qty, @Price, @Amount;
+    END
+
+    CLOSE csOrder;
+    DEALLOCATE csOrder;
 END
 GO
