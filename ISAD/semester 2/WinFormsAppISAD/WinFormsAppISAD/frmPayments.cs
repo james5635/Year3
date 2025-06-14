@@ -24,7 +24,6 @@ namespace WinFormsAppISAD
             cboStaffID.DataSource = dt;
             cboStaffID.DisplayMember = "staffID";
             cboStaffID.ValueMember = "FullName";
-            cboStaffID.Text = null;
 
             da = new SqlDataAdapter("SELECT * FROM fnGetAllOrderNotCompletePayment()", conn);
             dt = new DataTable();
@@ -32,8 +31,14 @@ namespace WinFormsAppISAD
             cboOrderCode.DataSource = dt;
             cboOrderCode.DisplayMember = "OrdCode";
             cboOrderCode.ValueMember = "Total";
-            cboOrderCode.Text = null;
 
+            dtpPaymentDate.Value = DateTime.Now;
+            cboStaffID.Text = null;
+            txtStaffName.Text = null;
+            cboOrderCode.Text = null;
+            txtAmount.Text = null;
+            txtDeposit.Text = null;
+            txtRemaining.Text = null;
         }
 
         private void cboStaffID_SelectionChangeCommitted(object sender, EventArgs e)
@@ -60,6 +65,33 @@ namespace WinFormsAppISAD
             decimal remaining = amount - deposit;
             txtRemaining.Text = remaining >= 0 ? remaining.ToString("0.00") : "0.00";
 
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using SqlConnection conn = new SqlConnection(_connStr);
+                conn.Open();
+
+                using SqlCommand cmd = new SqlCommand("spInsertPayment", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@PayDate", dtpPaymentDate.Value);
+                cmd.Parameters.AddWithValue("@staffID", int.Parse(cboStaffID.Text));
+                cmd.Parameters.AddWithValue("@FullName", txtStaffName.Text);
+                cmd.Parameters.AddWithValue("@OrdCode", int.Parse(cboOrderCode.Text));
+                cmd.Parameters.AddWithValue("@Deposit", decimal.Parse(txtDeposit.Text));
+                cmd.Parameters.AddWithValue("@Amount", decimal.Parse(txtAmount.Text));
+
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Payment saved successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                frmPayments_Load(sender, e); // Refresh the form
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An unexpected error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
         }
     }
 }

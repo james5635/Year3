@@ -5,8 +5,8 @@ There are 7 forms in this project.
 - [x] frmCustomers
 - [x] frmProducts
 - [x] frmImportDetail
-- [x] frmInvoiceDetail
-- [ ] frmPayments
+- [x] frmOrderDetail
+- [x] frmPayments
 # Start the application
 Please, make sure the sql server database is configured correctly.
 ```sh

@@ -1496,6 +1496,19 @@ AS
     ( ProName, Qty, UPIS, SUP)
     VALUES ( @name, @qty, @UPIS, @SUP)
 GO
+CREATE PROCEDURE spInsertPayment
+    @PayDate SMALLDATETIME,
+    @staffID TINYINT,
+    @FullName NVARCHAR(50),
+    @OrdCode INT,
+    @Deposit MONEY,
+    @Amount MONEY
+AS
+    INSERT INTO [dbo].[tbPayments]
+        ([PayDate], [staffID], [FullName], [OrdCode], [Deposit], [Amount])
+     VALUES
+        (@PayDate, @staffID, @FullName, @OrdCode, @Deposit, @Amount)
+GO
 PRINT 'procedure for insert created successfully.';
 GO
 

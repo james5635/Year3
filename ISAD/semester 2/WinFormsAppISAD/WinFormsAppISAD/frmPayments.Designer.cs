@@ -178,7 +178,6 @@
             // 
             btnSave.BackColor = Color.FromArgb(0, 150, 136);
             btnSave.Cursor = Cursors.Hand;
-            btnSave.Enabled = false;
             btnSave.FlatAppearance.BorderSize = 0;
             btnSave.FlatStyle = FlatStyle.Flat;
             btnSave.ForeColor = Color.White;
@@ -189,6 +188,7 @@
             btnSave.TabIndex = 128;
             btnSave.Text = "💾 Save";
             btnSave.UseVisualStyleBackColor = false;
+            btnSave.Click += btnSave_Click;
             // 
             // lblPaymentInformation
             // 
