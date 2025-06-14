@@ -2,15 +2,8 @@
 {
     partial class frmPayments
     {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -22,219 +15,237 @@
 
         #region Windows Form Designer generated code
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
-            label5 = new Label();
-            textBox5 = new TextBox();
-            button2 = new Button();
-            button1 = new Button();
-            dataGridView1 = new DataGridView();
-            label3 = new Label();
-            textBox3 = new TextBox();
-            label4 = new Label();
-            textBox4 = new TextBox();
-            label8 = new Label();
-            label2 = new Label();
-            label1 = new Label();
-            textBox1 = new TextBox();
-            label6 = new Label();
-            textBox6 = new TextBox();
-            dateTimePicker1 = new DateTimePicker();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            lblOrderCode = new Label();
+            lblStaffName = new Label();
+            txtStaffName = new TextBox();
+            lblStaffID = new Label();
+            lblPaymentDate = new Label();
+            lblAmount = new Label();
+            txtAmount = new TextBox();
+            dtpPaymentDate = new DateTimePicker();
+            cboStaffID = new ComboBox();
+            cboOrderCode = new ComboBox();
+            lblDeposit = new Label();
+            txtDeposit = new TextBox();
+            lblRemaining = new Label();
+            txtRemaining = new TextBox();
+            btnSave = new Button();
+            lblPaymentInformation = new Label();
             SuspendLayout();
             // 
-            // label5
+            // lblOrderCode
             // 
-            label5.AutoSize = true;
-            label5.Location = new Point(17, 238);
-            label5.Name = "label5";
-            label5.RightToLeft = RightToLeft.Yes;
-            label5.Size = new Size(55, 15);
-            label5.TabIndex = 58;
-            label5.Text = "OrdCode";
+            lblOrderCode.AutoSize = true;
+            lblOrderCode.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblOrderCode.ForeColor = Color.FromArgb(33, 33, 33);
+            lblOrderCode.Location = new Point(17, 198);
+            lblOrderCode.Name = "lblOrderCode";
+            lblOrderCode.Size = new Size(116, 19);
+            lblOrderCode.TabIndex = 58;
+            lblOrderCode.Text = "📦 Order Code:";
             // 
-            // textBox5
+            // lblStaffName
             // 
-            textBox5.Location = new Point(101, 235);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(140, 23);
-            textBox5.TabIndex = 57;
+            lblStaffName.AutoSize = true;
+            lblStaffName.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblStaffName.ForeColor = Color.FromArgb(33, 33, 33);
+            lblStaffName.Location = new Point(292, 153);
+            lblStaffName.Name = "lblStaffName";
+            lblStaffName.Size = new Size(112, 19);
+            lblStaffName.TabIndex = 53;
+            lblStaffName.Text = "👤 Staff Name:";
             // 
-            // button2
+            // txtStaffName
             // 
-            button2.Image = Properties.Resources.Add;
-            button2.ImageAlign = ContentAlignment.MiddleLeft;
-            button2.Location = new Point(704, 198);
-            button2.Name = "button2";
-            button2.Size = new Size(75, 23);
-            button2.TabIndex = 56;
-            button2.Text = "Add";
-            button2.TextAlign = ContentAlignment.MiddleRight;
-            button2.UseVisualStyleBackColor = true;
+            txtStaffName.BorderStyle = BorderStyle.FixedSingle;
+            txtStaffName.Location = new Point(418, 152);
+            txtStaffName.Name = "txtStaffName";
+            txtStaffName.ReadOnly = true;
+            txtStaffName.Size = new Size(140, 23);
+            txtStaffName.TabIndex = 52;
             // 
-            // button1
+            // lblStaffID
             // 
-            button1.Image = Properties.Resources.Edit;
-            button1.ImageAlign = ContentAlignment.MiddleLeft;
-            button1.Location = new Point(704, 115);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 55;
-            button1.Text = "Edit";
-            button1.TextAlign = ContentAlignment.MiddleRight;
-            button1.UseVisualStyleBackColor = true;
+            lblStaffID.AutoSize = true;
+            lblStaffID.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblStaffID.ForeColor = Color.FromArgb(33, 33, 33);
+            lblStaffID.Location = new Point(17, 150);
+            lblStaffID.Name = "lblStaffID";
+            lblStaffID.Size = new Size(86, 19);
+            lblStaffID.TabIndex = 51;
+            lblStaffID.Text = "🆔 Staff ID:";
             // 
-            // dataGridView1
+            // lblPaymentDate
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(12, 318);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(767, 250);
-            dataGridView1.TabIndex = 54;
+            lblPaymentDate.AutoSize = true;
+            lblPaymentDate.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblPaymentDate.ForeColor = Color.FromArgb(33, 33, 33);
+            lblPaymentDate.Location = new Point(17, 100);
+            lblPaymentDate.Name = "lblPaymentDate";
+            lblPaymentDate.RightToLeft = RightToLeft.No;
+            lblPaymentDate.Size = new Size(131, 19);
+            lblPaymentDate.TabIndex = 48;
+            lblPaymentDate.Text = "📅 Payment Date:";
             // 
-            // label3
+            // lblAmount
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(17, 198);
-            label3.Name = "label3";
-            label3.RightToLeft = RightToLeft.Yes;
-            label3.Size = new Size(58, 15);
-            label3.TabIndex = 53;
-            label3.Text = "FullName";
+            lblAmount.AutoSize = true;
+            lblAmount.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblAmount.ForeColor = Color.FromArgb(33, 33, 33);
+            lblAmount.Location = new Point(290, 199);
+            lblAmount.Name = "lblAmount";
+            lblAmount.Size = new Size(90, 19);
+            lblAmount.TabIndex = 60;
+            lblAmount.Text = "💰 Amount:";
             // 
-            // textBox3
+            // txtAmount
             // 
-            textBox3.Location = new Point(101, 195);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(140, 23);
-            textBox3.TabIndex = 52;
+            txtAmount.BorderStyle = BorderStyle.FixedSingle;
+            txtAmount.Location = new Point(388, 198);
+            txtAmount.Name = "txtAmount";
+            txtAmount.ReadOnly = true;
+            txtAmount.Size = new Size(140, 23);
+            txtAmount.TabIndex = 59;
             // 
-            // label4
+            // dtpPaymentDate
             // 
-            label4.AutoSize = true;
-            label4.Location = new Point(17, 156);
-            label4.Name = "label4";
-            label4.Size = new Size(41, 15);
-            label4.TabIndex = 51;
-            label4.Text = "staffID";
+            dtpPaymentDate.Location = new Point(173, 100);
+            dtpPaymentDate.Name = "dtpPaymentDate";
+            dtpPaymentDate.Size = new Size(200, 23);
+            dtpPaymentDate.TabIndex = 61;
             // 
-            // textBox4
+            // cboStaffID
             // 
-            textBox4.Location = new Point(101, 153);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(242, 23);
-            textBox4.TabIndex = 50;
+            cboStaffID.FormattingEnabled = true;
+            cboStaffID.Location = new Point(120, 150);
+            cboStaffID.Name = "cboStaffID";
+            cboStaffID.Size = new Size(121, 23);
+            cboStaffID.TabIndex = 62;
+            cboStaffID.SelectionChangeCommitted += cboStaffID_SelectionChangeCommitted;
             // 
-            // label8
+            // cboOrderCode
             // 
-            label8.AutoSize = true;
-            label8.Font = new Font("Ink Free", 21.7499962F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label8.ForeColor = Color.Blue;
-            label8.Location = new Point(250, 8);
-            label8.Name = "label8";
-            label8.Size = new Size(318, 36);
-            label8.TabIndex = 49;
-            label8.Text = "Payment's Information";
+            cboOrderCode.FormattingEnabled = true;
+            cboOrderCode.Location = new Point(140, 198);
+            cboOrderCode.Name = "cboOrderCode";
+            cboOrderCode.Size = new Size(121, 23);
+            cboOrderCode.TabIndex = 63;
+            cboOrderCode.SelectionChangeCommitted += cboOrderCode_SelectionChangeCommitted;
             // 
-            // label2
+            // lblDeposit
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(17, 115);
-            label2.Name = "label2";
-            label2.RightToLeft = RightToLeft.Yes;
-            label2.Size = new Size(50, 15);
-            label2.TabIndex = 48;
-            label2.Text = "PayDate";
+            lblDeposit.AutoSize = true;
+            lblDeposit.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblDeposit.ForeColor = Color.FromArgb(33, 33, 33);
+            lblDeposit.Location = new Point(17, 250);
+            lblDeposit.Name = "lblDeposit";
+            lblDeposit.Size = new Size(88, 19);
+            lblDeposit.TabIndex = 65;
+            lblDeposit.Text = "💵 Deposit:";
             // 
-            // label1
+            // txtDeposit
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(17, 73);
-            label1.Name = "label1";
-            label1.Size = new Size(54, 15);
-            label1.TabIndex = 46;
-            label1.Text = "PayCode";
+            txtDeposit.BorderStyle = BorderStyle.FixedSingle;
+            txtDeposit.Location = new Point(119, 250);
+            txtDeposit.Name = "txtDeposit";
+            txtDeposit.Size = new Size(140, 23);
+            txtDeposit.TabIndex = 64;
             // 
-            // textBox1
+            // lblRemaining
             // 
-            textBox1.Location = new Point(101, 70);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(101, 23);
-            textBox1.TabIndex = 45;
+            lblRemaining.AutoSize = true;
+            lblRemaining.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblRemaining.ForeColor = Color.FromArgb(33, 33, 33);
+            lblRemaining.Location = new Point(289, 252);
+            lblRemaining.Name = "lblRemaining";
+            lblRemaining.Size = new Size(108, 19);
+            lblRemaining.TabIndex = 67;
+            lblRemaining.Text = "💳 Remaining:";
             // 
-            // label6
+            // txtRemaining
             // 
-            label6.AutoSize = true;
-            label6.Location = new Point(17, 277);
-            label6.Name = "label6";
-            label6.RightToLeft = RightToLeft.Yes;
-            label6.Size = new Size(51, 15);
-            label6.TabIndex = 60;
-            label6.Text = "Amount";
+            txtRemaining.BorderStyle = BorderStyle.FixedSingle;
+            txtRemaining.Location = new Point(411, 251);
+            txtRemaining.Name = "txtRemaining";
+            txtRemaining.ReadOnly = true;
+            txtRemaining.Size = new Size(140, 23);
+            txtRemaining.TabIndex = 66;
             // 
-            // textBox6
+            // btnSave
             // 
-            textBox6.Location = new Point(101, 274);
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(140, 23);
-            textBox6.TabIndex = 59;
+            btnSave.BackColor = Color.FromArgb(0, 150, 136);
+            btnSave.Cursor = Cursors.Hand;
+            btnSave.FlatAppearance.BorderSize = 0;
+            btnSave.FlatStyle = FlatStyle.Flat;
+            btnSave.ForeColor = Color.White;
+            btnSave.ImageAlign = ContentAlignment.MiddleLeft;
+            btnSave.Location = new Point(458, 71);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new Size(100, 35);
+            btnSave.TabIndex = 128;
+            btnSave.Text = "💾 Save";
+            btnSave.UseVisualStyleBackColor = false;
+            btnSave.Click += btnSave_Click;
             // 
-            // dateTimePicker1
+            // lblPaymentInformation
             // 
-            dateTimePicker1.Location = new Point(110, 115);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(200, 23);
-            dateTimePicker1.TabIndex = 61;
+            lblPaymentInformation.AutoSize = true;
+            lblPaymentInformation.Font = new Font("Segoe UI", 24F, FontStyle.Bold);
+            lblPaymentInformation.ForeColor = Color.FromArgb(0, 150, 136);
+            lblPaymentInformation.Location = new Point(27, 14);
+            lblPaymentInformation.Name = "lblPaymentInformation";
+            lblPaymentInformation.Size = new Size(414, 45);
+            lblPaymentInformation.TabIndex = 129;
+            lblPaymentInformation.Text = "💳 Payment's Information";
+            lblPaymentInformation.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // frmPayments
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 580);
-            Controls.Add(dateTimePicker1);
-            Controls.Add(label6);
-            Controls.Add(textBox6);
-            Controls.Add(label5);
-            Controls.Add(textBox5);
-            Controls.Add(button2);
-            Controls.Add(button1);
-            Controls.Add(dataGridView1);
-            Controls.Add(label3);
-            Controls.Add(textBox3);
-            Controls.Add(label4);
-            Controls.Add(textBox4);
-            Controls.Add(label8);
-            Controls.Add(label2);
-            Controls.Add(label1);
-            Controls.Add(textBox1);
+            ClientSize = new Size(581, 298);
+            Controls.Add(lblPaymentInformation);
+            Controls.Add(btnSave);
+            Controls.Add(lblRemaining);
+            Controls.Add(txtRemaining);
+            Controls.Add(lblDeposit);
+            Controls.Add(txtDeposit);
+            Controls.Add(cboOrderCode);
+            Controls.Add(cboStaffID);
+            Controls.Add(dtpPaymentDate);
+            Controls.Add(lblAmount);
+            Controls.Add(txtAmount);
+            Controls.Add(lblOrderCode);
+            Controls.Add(lblStaffName);
+            Controls.Add(txtStaffName);
+            Controls.Add(lblStaffID);
+            Controls.Add(lblPaymentDate);
             Name = "frmPayments";
-            Text = "frmPayments";
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            Text = "💳 Payment's Information";
+            Load += frmPayments_Load;
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private Label label5;
-        private TextBox textBox5;
-        private Button button2;
-        private Button button1;
-        private DataGridView dataGridView1;
-        private Label label3;
-        private TextBox textBox3;
-        private Label label4;
-        private TextBox textBox4;
-        private Label label8;
-        private Label label2;
-        private Label label1;
-        private TextBox textBox1;
-        private Label label6;
-        private TextBox textBox6;
-        private DateTimePicker dateTimePicker1;
+        private Label lblOrderCode;
+        private Label lblStaffName;
+        private TextBox txtStaffName;
+        private Label lblStaffID;
+        private Label lblPaymentDate;
+        private Label lblAmount;
+        private TextBox txtAmount;
+        private DateTimePicker dtpPaymentDate;
+        private ComboBox cboStaffID;
+        private ComboBox cboOrderCode;
+        private Label lblDeposit;
+        private TextBox txtDeposit;
+        private Label lblRemaining;
+        private TextBox txtRemaining;
+        private Button btnSave;
+        private Label lblPaymentInformation;
     }
 }

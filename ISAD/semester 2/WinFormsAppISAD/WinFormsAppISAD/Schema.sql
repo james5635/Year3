@@ -97,10 +97,10 @@ CREATE TABLE tbImports
 );
 PRINT 'Table tbImports created.';
 
-CREATE TABLE tbInvoices
+CREATE TABLE tbOrders
 (
-    InvCode INT IDENTITY(1,1) PRIMARY KEY,
-    InvDate SMALLDATETIME NOT NULL,
+    OrdCode INT IDENTITY(1,1) PRIMARY KEY,
+    OrdDate SMALLDATETIME NOT NULL,
     staffID TINYINT NOT NULL,
     FullName NVARCHAR(50) NOT NULL,
     -- Match tbStaffs.FullName type
@@ -111,7 +111,7 @@ CREATE TABLE tbInvoices
     FOREIGN KEY (staffID) REFERENCES tbStaffs(staffID) ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY (cusID) REFERENCES tbCustomers(cusID) ON DELETE CASCADE ON UPDATE CASCADE
 );
-PRINT 'Table tbInvoices created.';
+PRINT 'Table tbOrders created.';
 
 CREATE TABLE tbPayments
 (
@@ -120,10 +120,11 @@ CREATE TABLE tbPayments
     staffID TINYINT NOT NULL,
     FullName NVARCHAR(50) NOT NULL,
     -- Match tbStaffs.FullName type
-    InvCode INT NOT NULL,
+    OrdCode INT NOT NULL,
+    Deposit MONEY DEFAULT NULL,
     Amount MONEY NOT NULL CHECK (Amount >= 0),
     FOREIGN KEY (staffID) REFERENCES tbStaffs(staffID) ON DELETE NO ACTION ON UPDATE NO ACTION,
-    FOREIGN KEY (InvCode) REFERENCES tbInvoices(InvCode) ON DELETE CASCADE ON UPDATE CASCADE
+    FOREIGN KEY (OrdCode) REFERENCES tbOrders(OrdCode) ON DELETE CASCADE ON UPDATE CASCADE
 );
 PRINT 'Table tbPayments created.';
 
@@ -144,9 +145,9 @@ CREATE TABLE tbImportdetail
 );
 PRINT 'Table tbImportdetail created.';
 
-CREATE TABLE tbInvoiceDetail
+CREATE TABLE tbOrderDetail
 (
-    InvCode INT NOT NULL,
+    OrdCode INT NOT NULL,
     ProCode INT NOT NULL,
     ProName VARCHAR(100) NOT NULL,
     -- Match tbProducts.ProName type
@@ -154,12 +155,12 @@ CREATE TABLE tbInvoiceDetail
     -- Quantity should be positive
     Price MONEY NOT NULL CHECK (Price >= 0),
     Amount MONEY NOT NULL CHECK (Amount >= 0),
-    PRIMARY KEY (InvCode, ProCode),
-    FOREIGN KEY (InvCode) REFERENCES tbInvoices(InvCode) ON DELETE CASCADE ON UPDATE CASCADE,
+    PRIMARY KEY (OrdCode, ProCode),
+    FOREIGN KEY (OrdCode) REFERENCES tbOrders(OrdCode) ON DELETE CASCADE ON UPDATE CASCADE,
     -- Optional: Cascade delete
     FOREIGN KEY (ProCode) REFERENCES tbProducts(ProCode) ON DELETE CASCADE ON UPDATE CASCADE
 );
-PRINT 'Table tbInvoiceDetail created.';
+PRINT 'Table tbOrderDetail created.';
 GO
 
 -- ========================================================
@@ -766,12 +767,12 @@ PRINT 'Data insertion into tbImports complete (100 records).';
 GO
 
 -- ========================================================
--- INSERT INTO tbInvoices (100 Records)
+-- INSERT INTO tbOrders (100 Records)
 -- ========================================================
--- Note: InvCode is IDENTITY, starts at 1
-PRINT 'Inserting data into tbInvoices...';
-INSERT INTO tbInvoices
-    (InvDate, staffID, FullName, cusID, cusName, Total)
+-- Note: OrdCode is IDENTITY, starts at 1
+PRINT 'Inserting data into tbOrders...';
+INSERT INTO tbOrders
+    (OrdDate, staffID, FullName, cusID, cusName, Total)
 VALUES
     -- Original 10 (Preserve original totals)
     ('2025-02-01', 1, 'Alice Johnson', 1, 'John Carter', 1200),
@@ -786,7 +787,7 @@ VALUES
     -- Staff 7 Stopwork=1
     ('2025-02-09', 8, 'Hannah Baker', 9, 'Natasha Romanoff', 1550),
     ('2025-02-10', 9, 'Ivan Petrov', 10, 'Wanda Maximoff', 1600),
-    -- Added 90 (Totals will be matched by corresponding tbInvoiceDetail amount, adjusted later)
+    -- Added 90 (Totals will be matched by corresponding tbOrderDetail amount, adjusted later)
     ('2025-02-11', 10, 'Jane Doe', 11, 'Arthur Dent', 770),
     ('2025-02-12', 11, 'Kevin Lee', 12, 'Bilbo Baggins', 1170),
     ('2025-02-13', 12, 'Laura Palmer', 13, 'Charlie Chaplin', 1350),
@@ -922,7 +923,7 @@ VALUES
     ('2025-05-10', 3, 'Charlie Brown', 99, 'Neo Chosen', 110),
     -- Adjusted Total
     ('2025-05-11', 5, 'Evan Wright', 100, 'Pinhead Cenobite', 770);
-PRINT 'Data insertion into tbInvoices complete (100 records).';
+PRINT 'Data insertion into tbOrders complete (100 records).';
 GO
 
 
@@ -932,7 +933,7 @@ GO
 -- Note: PayCode is IDENTITY, starts at 1
 PRINT 'Inserting data into tbPayments...';
 INSERT INTO tbPayments
-    (PayDate, staffID, FullName, InvCode, Amount)
+    (PayDate, staffID, FullName, OrdCode, Amount)
 VALUES
     -- Original 10 (Matches original orders)
     ('2025-02-02', 1, 'Alice Johnson', 1, 1200),
@@ -947,7 +948,7 @@ VALUES
     -- Staff 7 Stopwork=1
     ('2025-02-10', 8, 'Hannah Baker', 9, 1550),
     ('2025-02-11', 9, 'Ivan Petrov', 10, 1600),
-    -- Added 90 (Amount matches the FINAL Total from the corresponding tbInvoices record 11-100)
+    -- Added 90 (Amount matches the FINAL Total from the corresponding tbOrders record 11-100)
     ('2025-02-12', 10, 'Jane Doe', 11, 770),
     ('2025-02-13', 11, 'Kevin Lee', 12, 1170),
     ('2025-02-14', 12, 'Laura Palmer', 13, 1350),
@@ -963,25 +964,25 @@ VALUES
     ('2025-02-24', 22, 'Vince Vaughn', 23, 1100),
     ('2025-02-25', 24, 'Xena Warrior', 24, 640),
     ('2025-02-26', 25, 'Yuri Gagarin', 25, 885),
-    -- Matches adjusted tbInvoices Total
+    -- Matches adjusted tbOrders Total
     ('2025-02-27', 26, 'Zoe Saldana', 26, 420),
-    -- Matches adjusted tbInvoices Total
+    -- Matches adjusted tbOrders Total
     ('2025-02-28', 27, 'Arthur Pendragon', 27, 2340),
-    -- Matches adjusted tbInvoices Total
+    -- Matches adjusted tbOrders Total
     ('2025-03-01', 28, 'Betty Cooper', 28, 798),
-    -- Matches adjusted tbInvoices Total
+    -- Matches adjusted tbOrders Total
     ('2025-03-02', 29, 'Conan Edogawa', 29, 2400),
     ('2025-03-03', 30, 'Drew Barrymore', 30, 1200),
-    -- Matches adjusted tbInvoices Total
+    -- Matches adjusted tbOrders Total
     ('2025-03-04', 31, 'Ethan Hunt', 31, 1260),
-    -- Matches adjusted tbInvoices Total
+    -- Matches adjusted tbOrders Total
     ('2025-03-05', 32, 'Gwen Stacy', 32, 1500),
     ('2025-03-06', 33, 'Harry Potter', 33, 520),
-    -- Matches adjusted tbInvoices Total
+    -- Matches adjusted tbOrders Total
     ('2025-03-07', 34, 'Iris West', 34, 540),
     ('2025-03-08', 35, 'Jack Sparrow', 35, 1280),
     ('2025-03-09', 36, 'Kim Possible', 36, 880),
-    -- Matches adjusted tbInvoices Total
+    -- Matches adjusted tbOrders Total
     ('2025-03-10', 37, 'Luke Skywalker', 37, 600),
     ('2025-03-11', 38, 'Mary Jane Watson', 38, 300),
     ('2025-03-12', 39, 'Neo Anderson', 39, 448),
@@ -992,95 +993,95 @@ VALUES
     ('2025-03-17', 45, 'Tony Stark', 44, 375),
     ('2025-03-18', 46, 'Ursula Buffay', 45, 720),
     ('2025-03-19', 47, 'Victor Frankenstein', 46, 480),
-    -- Matches adjusted tbInvoices Total
+    -- Matches adjusted tbOrders Total
     ('2025-03-20', 48, 'Willow Rosenberg', 47, 550),
-    -- Matches adjusted tbInvoices Total
+    -- Matches adjusted tbOrders Total
     ('2025-03-21', 49, 'Xavier Charles', 48, 600),
     ('2025-03-22', 50, 'Ygritte Snow', 49, 750),
     ('2025-03-23', 51, 'Zachary Taylor', 50, 460),
     ('2025-03-24', 52, 'Amy Santiago', 51, 600),
     ('2025-03-25', 54, 'Carmen Sandiego', 52, 300),
     ('2025-03-26', 55, 'Dexter Morgan', 53, 375),
-    -- Matches adjusted tbInvoices Total
+    -- Matches adjusted tbOrders Total
     ('2025-03-27', 56, 'Elle Woods', 54, 1200),
     ('2025-03-28', 57, 'Forrest Gump', 55, 360),
     ('2025-03-29', 58, 'Ginny Weasley', 56, 480),
     ('2025-03-30', 59, 'Han Solo', 57, 440),
     ('2025-03-31', 60, 'Isabelle Lightwood', 58, 600),
     ('2025-04-01', 61, 'James Bond', 59, 450),
-    -- Matches adjusted tbInvoices Total
+    -- Matches adjusted tbOrders Total
     ('2025-04-02', 62, 'Katniss Everdeen', 60, 480),
     ('2025-04-03', 63, 'Legolas Greenleaf', 61, 400),
     ('2025-04-04', 64, 'Mulan Fa', 62, 520),
-    -- Matches adjusted tbInvoices Total
+    -- Matches adjusted tbOrders Total
     ('2025-04-05', 65, 'Naruto Uzumaki', 63, 540),
     ('2025-04-06', 66, 'Oprah Winfrey', 64, 640),
-    -- Matches adjusted tbInvoices Total
+    -- Matches adjusted tbOrders Total
     ('2025-04-07', 67, 'Paddington Bear', 65, 650),
-    -- Matches adjusted tbInvoices Total
+    -- Matches adjusted tbOrders Total
     ('2025-04-08', 68, 'Queen Elsa', 66, 260),
-    -- Matches adjusted tbInvoices Total
+    -- Matches adjusted tbOrders Total
     ('2025-04-09', 69, 'Ron Swanson', 67, 150),
-    -- Matches adjusted tbInvoices Total
+    -- Matches adjusted tbOrders Total
     ('2025-04-10', 70, 'Sakura Haruno', 68, 330),
-    -- Matches adjusted tbInvoices Total
+    -- Matches adjusted tbOrders Total
     ('2025-04-11', 71, 'Sherlock Holmes', 69, 270),
-    -- Matches adjusted tbInvoices Total
+    -- Matches adjusted tbOrders Total
     ('2025-04-12', 72, 'Tiana Princess', 70, 300),
     ('2025-04-13', 73, 'Usain Bolt', 71, 220),
-    -- Matches adjusted tbInvoices Total
+    -- Matches adjusted tbOrders Total
     ('2025-04-14', 74, 'Violet Baudelaire', 72, 220),
-    -- Matches adjusted tbInvoices Total
+    -- Matches adjusted tbOrders Total
     ('2025-04-15', 75, 'Willy Wonka', 73, 100),
-    -- Matches adjusted tbInvoices Total
+    -- Matches adjusted tbOrders Total
     ('2025-04-16', 76, 'Xavier McDaniel', 74, 380),
-    -- Matches adjusted tbInvoices Total
+    -- Matches adjusted tbOrders Total
     ('2025-04-17', 77, 'Yara Greyjoy', 75, 550),
-    -- Matches adjusted tbInvoices Total
+    -- Matches adjusted tbOrders Total
     ('2025-04-18', 78, 'Zorro Vega', 76, 550),
-    -- Matches adjusted tbInvoices Total
+    -- Matches adjusted tbOrders Total
     ('2025-04-19', 79, 'Archie Andrews', 77, 630),
-    -- Matches adjusted tbInvoices Total
+    -- Matches adjusted tbOrders Total
     ('2025-04-20', 80, 'Buffy Summers', 78, 260),
-    -- Matches adjusted tbInvoices Total
+    -- Matches adjusted tbOrders Total
     ('2025-04-21', 81, 'Chuck Bartowski', 79, 180),
     ('2025-04-22', 82, 'Daenerys Targaryen', 80, 120),
     ('2025-04-23', 84, 'Felicity Smoak', 81, 110),
-    -- Matches adjusted tbInvoices Total
+    -- Matches adjusted tbOrders Total
     ('2025-04-24', 85, 'Gregory House', 82, 240),
     ('2025-04-25', 86, 'Hermione Granger', 83, 90),
-    -- Matches adjusted tbInvoices Total
+    -- Matches adjusted tbOrders Total
     ('2025-04-26', 87, 'Indiana Jones', 84, 120),
-    -- Matches adjusted tbInvoices Total
+    -- Matches adjusted tbOrders Total
     ('2025-04-27', 88, 'Jessica Jones', 85, 220),
-    -- Matches adjusted tbInvoices Total
+    -- Matches adjusted tbOrders Total
     ('2025-04-28', 90, 'Lara Croft', 86, 460),
-    -- Matches adjusted tbInvoices Total
+    -- Matches adjusted tbOrders Total
     ('2025-04-29', 91, 'Marty McFly', 87, 350),
-    -- Matches adjusted tbInvoices Total
+    -- Matches adjusted tbOrders Total
     ('2025-04-30', 92, 'Natasha Romanoff', 88, 360),
-    -- Matches adjusted tbInvoices Total
+    -- Matches adjusted tbOrders Total
     ('2025-05-01', 93, 'Optimus Prime', 89, 360),
-    -- Matches adjusted tbInvoices Total
+    -- Matches adjusted tbOrders Total
     ('2025-05-02', 94, 'Pepper Potts', 90, 400),
-    -- Matches adjusted tbInvoices Total
+    -- Matches adjusted tbOrders Total
     ('2025-05-03', 95, 'Remy LeBeau', 91, 180),
-    -- Matches adjusted tbInvoices Total
+    -- Matches adjusted tbOrders Total
     ('2025-05-04', 96, 'Steve Rogers', 92, 225),
     ('2025-05-05', 97, 'Trinity Matrix', 93, 375),
-    -- Matches adjusted tbInvoices Total
+    -- Matches adjusted tbOrders Total
     ('2025-05-06', 98, 'Uhtred Ragnarson', 94, 150),
-    -- Matches adjusted tbInvoices Total
+    -- Matches adjusted tbOrders Total
     ('2025-05-07', 99, 'Vanessa Ives', 95, 200),
-    -- Matches adjusted tbInvoices Total
+    -- Matches adjusted tbOrders Total
     ('2025-05-08', 100, 'Wolverine Logan', 96, 55),
-    -- Matches adjusted tbInvoices Total
+    -- Matches adjusted tbOrders Total
     ('2025-05-09', 1, 'Alice Johnson', 97, 84),
-    -- Matches adjusted tbInvoices Total
+    -- Matches adjusted tbOrders Total
     ('2025-05-10', 2, 'Bob Smith', 98, 88),
-    -- Matches adjusted tbInvoices Total
+    -- Matches adjusted tbOrders Total
     ('2025-05-11', 3, 'Charlie Brown', 99, 110),
-    -- Matches adjusted tbInvoices Total
+    -- Matches adjusted tbOrders Total
     ('2025-05-12', 5, 'Evan Wright', 100, 770);
 PRINT 'Data insertion into tbPayments complete (100 records).';
 GO
@@ -1215,37 +1216,37 @@ GO
 
 
 -- ========================================================
--- INSERT INTO tbInvoiceDetail (100 Records)
+-- INSERT INTO tbOrderDetail (100 Records)
 -- ========================================================
--- Note: Composite PRIMARY KEY (InvCode, ProCode)
--- Assumes InvCode 1-100 and ProCode 1-100 exist.
+-- Note: Composite PRIMARY KEY (OrdCode, ProCode)
+-- Assumes OrdCode 1-100 and ProCode 1-100 exist.
 -- Price should match SUP from tbProducts. Amount = Qty * Price.
-PRINT 'Inserting data into tbInvoiceDetail...';
-INSERT INTO tbInvoiceDetail
-    (InvCode, ProCode, ProName, Qty, Price, Amount)
+PRINT 'Inserting data into tbOrderDetail...';
+INSERT INTO tbOrderDetail
+    (OrdCode, ProCode, ProName, Qty, Price, Amount)
 VALUES
     -- Original 10 (Preserve original values, check for consistency)
     (1, 1, 'Laptop A', 2, 600, 1200),
-    -- Matches tbInvoices.Total
+    -- Matches tbOrders.Total
     (2, 2, 'Smartphone B', 3, 400, 1200),
-    -- Original tbInvoices.Total was 1300
+    -- Original tbOrders.Total was 1300
     (3, 3, 'Tablet C', 4, 250, 1000),
-    -- Original tbInvoices.Total was 1100
+    -- Original tbOrders.Total was 1100
     (4, 4, 'Monitor D', 3, 200, 600),
-    -- Original tbInvoices.Total was 1500
+    -- Original tbOrders.Total was 1500
     (5, 5, 'Keyboard E', 10, 35, 350),
-    -- Original tbInvoices.Total was 1400
+    -- Original tbOrders.Total was 1400
     (6, 6, 'Mouse F', 8, 25, 200),
-    -- Original tbInvoices.Total was 1250
+    -- Original tbOrders.Total was 1250
     (7, 7, 'Printer G', 2, 180, 360),
-    -- Original tbInvoices.Total was 1350
+    -- Original tbOrders.Total was 1350
     (8, 8, 'Router H', 5, 60, 300),
-    -- Original tbInvoices.Total was 1450
+    -- Original tbOrders.Total was 1450
     (9, 9, 'SSD I', 7, 120, 840),
-    -- Original tbInvoices.Total was 1550
+    -- Original tbOrders.Total was 1550
     (10, 10, 'Headphone J', 6, 90, 540),
-    -- Original tbInvoices.Total was 1600
-    -- Added 90 (Matches FINAL tbInvoices.Total for InvCode 11-100)
+    -- Original tbOrders.Total was 1600
+    -- Added 90 (Matches FINAL tbOrders.Total for OrdCode 11-100)
     (11, 12, '4K Webcam Pro', 7, 110, 770),
     (12, 13, 'Mechanical Keyboard GMMK', 9, 130, 1170),
     (13, 14, 'Ultrawide Monitor 34"', 3, 450, 1350),
@@ -1381,7 +1382,7 @@ VALUES
     (99, 100, 'Cable Ties Velcro (100 pack)', 11, 10, 110),
     -- Adjusted Amount
     (100, 11, 'Gaming Mouse X', 11, 70, 770);
-PRINT 'Data insertion into tbInvoiceDetail complete (100 records).';
+PRINT 'Data insertion into tbOrderDetail complete (100 records).';
 GO
 
 -- procedure for select
@@ -1454,7 +1455,7 @@ GO
 CREATE PROCEDURE spGetProduct 
     @pc INT 
 As
-    SELECT ProName FROM  [dbo].[tbProducts]
+    SELECT ProName, UPIS FROM  [dbo].[tbProducts]
     WHERE ProCode = @pc    
 GO
 PRINT 'spGetProduct created successfully.';
@@ -1494,6 +1495,19 @@ AS
     INSERT INTO [dbo].[tbProducts]
     ( ProName, Qty, UPIS, SUP)
     VALUES ( @name, @qty, @UPIS, @SUP)
+GO
+CREATE PROCEDURE spInsertPayment
+    @PayDate SMALLDATETIME,
+    @staffID TINYINT,
+    @FullName NVARCHAR(50),
+    @OrdCode INT,
+    @Deposit MONEY,
+    @Amount MONEY
+AS
+    INSERT INTO [dbo].[tbPayments]
+        ([PayDate], [staffID], [FullName], [OrdCode], [Deposit], [Amount])
+     VALUES
+        (@PayDate, @staffID, @FullName, @OrdCode, @Deposit, @Amount)
 GO
 PRINT 'procedure for insert created successfully.';
 GO
@@ -1570,10 +1584,26 @@ CREATE FUNCTION fnGetAllProduct() RETURNS TABLE
 AS 
     RETURN (SELECT ProCode, ProName FROM [dbo].[tbProducts] )
 GO
-
 CREATE FUNCTION fnGetAllCustomer() RETURNS TABLE
 AS 
     RETURN (SELECT cusID, CusName FROM [dbo].[tbCustomers] )
+GO
+CREATE FUNCTION fnGetAllOrderNotCompletePayment() RETURNS TABLE
+AS 
+    RETURN (
+        SELECT 
+            o.OrdCode, 
+            o.Total,
+	        p.Amount - ISNULL(SUM(p.Deposit), 0) AS Remaining
+        FROM 
+            tbOrders o
+        INNER JOIN 
+            tbPayments p ON o.OrdCode = p.OrdCode
+        GROUP BY 
+            o.OrdCode, o.Total, p.Amount
+        HAVING 
+            SUM(p.Deposit) < p.Amount OR SUM(p.Deposit) IS NULL
+    )
 GO
 PRINT 'function for select created successfully.';
 GO
@@ -1596,8 +1626,8 @@ CREATE TYPE ImportDetail AS TABLE (
     Amount MONEY
 )
 GO
-CREATE TYPE InvoiceMaster AS TABLE (
-    InvDate DATE ,
+CREATE TYPE OrderMaster AS TABLE (
+    OrdDate DATE ,
     staffID TINYINT ,
     FullName NVARCHAR(50) ,
     cusID INT ,
@@ -1605,7 +1635,7 @@ CREATE TYPE InvoiceMaster AS TABLE (
     Total MONEY 
 )
 GO
-CREATE TYPE InvoiceDetail AS TABLE (
+CREATE TYPE OrderDetail AS TABLE (
     ProCode INT , 
     ProName VARCHAR(100) ,
     Qty SMALLINT ,
@@ -1667,55 +1697,65 @@ BEGIN
 END
 GO
 
--- procedure for invoiceDetail
-CREATE PROCEDURE spSetInvoiceDetail @INM AS InvoiceMaster READONLY, @IND AS InvoiceDetail READONLY
+-- procedure for orderDetail
+CREATE PROCEDURE spSetOrderDetail 
+    @OM AS OrderMaster READONLY,
+    @OD AS OrderDetail READONLY
 AS
 BEGIN
-    INSERT INTO [dbo].[tbInvoices] (InvDate, staffID, FullName, cusID, cusName, Total)
-    SELECT InvDate, staffID, FullName, cusID, cusName, Total FROM @INM
+    -- don't send  (N row(s) affected)
+    SET NOCOUNT ON;
 
-    DECLARE  @inc INT
-    SELECT   @inc = MAX(InvCode) FROM [dbo].[tbInvoices]
-    DECLARE  @pc INT 
-    DECLARE  @pn VARCHAR(100) 
-    DECLARE  @q SMALLINT 
-    DECLARE  @p MONEY 
-    DECLARE  @a MONEY
+    DECLARE @OrdDate DATE, @StaffID INT, @FullName NVARCHAR(50),
+            @CusID INT, @CusName NVARCHAR(100), @Total MONEY
 
-    DECLARE csDetail CURSOR SCROLL DYNAMIC FOR SELECT * FROM @IND
-    
-    OPEN csDetail
-    FETCH FIRST FROM csDetail INTO @pc, @pn, @q, @p, @a
-    WHILE(@@FETCH_STATUS = 0)
-        BEGIN
-            IF(@pc = -1)
-                BEGIN
-                    IF ((SELECT COUNT(ProCode) FROM [dbo].[tbProducts] WHERE ProName = @pn) = 0)
-                        BEGIN
-                            INSERT INTO [dbo].[tbProducts] (ProName, Qty, UPIS, SUP)
-                            VALUES  (@pn, @q, @p, @p * 1.15)
-                            SET @pc = SCOPE_IDENTITY()
-                        END
-                    ELSE
-                        BEGIN
-                            UPDATE [dbo].[tbProducts]
-                            SET Qty = Qty + @q, UPIS = @p, SUP = @p * 1.15
-                            WHERE ProName = @pn
-                            SELECT @pc = ProCode FROM [dbo].[tbProducts] WHERE ProName = @pn
-                        END
-                END
-            ELSE 
-                BEGIN
-                    UPDATE [dbo].[tbProducts]
-                    SET Qty = Qty + @q, UPIS = @p, SUP = @p * 1.15
-                    WHERE ProCode = @pc
-                END
-            INSERT INTO tbInvoiceDetail (InvCode, ProCode, ProName, Qty, Price, Amount)
-            values (@inc, @pc, @pn, @q, @p, @a)
+    -- Assuming @OM has only 1 row
+    SELECT TOP 1 
+        @OrdDate = OrdDate,
+        @StaffID = staffID,
+        @FullName = FullName,
+        @CusID = cusID,
+        @CusName = cusName,
+        @Total = Total
+    FROM @OM;
 
-            FETCH NEXT FROM csDetail INTO @pc, @pn, @q, @p, @a
-        END
-    CLOSE csDetail
-    DEALLOCATE csDetail
+    -- Insert into tbOrders
+    INSERT INTO tbOrders (OrdDate, staffID, FullName, cusID, cusName, Total)
+    VALUES (@OrdDate, @StaffID, @FullName, @CusID, @CusName, @Total);
+
+    -- Get the last inserted order ID safely
+    DECLARE @OrdCode INT = SCOPE_IDENTITY();
+
+    -- Insert into tbPayments
+    INSERT INTO tbPayments (PayDate, staffID, FullName, OrdCode, Deposit, Amount)
+    VALUES (@OrdDate, @StaffID, @FullName, @OrdCode, NULL, @Total);
+
+    -- Process each item in @OD
+    DECLARE @ProCode VARCHAR(13), @ProName VARCHAR(100),
+            @Qty SMALLINT, @Price MONEY, @Amount MONEY;
+
+    DECLARE csOrder CURSOR FOR 
+        SELECT ProCode, ProName, Qty, Price, Amount FROM @OD;
+
+    OPEN csOrder;
+
+    FETCH NEXT FROM csOrder INTO @ProCode, @ProName, @Qty, @Price, @Amount;
+
+    WHILE @@FETCH_STATUS = 0
+    BEGIN
+        -- Update product quantity
+        UPDATE tbProducts
+        SET Qty = Qty - @Qty
+        WHERE ProCode = @ProCode;
+
+        -- Insert into tbOrderDetail
+        INSERT INTO tbOrderDetail (OrdCode, ProCode, ProName, Qty, Price, Amount)
+        VALUES (@OrdCode, @ProCode, @ProName, @Qty, @Price, @Amount);
+
+        FETCH NEXT FROM csOrder INTO @ProCode, @ProName, @Qty, @Price, @Amount;
+    END
+
+    CLOSE csOrder;
+    DEALLOCATE csOrder;
 END
 GO

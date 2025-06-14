@@ -47,9 +47,14 @@ namespace WinFormsAppISAD
             new frmImportDetail().Show();
         }
 
-        private void btnInvoiceDetailInformation_Click(object sender, EventArgs e)
+        private void btnOrderDetailInformation_Click(object sender, EventArgs e)
         {
-            new frmInvoiceDetail().Show();
+            new frmOrderDetail().Show();
+        }
+
+        private void btnPaymentInformation_Click(object sender, EventArgs e)
+        {
+            new frmPayments().Show();
         }
     }
 }

@@ -4,7 +4,7 @@
     <_LastSelectedProfileId>C:\Users\Docker\Desktop\Year3\ISAD\semester 2\WinFormsAppISAD\WinFormsAppISAD\Properties\PublishProfiles\FolderProfile2.pubxml</_LastSelectedProfileId>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Update="frmInvoiceDetail.cs">
+    <Compile Update="frmOrderDetail.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="frmStart.cs">
