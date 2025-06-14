@@ -1593,7 +1593,8 @@ AS
     RETURN (
         SELECT 
             o.OrdCode, 
-            o.Total
+            o.Total,
+	        p.Amount - ISNULL(SUM(p.Deposit), 0) AS Remaining
         FROM 
             tbOrders o
         INNER JOIN 

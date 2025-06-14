@@ -152,7 +152,6 @@
             txtDeposit.Name = "txtDeposit";
             txtDeposit.Size = new Size(140, 23);
             txtDeposit.TabIndex = 64;
-            txtDeposit.MouseLeave += txtDeposit_MouseLeave;
             // 
             // lblRemaining
             // 
