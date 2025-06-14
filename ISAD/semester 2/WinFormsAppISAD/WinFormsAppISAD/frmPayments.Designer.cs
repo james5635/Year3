@@ -132,6 +132,7 @@
             cboOrderCode.Name = "cboOrderCode";
             cboOrderCode.Size = new Size(121, 23);
             cboOrderCode.TabIndex = 63;
+            cboOrderCode.SelectionChangeCommitted += cboOrderCode_SelectionChangeCommitted;
             // 
             // lblDeposit
             // 
@@ -151,6 +152,7 @@
             txtDeposit.Name = "txtDeposit";
             txtDeposit.Size = new Size(140, 23);
             txtDeposit.TabIndex = 64;
+            txtDeposit.MouseLeave += txtDeposit_MouseLeave;
             // 
             // lblRemaining
             // 

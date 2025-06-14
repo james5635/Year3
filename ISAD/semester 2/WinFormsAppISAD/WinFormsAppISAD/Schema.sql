@@ -1571,10 +1571,25 @@ CREATE FUNCTION fnGetAllProduct() RETURNS TABLE
 AS 
     RETURN (SELECT ProCode, ProName FROM [dbo].[tbProducts] )
 GO
-
 CREATE FUNCTION fnGetAllCustomer() RETURNS TABLE
 AS 
     RETURN (SELECT cusID, CusName FROM [dbo].[tbCustomers] )
+GO
+CREATE FUNCTION fnGetAllOrderNotCompletePayment() RETURNS TABLE
+AS 
+    RETURN (
+        SELECT 
+            o.OrdCode, 
+            o.Total
+        FROM 
+            tbOrders o
+        INNER JOIN 
+            tbPayments p ON o.OrdCode = p.OrdCode
+        GROUP BY 
+            o.OrdCode, o.Total, p.Amount
+        HAVING 
+            SUM(p.Deposit) < p.Amount OR SUM(p.Deposit) IS NULL
+    )
 GO
 PRINT 'function for select created successfully.';
 GO
