@@ -13,7 +13,7 @@ namespace WinFormsAppISAD
             InitializeComponent();
         }
 
-        private void frmPayments_Load(object sender, EventArgs e)
+        private void frmPayments_Load(object? sender, EventArgs e)
         {
             using SqlConnection conn = new SqlConnection(_connStr);
             conn.Open();
@@ -38,6 +38,7 @@ namespace WinFormsAppISAD
             cboOrderCode.Text = null;
             txtAmount.Text = null;
             txtDeposit.Text = null;
+            txtDeposit.ReadOnly = true;
             txtRemaining.Text = null;
         }
 
@@ -50,6 +51,7 @@ namespace WinFormsAppISAD
         {
             txtAmount.Text = decimal.Parse(cboOrderCode?.SelectedValue?.ToString()!).ToString("0.00");
             txtRemaining.Text = decimal.Parse((cboOrderCode?.SelectedItem as DataRowView)?["Remaining"].ToString()!).ToString("0.00");
+            txtDeposit.ReadOnly = false;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -70,13 +72,28 @@ namespace WinFormsAppISAD
 
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("Payment saved successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                frmPayments_Load(sender, e); // Refresh the form
+                frmPayments_Load(null, e); // Refresh the form
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"An unexpected error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
+        }
+
+        private void txtDeposit_MouseLeave(object sender, EventArgs e)
+        {
+          
+        }
+
+        private void txtDeposit_TextChanged(object sender, EventArgs e)
+        {
+            if(!decimal.TryParse(txtDeposit.Text, out decimal deposit) || deposit < 0)
+            {
+                txtRemaining.Text = decimal.TryParse((cboOrderCode?.SelectedItem as DataRowView)?["Remaining"].ToString()!, out decimal remaining) ? remaining.ToString("0.00") : "";
+                return;
+            }
+            txtRemaining.Text = (decimal.Parse((cboOrderCode?.SelectedItem as DataRowView)?["Remaining"].ToString()!) - decimal.Parse(txtDeposit.Text)).ToString("0.00");
         }
     }
 }

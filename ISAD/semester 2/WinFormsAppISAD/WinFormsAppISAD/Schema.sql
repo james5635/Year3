@@ -1574,7 +1574,7 @@ PRINT 'creating function for select ';
 GO
 CREATE FUNCTION fnGetAllStaff() RETURNS TABLE
 AS 
-    RETURN (SELECT staffID, FullName FROM [dbo].[tbStaffs] )
+    RETURN (SELECT staffID, FullName FROM [dbo].[tbStaffs] WHERE Stopwork = 0 )
 GO
 CREATE FUNCTION fnGetAllSupplier() RETURNS TABLE
 AS 

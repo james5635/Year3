@@ -150,8 +150,11 @@
             txtDeposit.BorderStyle = BorderStyle.FixedSingle;
             txtDeposit.Location = new Point(119, 250);
             txtDeposit.Name = "txtDeposit";
+            txtDeposit.ReadOnly = true;
             txtDeposit.Size = new Size(140, 23);
             txtDeposit.TabIndex = 64;
+            txtDeposit.TextChanged += txtDeposit_TextChanged;
+            txtDeposit.MouseLeave += txtDeposit_MouseLeave;
             // 
             // lblRemaining
             // 
