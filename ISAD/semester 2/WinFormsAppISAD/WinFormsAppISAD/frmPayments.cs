@@ -38,6 +38,7 @@ namespace WinFormsAppISAD
             cboOrderCode.Text = null;
             txtAmount.Text = null;
             txtDeposit.Text = null;
+            txtDeposit.ReadOnly = true;
             txtRemaining.Text = null;
         }
 
