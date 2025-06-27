@@ -1,0 +1,19 @@
+Review For Final Exam
+********************
+I-សំណួរ (៣០ ពិន្ទូ)
+
+>> OSPFv2 ?
+>> ACL: 
+	-Standard ACL ?
+	-Extended ACL ?
+>> NAT :
+	-Static NAT ?
+	-Dynamic NAT?
+	-PAT?
+>> VPN ?
+>> IPsec ?
+
+II-លំហាត់ (៣០ ពិន្ទុ)
+	-Configure Single Area OSPFv2
+	-Configure E-ACL
+	-Configure NAT (Static & PAT)
