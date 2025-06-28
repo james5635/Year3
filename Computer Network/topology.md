@@ -57,4 +57,15 @@ int g0/1
 int g0/2
  ip add 192.168.4.1 255.255.255.0
  no shut
+
+ip access-list extended BLOCK_L2
+ no 10
+ no 20
+ no 30
+ deny icmp 192.168.2.0 0.0.0.255 192.168.3.0 0.0.0.255
+ deny tcp 192.168.2.0 0.0.0.255 192.168.3.0 0.0.0.255 eq www
+ permit ip any any
+
+interface g0/0
+ ip access-group BLOCK_L2 in
 ```
