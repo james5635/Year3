@@ -1,0 +1,7 @@
+Router(config)#ip access-list extended BLOCK_L2
+Router(config-ext-nacl)#no 10
+Router(config-ext-nacl)#no 20
+Router(config-ext-nacl)#no 30
+Router(config-ext-nacl)#deny icmp 192.168.2.0 0.0.0.255 192.168.3.0 0.0.0.255
+Router(config-ext-nacl)#deny tcp 192.168.2.0 0.0.0.255 192.168.3.0 0.0.0.255 eq www
+Router(config-ext-nacl)#permit ip any any
