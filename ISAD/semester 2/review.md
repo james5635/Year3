@@ -108,6 +108,7 @@ SELECT fnGetNumber()
 There is no BEGIN-END for CREATE FUNCTION that return table  
 BEGIN-END is optional for CREATE PROCEDURE  
 BEGIN-ENd is a must for CREATE FUNCTION that return scalar  
+There is no BEGIN-END for CREATE VIEW
 
 when create or execute function, the function must have ()  
 when create procedure, if it have 1 or more paramenters the () is optional else it must not have ()  
