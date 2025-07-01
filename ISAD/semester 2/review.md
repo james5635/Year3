@@ -103,7 +103,15 @@ SELECT fnGetNumber()
     CLOSE csOrder;
     DEALLOCATE csOrder;
 ```
-
+# View
+```sql
+CREATE VIEW [Brazil Customers] AS
+SELECT CustomerName, ContactName
+FROM Customers
+WHERE Country = 'Brazil';
+GO
+SELECT * FROM [Brazil Customers];
+```
 # Remark
 There is no BEGIN-END for CREATE FUNCTION that return table  
 BEGIN-END is optional for CREATE PROCEDURE  
