@@ -105,10 +105,11 @@ SELECT fnGetNumber()
 ```
 # View
 ```sql
-CREATE VIEW [Brazil Customers] AS
-SELECT CustomerName, ContactName
-FROM Customers
-WHERE Country = 'Brazil';
+CREATE VIEW [Brazil Customers] 
+AS
+    SELECT CustomerName, ContactName
+    FROM Customers
+    WHERE Country = 'Brazil';
 GO
 SELECT * FROM [Brazil Customers];
 ```
