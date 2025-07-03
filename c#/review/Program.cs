@@ -101,6 +101,14 @@ internal class Program
             Console.WriteLine(ex.Message);
         }
     }
+    private static void Test2()
+    {
+        Dictionary<int, double> dict = new(){
+            {2,200},
+            {3,100},
+            {1,500}
+        };
+    }
     private static void Main(string[] args)
     {
         // WriteJson();
